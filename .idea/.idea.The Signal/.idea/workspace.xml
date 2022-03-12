@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cc68ad1-8de8-44c4-80c8-e993d8473fc4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The Signal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Signal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AimStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AimStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Crouching_Rifle/CrouchIdle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Crouching_Rifle/CrouchIdle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Running_Rifle/Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Running_Rifle/Run.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkLeft_Aimed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkLeft_Aimed.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkRight_Aimed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkRight_Aimed.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MovementStateManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MovementStateManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerController.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +27,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -62,6 +69,8 @@
       <updated>1647022211148</updated>
       <workItem from="1647022211149" duration="629000" />
       <workItem from="1647040498757" duration="5342000" />
+      <workItem from="1647106656418" duration="3607000" />
+      <workItem from="1647111563165" duration="303000" />
     </task>
     <servers />
   </component>

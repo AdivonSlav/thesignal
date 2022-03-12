@@ -1,34 +1,60 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class MovementStateManager : MonoBehaviour
 {
-    // Variables for movement
-    public float movementSpeed = 3.0f;
+    #region MOVEMENT
+    public float currentMoveSpeed;
+    public float walkSpeed, walkBackSpeed;
+    public float runSpeed, runBackSpeed;
+    public float crouchSpeed, crouchBackSpeed;
     [HideInInspector] public Vector3 direction;
     private CharacterController controller;
-    private float horizontalInput = 0.0f;
-    private float verticalInput = 0.0f;
+    [HideInInspector]public float hInput = 0.0f;
+    [HideInInspector]public float vInput = 0.0f;
+    
+    private MovementBaseState currentState;
+    
+    public IdleState Idle = new IdleState();
+    public WalkState Walk = new WalkState();
+    public CrouchState Crouch = new CrouchState();
+    public RunState Run = new RunState();
 
-    // Variables for ground check
+    [HideInInspector] public Animator animator;
+
+    #endregion
+
+    #region GROUNDCHECK
+
     [SerializeField]private float groundYOffset = 0.0f;
     [SerializeField] private LayerMask groundMask;
-    private Vector3 spherePosition = new Vector3(0.0f, 1.0f - 0.05f, 0.0f);
+    private Vector3 spherePosition;
 
-    // Variables for gravity
+    #endregion
+
+    #region GRAVITY
+
     [SerializeField] private float gravAcceleration = -9.81f; // Default Earth gravity
     private Vector3 velocity;
 
-    // Variables for jumping
+    #endregion
+
+    #region JUMPING
+
     public float jumpForce = 8.0f;
-    
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
+        SwitchState(Idle);
     }
 
     // Update is called once per frame
@@ -38,24 +64,35 @@ public class MovementStateManager : MonoBehaviour
         Move();
         Gravity();
 
+        animator.SetFloat("hInput", hInput);
+        animator.SetFloat("vInput", vInput);
+        
         if (OnGround() && Input.GetKeyDown(KeyCode.Space))
             velocity.y += jumpForce;
+        
+        currentState.UpdateState(this);
     }
+
+    #region MOVEMENT_METHODS
 
     private void GetDirection()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        hInput = Input.GetAxis("Horizontal");
+        vInput = Input.GetAxis("Vertical");
 
         var objTransform = transform;
-        direction = objTransform.forward * verticalInput + objTransform.right * horizontalInput;
+        direction = objTransform.forward * vInput + objTransform.right * hInput;
     }
 
     private void Move()
     {
         // Normalizing the direction vector to prevent movement being faster in diagonal directions
-        controller.Move(direction.normalized * movementSpeed * Time.deltaTime);
+        controller.Move(direction.normalized * currentMoveSpeed * Time.deltaTime);
     }
+
+    #endregion
+
+    #region GRAVITY_METHODS
 
     private bool OnGround()
     {
@@ -78,6 +115,14 @@ public class MovementStateManager : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    #endregion
+
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
+    
     // Simply so we are able to see the sphere collider with the ground
     private void OnDrawGizmos()
     {

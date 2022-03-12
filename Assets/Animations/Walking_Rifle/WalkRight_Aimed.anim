@@ -18658,7 +18658,7 @@ AnimationClip:
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 1
-    m_OrientationOffsetY: -65
+    m_OrientationOffsetY: -67
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
