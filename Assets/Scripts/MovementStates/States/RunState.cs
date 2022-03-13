@@ -2,31 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkState : MovementBaseState
+public class RunState : MovementBaseState
 {
     public override void EnterState(MovementStateManager movement)
     {
-        movement.animator.SetBool("Walking", true);
+        movement.animator.SetBool("Running", true);
     }
 
     public override void UpdateState(MovementStateManager movement)
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            ExitState(movement, movement.Run);
-        else if (Input.GetKeyDown(KeyCode.LeftControl))
-            ExitState(movement, movement.Crouch);
+        if (Input.GetButtonDown("Sprint"))
+            ExitState(movement, movement.Walk);
         else if (movement.direction.magnitude < 0.1f)
             ExitState(movement, movement.Idle);
-
+        
         if (movement.vInput < 0)
-            movement.currentMoveSpeed = movement.walkBackSpeed;
+            movement.currentMoveSpeed = movement.runBackSpeed;
         else
-            movement.currentMoveSpeed = movement.walkSpeed;
+            movement.currentMoveSpeed = movement.runSpeed;
     }
-
+    
     private void ExitState(MovementStateManager movement, MovementBaseState state)
     {
-        movement.animator.SetBool("Walking", false);
+        movement.animator.SetBool("Running", false);
         movement.SwitchState(state);
     }
 }

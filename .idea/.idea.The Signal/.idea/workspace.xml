@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5cc68ad1-8de8-44c4-80c8-e993d8473fc4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The Signal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Signal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AimStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AimStateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Crouching_Rifle/CrouchIdle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Crouching_Rifle/CrouchIdle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Running_Rifle/Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Running_Rifle/Run.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkLeft_Aimed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkLeft_Aimed.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkRight_Aimed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Walking_Rifle/WalkRight_Aimed.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MovementStateManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MovementStateManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +25,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="showLigatures" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -71,6 +65,10 @@
       <workItem from="1647040498757" duration="5342000" />
       <workItem from="1647106656418" duration="3607000" />
       <workItem from="1647111563165" duration="303000" />
+      <workItem from="1647123464889" duration="867000" />
+      <workItem from="1647124371372" duration="400000" />
+      <workItem from="1647124812320" duration="84000" />
+      <workItem from="1647195866605" duration="25000" />
     </task>
     <servers />
   </component>

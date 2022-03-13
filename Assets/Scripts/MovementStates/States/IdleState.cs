@@ -13,13 +13,13 @@ public class IdleState : MovementBaseState
     {
         if (movement.direction.magnitude > 0.1f)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Sprint"))
                 movement.SwitchState(movement.Run);
             else
                 movement.SwitchState(movement.Walk);
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetButtonDown("Crouch"))
             movement.SwitchState(movement.Crouch);
     }
 }

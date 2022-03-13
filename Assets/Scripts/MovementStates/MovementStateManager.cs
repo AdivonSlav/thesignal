@@ -89,7 +89,11 @@ public class MovementStateManager : MonoBehaviour
         // Normalizing the direction vector to prevent movement being faster in diagonal directions
         controller.Move(direction.normalized * currentMoveSpeed * Time.deltaTime);
     }
-
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
     #endregion
 
     #region GRAVITY_METHODS
@@ -117,11 +121,6 @@ public class MovementStateManager : MonoBehaviour
 
     #endregion
 
-    public void SwitchState(MovementBaseState state)
-    {
-        currentState = state;
-        currentState.EnterState(this);
-    }
     
     // Simply so we are able to see the sphere collider with the ground
     private void OnDrawGizmos()
