@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class MovementStateManager : MonoBehaviour
 {
     #region MOVEMENT
@@ -14,8 +11,8 @@ public class MovementStateManager : MonoBehaviour
     public float crouchSpeed, crouchBackSpeed;
     [HideInInspector] public Vector3 direction;
     private CharacterController controller;
-    [HideInInspector]public float hInput = 0.0f;
-    [HideInInspector]public float vInput = 0.0f;
+    [HideInInspector] public float hInput;
+    [HideInInspector] public float vInput;
     
     private MovementBaseState currentState;
     
@@ -26,6 +23,15 @@ public class MovementStateManager : MonoBehaviour
 
     [HideInInspector] public Animator animator;
 
+    private Transform cameraTransform;
+
+    private PlayerInput playerInput;
+
+    [HideInInspector] public InputAction moveAction;
+    [HideInInspector] public InputAction jumpAction;
+    [HideInInspector] public InputAction crouchAction;
+    [HideInInspector] public InputAction sprintAction;
+
     #endregion
 
     #region GROUNDCHECK
@@ -33,6 +39,7 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField]private float groundYOffset = 0.0f;
     [SerializeField] private LayerMask groundMask;
     private Vector3 spherePosition;
+    private bool isGrounded = false;
 
     #endregion
 
@@ -53,21 +60,28 @@ public class MovementStateManager : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
         animator = GetComponentInChildren<Animator>();
+        cameraTransform = Camera.main.transform;
+
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
+        crouchAction = playerInput.actions["Crouch"];
+        sprintAction = playerInput.actions["Sprint"];
+
         SwitchState(Idle);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetDirection();
         Move();
         Gravity();
 
         animator.SetFloat("hInput", hInput);
         animator.SetFloat("vInput", vInput);
         
-        if (OnGround() && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && jumpAction.triggered)
             velocity.y += jumpForce;
         
         currentState.UpdateState(this);
@@ -77,18 +91,33 @@ public class MovementStateManager : MonoBehaviour
 
     private void GetDirection()
     {
-        hInput = Input.GetAxis("Horizontal");
-        vInput = Input.GetAxis("Vertical");
+        // We get the direction of movement from the pressed keys and also take into account
+        // the direction vector of the camera so the character will move to where the camera looks
+        Vector2 input = moveAction.ReadValue<Vector2>();
 
-        var objTransform = transform;
-        direction = objTransform.forward * vInput + objTransform.right * hInput;
+        hInput = input.x;
+        vInput = input.y;
+
+        direction = new Vector3(input.x, 0.0f, input.y).normalized;
+        direction = direction.x * cameraTransform.right.normalized + direction.z * cameraTransform.forward.normalized;
+        direction.y = 0.0f;
     }
 
     private void Move()
     {
-        // Normalizing the direction vector to prevent movement being faster in diagonal directions
-        controller.Move(direction.normalized * currentMoveSpeed * Time.deltaTime);
+        GetDirection();
+        controller.Move(direction * currentMoveSpeed * Time.deltaTime);
+
+        // If player starts moving, rotate towards the direction vector
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = cameraTransform.eulerAngles.y;
+            Quaternion targetRotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 4.0f * Time.deltaTime);
+        }
+        
     }
+    
     public void SwitchState(MovementBaseState state)
     {
         currentState = state;
@@ -98,23 +127,28 @@ public class MovementStateManager : MonoBehaviour
 
     #region GRAVITY_METHODS
 
-    private bool OnGround()
+    private bool IsGrounded()
     {
         spherePosition = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
 
         // In case any colliders overlap the sphere at the center of the player, we know it is the ground
         // Radius minus 0.05f to prevent the sphere from leaving the player character and confusing i.e. a wall with the ground
         if (Physics.CheckSphere(spherePosition, controller.radius - 0.05f, groundMask))
+        {
+            isGrounded = true;
             return true;    
+        }
+
+        isGrounded = false;
         return false;
     }
 
     private void Gravity()
     {
-        if (!OnGround())
+        if (!IsGrounded())
             velocity.y += gravAcceleration * Time.deltaTime;
         else if (velocity.y < 0)
-            velocity.y = -2.0f;
+            velocity.y = 0.0f;
 
         controller.Move(velocity * Time.deltaTime);
     }

@@ -11,7 +11,7 @@ public class RunState : MovementBaseState
 
     public override void UpdateState(MovementStateManager movement)
     {
-        if (Input.GetButtonDown("Sprint"))
+        if (movement.sprintAction.triggered)
             ExitState(movement, movement.Walk);
         else if (movement.direction.magnitude < 0.1f)
             ExitState(movement, movement.Idle);

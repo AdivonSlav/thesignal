@@ -6,20 +6,20 @@ public class IdleState : MovementBaseState
 {
     public override void EnterState(MovementStateManager movement)
     {
-        
+
     }
 
     public override void UpdateState(MovementStateManager movement)
     {
         if (movement.direction.magnitude > 0.1f)
         {
-            if (Input.GetButtonDown("Sprint"))
+            if (movement.sprintAction.triggered)
                 movement.SwitchState(movement.Run);
             else
                 movement.SwitchState(movement.Walk);
         }
         
-        if (Input.GetButtonDown("Crouch"))
+        if (movement.crouchAction.triggered)
             movement.SwitchState(movement.Crouch);
     }
 }
