@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7eef0e9afcdd62546a663c1c6ad411b3
+guid: d25130dcc8a1c874fb3a825ce328d78c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Player
+    second: mixamo.com
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -21,52 +21,52 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1001_Diffuse
-    second: {fileID: 2800000, guid: e09473e71c5ed0c4bb6013362a71c0bf, type: 3}
+    second: {fileID: 2800000, guid: c79e866383368304cbc009200021b921, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1001_Emissive
-    second: {fileID: 2800000, guid: 5bfd567a00c2c6d41a7e099849729a8c, type: 3}
+    second: {fileID: 2800000, guid: c39e8182b66332d4ca4f08c1a15c0d60, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1001_Glossiness
-    second: {fileID: 2800000, guid: cac5cd0989aed454e862c50d2ff84039, type: 3}
+    second: {fileID: 2800000, guid: ad5c63cda75f93942a2d55fbe6c4a2c2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1001_Normal
-    second: {fileID: 2800000, guid: 55091950305ae8f4c8610d500ee35dc0, type: 3}
+    second: {fileID: 2800000, guid: be0675de35e61ef42832e2ec70c3440e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1001_Specular
-    second: {fileID: 2800000, guid: 29a476ce6d0744145b965e9992cc380d, type: 3}
+    second: {fileID: 2800000, guid: aec1b977b438fd84f827e25914bb41c3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1002_Diffuse
-    second: {fileID: 2800000, guid: 87ca8445c6e5f794ea94410cfdede952, type: 3}
+    second: {fileID: 2800000, guid: 2f7a06bbc56e8294194bf008a001628e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1002_Emissive
-    second: {fileID: 2800000, guid: 659ff73b00d376649b3664a8aa74035d, type: 3}
+    second: {fileID: 2800000, guid: bf46a411d5946664d9eb9937e701668d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1002_Glossiness
-    second: {fileID: 2800000, guid: 9836eead7b6a5074dbce82ff930d80dc, type: 3}
+    second: {fileID: 2800000, guid: 9941fc23176217c489dd648dea1dcdf0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1002_Normal
-    second: {fileID: 2800000, guid: ac7b04c0d3b77694bbb709545bb9960b, type: 3}
+    second: {fileID: 2800000, guid: 48b2b6fee681b1241b54b7ba5cb4ce41, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch44_1002_Specular
-    second: {fileID: 2800000, guid: 3096e6090f7beb542827fbed6a3ee2ed, type: 3}
+    second: {fileID: 2800000, guid: bb43e8c6900add34286ecab3fc1437c1, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -93,36 +93,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Player
-      takeName: mixamo.com
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
