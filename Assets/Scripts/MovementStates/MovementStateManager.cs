@@ -153,13 +153,5 @@ public class MovementStateManager : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    #endregion
-
-    
-    // Simply so we are able to see the sphere collider with the ground
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(spherePosition, controller.radius-0.05f);
-    }
+    #endregion 
 }
