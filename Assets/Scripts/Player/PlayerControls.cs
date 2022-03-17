@@ -31,7 +31,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""9c1ef16f-4259-4e78-b38e-f4bb76e1346f"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -73,8 +73,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Value"",
+                    ""name"": ""Run"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f099c299-056c-4c30-bdff-cc70e94410ab"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3c10d949-289f-4805-b462-73df97d3520c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -198,7 +207,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sprint"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -210,6 +219,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a54bb43-c5fd-4a21-b8f6-236c76d56f1f"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -225,8 +245,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fire1 = m_Player.FindAction("Fire 1", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -291,8 +312,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fire1;
-    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -302,8 +324,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fire1 => m_Wrapper.m_Player_Fire1;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -328,12 +351,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
                 @Fire1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
                 @Fire1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
-                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -353,12 +379,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire1.started += instance.OnFire1;
                 @Fire1.performed += instance.OnFire1;
                 @Fire1.canceled += instance.OnFire1;
-                @Sprint.started += instance.OnSprint;
-                @Sprint.performed += instance.OnSprint;
-                @Sprint.canceled += instance.OnSprint;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -370,7 +399,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnFire1(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

@@ -1,15 +1,29 @@
 fileFormatVersion: 2
-guid: 454f025a2bac3e04c9af5a2b8bbb71e7
+guid: 2018b44eefddbb249a28ba5ff1709416
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -203655887218126122
-    second: mixamo.com
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal 1
+    second: {fileID: 2100000, guid: e8de00f256ed6d24fb305a1693d1e47e, type: 2}
   - first:
-      74: 3354573929662320275
-    second: WalkToStop
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal 2
+    second: {fileID: 2100000, guid: 09493516b0b9f6c47a98d0f2bcc6ab47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal 3
+    second: {fileID: 2100000, guid: 7b93a40c41a505a4ab619f456aa6da82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sight
+    second: {fileID: 2100000, guid: c2fbf0f46fd4bcd41a7b9e65546a01d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,7 +35,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tTransform 'mixamorig:Hips' for human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -36,36 +51,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: WalkToStop
-      takeName: mixamo.com
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 214
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []

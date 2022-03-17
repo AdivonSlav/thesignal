@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "9c1ef16f-4259-4e78-b38e-f4bb76e1346f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -51,8 +51,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Value",
+                    "name": "Run",
+                    "type": "PassThrough",
                     "id": "f099c299-056c-4c30-bdff-cc70e94410ab",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "PassThrough",
+                    "id": "3c10d949-289f-4805-b462-73df97d3520c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -176,7 +185,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a54bb43-c5fd-4a21-b8f6-236c76d56f1f",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
