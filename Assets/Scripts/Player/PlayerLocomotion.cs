@@ -17,7 +17,7 @@ namespace TheSignal.Player
     private Rigidbody playerRB;
 
     [Header("Falling")]
-    public float inAirTimer;
+    [HideInInspector] public float inAirTimer;
     public float leapVelocity;
     public float fallVelocity;
     public LayerMask groundLayer;
@@ -30,6 +30,12 @@ namespace TheSignal.Player
     public float runSpeed;
     public float sprintSpeed;
     public float rotationSpeed;
+    
+    [HideInInspector] public bool isJumping;
+
+    [Header("Jump Speeds")]
+    public float jumpHeight;
+    public float gravityAccel;
 
     private void Awake()
     {
@@ -53,6 +59,9 @@ namespace TheSignal.Player
 
     private void HandleMovement()
     {
+        if (isJumping)
+            return;
+        
         moveDirection = cameraTransform.forward * inputManager.verticalInput;
         moveDirection = moveDirection + cameraTransform.right * inputManager.horizontalInput;
         moveDirection.Normalize();
@@ -72,6 +81,9 @@ namespace TheSignal.Player
 
     private void HandleRotation()
     {
+        if (isJumping)
+            return;
+        
         Vector3 targetDirection = Vector3.zero;
 
         targetDirection = cameraTransform.forward * inputManager.verticalInput;
@@ -90,17 +102,13 @@ namespace TheSignal.Player
 
     private void HandleFalling()
     {
-        RaycastHit hit;
-        Vector3 raycastStart = transform.position;
-        raycastStart.y += raycastHeightOffset;
+        RaycastHit hit =  new RaycastHit();
 
         // If the player is in the air, play the fall loop animation
-        if (!isGrounded)
+        if (!isGrounded && !isJumping)
         {
             if (!playerManager.isInteracting)
                 animatorManager.PlayAnimation("FallLoop", true);
-
-            Debug.Log($"Interacted: {playerManager.isInteracting}");
 
             // Keeps track of how much time the player has spent in air
             // We add a small boost for the forward vector of the player to simulate leaping off a ledge
@@ -110,8 +118,14 @@ namespace TheSignal.Player
             playerRB.AddForce(Vector3.down * fallVelocity * inAirTimer);
         }
 
+        CheckGrounded(ref hit);
+    }
 
-        // Here we check whether we're grounded or not
+    private void CheckGrounded(ref RaycastHit hit)
+    {
+        Vector3 raycastStart = transform.position;
+        raycastStart.y += raycastHeightOffset;
+        
         if (Physics.SphereCast(raycastStart, 0.2f, Vector3.down, out hit, 1.0f, groundLayer))
         {
             if (!isGrounded && playerManager.isInteracting)
@@ -124,11 +138,18 @@ namespace TheSignal.Player
             isGrounded = false;
     }
 
-    private void OnDrawGizmos()
+    public void HandleJump()
     {
-        Vector3 start = transform.position;
-        start.y += raycastHeightOffset;
-        Gizmos.DrawWireSphere(start, 0.2f);
+        if (isGrounded)
+        {
+            animatorManager.animator.SetBool(AnimatorManager.isJumping, true);
+            animatorManager.PlayAnimation("JumpUp", false);
+
+            float jumpVelocity = Mathf.Sqrt(-2.0f * gravityAccel * jumpHeight);
+            Vector3 playerVelocity = moveDirection;
+            playerVelocity.y = jumpVelocity;
+            playerRB.velocity = playerVelocity;
+        }
     }
 }
 }

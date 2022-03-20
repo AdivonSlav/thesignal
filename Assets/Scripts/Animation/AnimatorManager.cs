@@ -4,10 +4,16 @@ namespace TheSignal.Animation
 {
     public class AnimatorManager : MonoBehaviour
     {
-        private Animator animator;
+        [HideInInspector] public Animator animator;
 
         private int horizontal;
         private int vertical;
+
+        // Animator parameter IDs for more efective fetching
+        public static readonly int Running = Animator.StringToHash("Running");
+        public static readonly int isInteracting = Animator.StringToHash("isInteracting");
+        public static readonly int isJumping = Animator.StringToHash("isJumping");
+        public static readonly int isGrounded = Animator.StringToHash("isGrounded");
 
         private void Awake()
         {
@@ -18,7 +24,7 @@ namespace TheSignal.Animation
 
         public void PlayAnimation(string animationName, bool isInteracting)
         {
-            animator.SetBool("isInteracting", isInteracting);
+            animator.SetBool(AnimatorManager.isInteracting, isInteracting);
             animator.CrossFade(animationName, 0.25f);
         }
 
@@ -30,7 +36,7 @@ namespace TheSignal.Animation
 
             animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
             animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
-            animator.SetBool("Running", isRunning && moveAmount > 0.5f);
+            animator.SetBool(Running, isRunning && moveAmount > 0.5f);
         }
 
         private float SnappedMovement(float movement)

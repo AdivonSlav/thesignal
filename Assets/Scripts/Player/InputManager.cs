@@ -8,6 +8,7 @@ namespace TheSignal.Player
     {
         private PlayerControls playerControls;
         private AnimatorManager animatorManager;
+        private PlayerLocomotion playerLocomotion;
     
         [HideInInspector] public Vector2 movementInput;
         [HideInInspector] public float moveAmount;
@@ -15,10 +16,12 @@ namespace TheSignal.Player
         [HideInInspector] public float horizontalInput;
         [HideInInspector] public bool isRunning;
         [HideInInspector] public bool isSprinting;
+        [HideInInspector] public bool isJumping;
     
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
+            playerLocomotion = GetComponent<PlayerLocomotion>();
         }
     
         private void OnEnable()
@@ -33,6 +36,7 @@ namespace TheSignal.Player
                 playerControls.Player.Run.canceled += i => isRunning = i.ReadValueAsButton();
                 playerControls.Player.Sprint.performed += i => isSprinting = i.ReadValueAsButton();
                 playerControls.Player.Sprint.canceled += i => isSprinting = i.ReadValueAsButton();
+                playerControls.Player.Jump.performed += i => isJumping = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
@@ -46,6 +50,7 @@ namespace TheSignal.Player
         public void HandleAllInputs()
         {
             HandleMovementInput();
+            HandleJumpingInput();
         }
     
         private void HandleMovementInput()
@@ -54,6 +59,16 @@ namespace TheSignal.Player
             horizontalInput = movementInput.x;
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
             animatorManager.UpdateAnimatorValues(0.0f, moveAmount, moveAmount, isRunning);
+        }
+
+        private void HandleJumpingInput()
+        {
+            if (isJumping)
+            {
+               isJumping = false;
+               playerLocomotion.HandleJump();
+            }
+
         }
     }
 }

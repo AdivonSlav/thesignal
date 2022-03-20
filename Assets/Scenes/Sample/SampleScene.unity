@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43790595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2004858, y: 14.959584, z: -5.958973}
+  m_LocalPosition: {x: 1.1996433, y: 16.413584, z: -5.958973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2021796884}
@@ -1804,7 +1804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2004858, y: 14.959584, z: -5.958973}
+  m_LocalPosition: {x: 1.1996433, y: 16.413584, z: -5.958973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2081,6 +2081,9 @@ MonoBehaviour:
   runSpeed: 5
   sprintSpeed: 20
   rotationSpeed: 10
+  isJumping: 0
+  jumpHeight: 3
+  gravityAccel: -9.81
 --- !u!4 &1244377949
 Transform:
   m_ObjectHideFlags: 0
@@ -2089,7 +2092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244377947}
   m_LocalRotation: {x: -0, y: -0.9967997, z: -0, w: 0.079939865}
-  m_LocalPosition: {x: 0.28299513, y: 13.435, z: -2.6589727}
+  m_LocalPosition: {x: 0.28299513, y: 14.889, z: -2.6589727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1414432787}
@@ -2128,6 +2131,7 @@ MonoBehaviour:
   horizontalInput: 0
   isRunning: 0
   isSprinting: 0
+  isJumping: 0
 --- !u!54 &1244377952
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2189,6 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b7b326690d90b49b1e17696b70c6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &1270001162
 GameObject:
   m_ObjectHideFlags: 0

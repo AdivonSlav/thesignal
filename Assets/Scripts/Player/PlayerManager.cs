@@ -1,3 +1,4 @@
+using TheSignal.Animation;
 using UnityEngine;
 
 namespace TheSignal.Player
@@ -30,7 +31,9 @@ namespace TheSignal.Player
 
         private void LateUpdate()
         {
-            isInteracting = animator.GetBool("isInteracting");
+            isInteracting = animator.GetBool(AnimatorManager.isInteracting);
+            playerLocomotion.isJumping = animator.GetBool(AnimatorManager.isJumping);
+            animator.SetBool(AnimatorManager.isGrounded, playerLocomotion.isGrounded);
         }
     }
 }
