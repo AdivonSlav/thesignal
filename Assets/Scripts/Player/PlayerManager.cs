@@ -1,5 +1,8 @@
 using TheSignal.Animation;
+using TheSignal.Player.Combat;
 using UnityEngine;
+
+using TheSignal.Player.Input;
 
 namespace TheSignal.Player
 {
@@ -9,6 +12,7 @@ namespace TheSignal.Player
         private InputManager inputManager;
         private PlayerLocomotion playerLocomotion;
         private Animator animator;
+        private PlayerShooting playerShooting;
 
         [HideInInspector] public bool isInteracting;
 
@@ -17,6 +21,7 @@ namespace TheSignal.Player
             inputManager = GetComponent<InputManager>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             animator = GetComponent<Animator>();
+            playerShooting = GetComponent<PlayerShooting>();
         }
 
         private void Update()
@@ -27,6 +32,8 @@ namespace TheSignal.Player
         private void FixedUpdate()
         {
             playerLocomotion.HandleAllMovement();
+            playerShooting.HandleShooting();
+            playerShooting.HandleAiming();
         }
 
         private void LateUpdate()

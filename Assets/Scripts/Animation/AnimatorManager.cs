@@ -28,7 +28,7 @@ namespace TheSignal.Animation
             animator.CrossFade(animationName, 0.25f);
         }
 
-        public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, float moveAmount, bool isRunning)
+        public void UpdateMovementValues(float horizontalMovement, float verticalMovement, float moveAmount, bool isRunning)
         {
             // Animation snapping
             float snappedHorizontal = SnappedMovement(horizontalMovement);
@@ -37,6 +37,14 @@ namespace TheSignal.Animation
             animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
             animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
             animator.SetBool(Running, isRunning && moveAmount > 0.5f);
+        }
+
+        public void UpdateAimingValues(bool isAiming)
+        {
+            if (isAiming)
+                animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 1.0f, Time.deltaTime * 10.0f));
+            else
+                animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 0.0f, Time.deltaTime * 10.0f));
         }
 
         private float SnappedMovement(float movement)

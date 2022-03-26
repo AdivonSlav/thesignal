@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Look",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "de362089-b48f-47ee-942f-2f5dff88106c",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "Aim",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "a41bc04e-b90b-494b-860f-63ee4dccea44",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "Fire 1",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "558f221e-ff66-4615-832b-6704df41c60e",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -61,7 +61,7 @@
                 },
                 {
                     "name": "Crouch",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "caf3e0b1-78e9-4272-84c2-30ba96e22d09",
                     "expectedControlType": "Button",
                     "processors": "",

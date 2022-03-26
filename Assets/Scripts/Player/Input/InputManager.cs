@@ -1,7 +1,7 @@
 using UnityEngine;
 using TheSignal.Animation;
 
-namespace TheSignal.Player
+namespace TheSignal.Player.Input
 {
     [RequireComponent(typeof(AnimatorManager))]
     public class InputManager : MonoBehaviour
@@ -17,6 +17,7 @@ namespace TheSignal.Player
         [HideInInspector] public bool isRunning;
         [HideInInspector] public bool isSprinting;
         [HideInInspector] public bool isJumping;
+        [HideInInspector] public bool isAiming;
     
         private void Awake()
         {
@@ -37,6 +38,8 @@ namespace TheSignal.Player
                 playerControls.Player.Sprint.performed += i => isSprinting = i.ReadValueAsButton();
                 playerControls.Player.Sprint.canceled += i => isSprinting = i.ReadValueAsButton();
                 playerControls.Player.Jump.performed += i => isJumping = i.ReadValueAsButton();
+                playerControls.Player.Aim.performed += i => isAiming = i.ReadValueAsButton();
+                playerControls.Player.Aim.canceled += i => isAiming = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
@@ -51,6 +54,7 @@ namespace TheSignal.Player
         {
             HandleMovementInput();
             HandleJumpingInput();
+            HandleAimingInput();
         }
     
         private void HandleMovementInput()
@@ -58,7 +62,7 @@ namespace TheSignal.Player
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-            animatorManager.UpdateAnimatorValues(0.0f, moveAmount, moveAmount, isRunning);
+            animatorManager.UpdateMovementValues(0.0f, moveAmount, moveAmount, isRunning);
         }
 
         private void HandleJumpingInput()
@@ -68,7 +72,11 @@ namespace TheSignal.Player
                isJumping = false;
                playerLocomotion.HandleJump();
             }
+        }
 
+        private void HandleAimingInput()
+        {
+            animatorManager.UpdateAimingValues(isAiming);
         }
     }
 }
