@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7ff0b89c08b9cac418f88ac6e0faacf4
+guid: 1bd54bfee003f8c4686b7db76f7d25da
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: AimingIdle
+    second: StrafeRightWalk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,13 +35,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: AimingIdle
+      name: StrafeRightWalk
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 186
+      lastFrame: 86
       wrapMode: 0
-      orientationOffsetY: -46
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -51,10 +51,10 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

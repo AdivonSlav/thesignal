@@ -38,9 +38,9 @@ namespace TheSignal.Player
 
         private void LateUpdate()
         {
-            isInteracting = animator.GetBool(AnimatorManager.isInteracting);
-            playerLocomotion.isJumping = animator.GetBool(AnimatorManager.isJumping);
-            animator.SetBool(AnimatorManager.isGrounded, playerLocomotion.isGrounded);
+            isInteracting = animator.GetBool(AnimatorManager.Interacting);
+            playerLocomotion.isJumping = animator.GetBool(AnimatorManager.Jumping);
+            animator.SetBool(AnimatorManager.Grounded, playerLocomotion.isGrounded);
         }
     }
 }

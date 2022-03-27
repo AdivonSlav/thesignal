@@ -128,7 +128,7 @@ namespace TheSignal.Player
         {
             if (isGrounded)
             {
-                animatorManager.animator.SetBool(AnimatorManager.isJumping, true);
+                animatorManager.animator.SetBool(AnimatorManager.Jumping, true);
                 animatorManager.PlayAnimation("JumpUp", false);
 
                 float jumpVelocity = Mathf.Sqrt(-2.0f * gravityAccel * jumpHeight);

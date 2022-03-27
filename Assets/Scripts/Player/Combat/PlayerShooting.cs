@@ -76,8 +76,8 @@ namespace TheSignal.Player.Combat
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
                 
             Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
-            targetRotation = Quaternion.Slerp(transform.rotation, targetRotation, 15.0f * Time.deltaTime);
-            
+            targetRotation = Quaternion.Lerp(transform.rotation, targetRotation, 15.0f * Time.fixedDeltaTime);
+
             transform.rotation = targetRotation;
         }
     }

@@ -14,6 +14,8 @@ namespace TheSignal.Player.Input
         [HideInInspector] public float moveAmount;
         [HideInInspector] public float verticalInput;
         [HideInInspector] public float horizontalInput;
+        [HideInInspector] public float strafingHorizontal;
+        [HideInInspector] public float strafingVertical;
         [HideInInspector] public bool isRunning;
         [HideInInspector] public bool isSprinting;
         [HideInInspector] public bool isJumping;
@@ -62,7 +64,7 @@ namespace TheSignal.Player.Input
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-            animatorManager.UpdateMovementValues(0.0f, moveAmount, moveAmount, isRunning);
+            animatorManager.UpdateMovementValues(moveAmount, moveAmount, moveAmount, isRunning);
         }
 
         private void HandleJumpingInput()
@@ -76,7 +78,9 @@ namespace TheSignal.Player.Input
 
         private void HandleAimingInput()
         {
-            animatorManager.UpdateAimingValues(isAiming);
+            strafingHorizontal = movementInput.x;
+            strafingVertical = movementInput.y;
+            animatorManager.UpdateAimingValues(isAiming, strafingHorizontal, strafingVertical);
         }
     }
 }

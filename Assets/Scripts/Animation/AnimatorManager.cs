@@ -5,26 +5,25 @@ namespace TheSignal.Animation
     public class AnimatorManager : MonoBehaviour
     {
         [HideInInspector] public Animator animator;
-
-        private int horizontal;
-        private int vertical;
-
-        // Animator parameter IDs for more efective fetching
-        public static readonly int Running = Animator.StringToHash("Running");
-        public static readonly int isInteracting = Animator.StringToHash("isInteracting");
-        public static readonly int isJumping = Animator.StringToHash("isJumping");
-        public static readonly int isGrounded = Animator.StringToHash("isGrounded");
+        
+        // Animator parameter IDs for more effective fetching
+        private static readonly int horizontalInput = Animator.StringToHash("hInput");
+        private static readonly int verticalInput = Animator.StringToHash("vInput");
+        private static readonly int strafingHorizontal = Animator.StringToHash("hStrafing");
+        private static readonly int strafingVertical = Animator.StringToHash("vStrafing");
+        private static readonly int Running = Animator.StringToHash("Running");
+        public static readonly int Interacting = Animator.StringToHash("isInteracting");
+        public static readonly int Jumping = Animator.StringToHash("isJumping");
+        public static readonly int Grounded = Animator.StringToHash("isGrounded");
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            horizontal = Animator.StringToHash("hInput");
-            vertical = Animator.StringToHash("vInput");
         }
 
         public void PlayAnimation(string animationName, bool isInteracting)
         {
-            animator.SetBool(AnimatorManager.isInteracting, isInteracting);
+            animator.SetBool(Interacting, isInteracting);
             animator.CrossFade(animationName, 0.25f);
         }
 
@@ -34,17 +33,26 @@ namespace TheSignal.Animation
             float snappedHorizontal = SnappedMovement(horizontalMovement);
             float snappedVertical = SnappedMovement(verticalMovement);
 
-            animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
-            animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
+            animator.SetFloat(horizontalInput, snappedHorizontal, 0.1f, Time.deltaTime);
+            animator.SetFloat(verticalInput, snappedVertical, 0.1f, Time.deltaTime);
             animator.SetBool(Running, isRunning && moveAmount > 0.5f);
         }
 
-        public void UpdateAimingValues(bool isAiming)
+        public void UpdateAimingValues(bool isAiming, float horizontal, float vertical)
         {
+            float targetWeight = 0.0f;
+            
             if (isAiming)
-                animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 1.0f, Time.deltaTime * 10.0f));
-            else
-                animator.SetLayerWeight(2, Mathf.Lerp(animator.GetLayerWeight(2), 0.0f, Time.deltaTime * 10.0f));
+            {
+                targetWeight = 1.0f;
+                float strafingHorizontalSnapped = SnappedMovement(horizontal);
+                float strafingVerticalSnapped = SnappedMovement(vertical);
+                
+                animator.SetFloat(strafingHorizontal, strafingHorizontalSnapped, 0.1f, Time.deltaTime);
+                animator.SetFloat(strafingVertical, strafingVerticalSnapped, 0.1f, Time.deltaTime);
+            }
+            
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), targetWeight, Time.deltaTime * 10.0f));
         }
 
         private float SnappedMovement(float movement)
