@@ -41,7 +41,7 @@ namespace TheSignal.Animation
         public void UpdateAimingValues(bool isAiming, float horizontal, float vertical)
         {
             float targetWeight = 0.0f;
-            
+
             if (isAiming)
             {
                 targetWeight = 1.0f;

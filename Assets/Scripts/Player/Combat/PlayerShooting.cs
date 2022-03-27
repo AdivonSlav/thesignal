@@ -10,7 +10,6 @@ namespace TheSignal.Player.Combat
 {
     public class PlayerShooting : MonoBehaviour
     {
-        private AnimatorManager animatorManager;
         private InputManager inputManager;
         private Camera mainCamera;
 
@@ -20,12 +19,13 @@ namespace TheSignal.Player.Combat
         [SerializeField] private Transform aimTarget;
         [SerializeField] private MultiAimConstraint aimIK;
         [SerializeField] private MultiAimConstraint bodyIK;
-        [SerializeField] private TwoBoneIKConstraint leftHandAimIK;
+        [SerializeField] private TwoBoneIKConstraint rightHandIdleIK;
+        [SerializeField] private TwoBoneIKConstraint rightHandAimIK;
         [SerializeField] private TwoBoneIKConstraint leftHandIdleIK;
+        [SerializeField] private TwoBoneIKConstraint leftHandAimIK;
         
         private void Awake()
         {
-            animatorManager = GetComponent<AnimatorManager>();
             inputManager = GetComponent<InputManager>();
             mainCamera = Camera.main;
         }
@@ -49,7 +49,8 @@ namespace TheSignal.Player.Combat
                 aimCamera.gameObject.SetActive(true);
                 crosshair.gameObject.SetActive(true);
 
-                SetConstraintWeights(1.0f, 0.4f, 1.0f, 0.0f);
+                SetBodyConstraintWeights(1.0f, 0.4f);
+                SetHandConstraintWeights(0.0f, 1.0f, 0.0f,1.0f);
                 RotateWithLook();
             }
             else
@@ -57,18 +58,25 @@ namespace TheSignal.Player.Combat
                 aimCamera.gameObject.SetActive(false);
                 crosshair.gameObject.SetActive(false);
                 
-                SetConstraintWeights(0.0f, 0.0f, 0.0f, 1.0f);
+                SetBodyConstraintWeights(0.0f, 0.0f);
+                SetHandConstraintWeights(1.0f, 0.0f, 1.0f,0.0f);
             }
         }
 
-        private void SetConstraintWeights(float aim, float body, float leftHandAim, float leftHandIdle)
+        private void SetBodyConstraintWeights(float aim, float body)
         {
             bodyIK.weight = Mathf.Lerp(bodyIK.weight, body, 20.0f * Time.deltaTime);
             aimIK.weight = Mathf.Lerp(aimIK.weight, aim, 20.0f * Time.deltaTime);
-            leftHandAimIK.weight = Mathf.Lerp(leftHandAimIK.weight, leftHandAim, 20.0f * Time.deltaTime);
-            leftHandIdleIK.weight = Mathf.Lerp(leftHandIdleIK.weight, leftHandIdle, 20.0f * Time.deltaTime);
         }
 
+        private void SetHandConstraintWeights(float rightHandIdle, float rightHandAim, float leftHandIdle, float leftHandAim)
+        {
+            rightHandIdleIK.weight = Mathf.Lerp(rightHandIdleIK.weight, rightHandIdle, 20.0f * Time.deltaTime);
+            rightHandAimIK.weight = Mathf.Lerp(rightHandAimIK.weight, rightHandAim, 20.0f * Time.deltaTime);
+            leftHandIdleIK.weight = Mathf.Lerp(leftHandIdleIK.weight, leftHandIdle, 20.0f * Time.deltaTime);
+            leftHandAimIK.weight = Mathf.Lerp(leftHandAimIK.weight, leftHandAim, 20.0f * Time.deltaTime);
+        }
+        
         private void RotateWithLook()
         {
             Vector3 worldAimTarget = aimTarget.position;
