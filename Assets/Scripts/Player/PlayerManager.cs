@@ -12,6 +12,7 @@ namespace TheSignal.Player
         private InputManager inputManager;
         private PlayerLocomotion playerLocomotion;
         private Animator animator;
+        private PlayerAiming playerAiming;
         private PlayerShooting playerShooting;
 
         [HideInInspector] public bool isInteracting;
@@ -21,6 +22,7 @@ namespace TheSignal.Player
             inputManager = GetComponent<InputManager>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             animator = GetComponent<Animator>();
+            playerAiming = GetComponent<PlayerAiming>();
             playerShooting = GetComponent<PlayerShooting>();
         }
 
@@ -32,8 +34,8 @@ namespace TheSignal.Player
         private void FixedUpdate()
         {
             playerLocomotion.HandleAllMovement();
+            playerAiming.HandleAiming();
             playerShooting.HandleShooting();
-            playerShooting.HandleAiming();
         }
 
         private void LateUpdate()

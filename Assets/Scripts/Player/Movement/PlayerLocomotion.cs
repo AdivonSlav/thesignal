@@ -5,6 +5,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 using TheSignal.Animation;
+using TheSignal.Player.Combat;
 using TheSignal.Player.Input;
 
 namespace TheSignal.Player
@@ -14,6 +15,7 @@ namespace TheSignal.Player
         private PlayerManager playerManager;
         private AnimatorManager animatorManager;
         private InputManager inputManager;
+        private PlayerAiming playerAiming;
 
         private Vector3 moveDirection;
         private Transform cameraTransform;
@@ -45,6 +47,7 @@ namespace TheSignal.Player
             playerManager = GetComponent<PlayerManager>();
             animatorManager = GetComponent<AnimatorManager>();
             inputManager = GetComponent<InputManager>();
+            playerAiming = GetComponent<PlayerAiming>();
             playerRB = GetComponent<Rigidbody>();
             cameraTransform = Camera.main.transform;
         }
@@ -64,7 +67,7 @@ namespace TheSignal.Player
         {
             if (isJumping)
                 return;
-            
+
             moveDirection = cameraTransform.forward * inputManager.verticalInput;
             moveDirection = moveDirection + cameraTransform.right * inputManager.horizontalInput;
             moveDirection.Normalize();
@@ -86,7 +89,7 @@ namespace TheSignal.Player
         {
             if (isJumping || inputManager.isAiming)
                 return;
-            
+
             Vector3 targetDirection = Vector3.zero;
 
             targetDirection = cameraTransform.forward * inputManager.verticalInput;
