@@ -80,7 +80,6 @@ namespace TheSignal.Player
             else
                 moveDirection *= walkSpeed;
 
-
             Vector3 movementVelocity = moveDirection;
             playerRB.velocity = movementVelocity;
         }

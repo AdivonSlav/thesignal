@@ -35,11 +35,11 @@ namespace TheSignal.Player
         {
             playerLocomotion.HandleAllMovement();
             playerAiming.HandleAiming();
-            playerShooting.HandleShooting();
         }
 
         private void LateUpdate()
         {
+            playerShooting.HandleShooting();
             isInteracting = animator.GetBool(AnimatorManager.Interacting);
             playerLocomotion.isJumping = animator.GetBool(AnimatorManager.Jumping);
             animator.SetBool(AnimatorManager.Grounded, playerLocomotion.isGrounded);

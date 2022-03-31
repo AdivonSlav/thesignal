@@ -27,11 +27,10 @@ namespace TheSignal.Player.Combat
             if (inputManager.isFiring && inputManager.isAiming)
             {
                 raycastWeapon.StartFiring();
+                raycastWeapon.UpdateFiring(Time.deltaTime);
             }
-            else
-            {
-                raycastWeapon.StopFiring();
-            }
+            
+            raycastWeapon.UpdateBullets(Time.deltaTime);
         }
         
     }
