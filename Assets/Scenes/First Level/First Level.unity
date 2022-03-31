@@ -2510,6 +2510,7 @@ GameObject:
   - component: {fileID: 305721238}
   - component: {fileID: 305721240}
   - component: {fileID: 305721239}
+  - component: {fileID: 305721241}
   m_Layer: 0
   m_Name: decorative_wall_4_no_computer_LOD0 (1)
   m_TagString: Untagged
@@ -2582,6 +2583,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305721237}
   m_Mesh: {fileID: 4300000, guid: bf457f6799881e747bbd9e01d6dc3ef2, type: 3}
+--- !u!65 &305721241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305721237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.000001, y: 4, z: 0.2986663}
+  m_Center: {x: -0.0000009536743, y: 2, z: 0.1493311}
 --- !u!1001 &320720429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6657,7 +6671,7 @@ Light:
   m_GameObject: {fileID: 751524869}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.8897059, g: 0.93154156, b: 1, a: 1}
   m_Intensity: 1.13
@@ -6699,7 +6713,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -9125,7 +9139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9552948, y: 1.6678405, z: -2.5968685}
+  m_LocalPosition: {x: -1.9361062, y: 1.6678405, z: -2.5968685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75734,7 +75748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119854834723806221}
   m_LocalRotation: {x: 0.00000001545431, y: 0.7071068, z: -0.00000001545431, w: 0.7071068}
-  m_LocalPosition: {x: -4.3000016, y: -0.23000002, z: -8.915001}
+  m_LocalPosition: {x: -4.13, y: -0.23000002, z: -8.915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1654636782}
@@ -81245,7 +81259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838520788821209091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9552948, y: 1.6678405, z: -2.5968685}
+  m_LocalPosition: {x: -1.9361062, y: 1.6678405, z: -2.5968685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7838520790010639133}
