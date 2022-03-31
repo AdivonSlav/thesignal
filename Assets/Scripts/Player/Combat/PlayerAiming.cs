@@ -16,6 +16,7 @@ namespace TheSignal.Player.Combat
         private InputManager inputManager;
         private Camera mainCamera;
 
+        [SerializeField] private CinemachineVirtualCamera normalCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
         [SerializeField] private Image crosshair;
         [SerializeField] private LayerMask aimLayer;
@@ -32,7 +33,13 @@ namespace TheSignal.Player.Combat
             inputManager = GetComponent<InputManager>();
             mainCamera = Camera.main;
         }
-        
+
+        private void Start()
+        {
+            normalCamera.ForceCameraPosition(transform.position - Vector3.back, transform.rotation);
+            aimCamera.ForceCameraPosition(transform.position - Vector3.back, transform.rotation);
+        }
+
         public void HandleAiming()
         {
             if (inputManager.isAiming)
