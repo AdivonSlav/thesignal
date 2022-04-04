@@ -107,6 +107,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""34d7637b-b09c-4df3-bb92-0016c4070aa8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f50e62b5-f44d-486a-a122-9b8870d5c8bf"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -269,6 +289,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,6 +358,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Escape;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -350,6 +372,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -386,6 +409,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Escape.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -417,6 +443,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -432,5 +461,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }
