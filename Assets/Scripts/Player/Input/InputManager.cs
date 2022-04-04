@@ -21,6 +21,7 @@ namespace TheSignal.Player.Input
         [HideInInspector] public bool isJumping;
         [HideInInspector] public bool isAiming;
         [HideInInspector] public bool isFiring;
+        [HideInInspector] public bool isInteracting;
     
         private void Awake()
         {
@@ -45,6 +46,7 @@ namespace TheSignal.Player.Input
                 playerControls.Player.Aim.canceled += i => isAiming = i.ReadValueAsButton();
                 playerControls.Player.Fire1.performed += i => isFiring = i.ReadValueAsButton();
                 playerControls.Player.Fire1.canceled += i => isFiring = i.ReadValueAsButton();
+                playerControls.Player.Interact.performed += i => isInteracting = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
