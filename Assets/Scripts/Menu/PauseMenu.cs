@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TheSignal.Player.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TheSignal.Menu
 {
@@ -9,9 +10,10 @@ namespace TheSignal.Menu
     {
         public static bool GameIsPaused = false;
         public GameObject PauseMenuUI;
+        public GameObject MainMenuUI;
         private InputManager inputManager;
         [SerializeField] private GameObject player;
-        [SerializeField] private GameObject camera;
+        [SerializeField] private GameObject camera_;
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
@@ -26,18 +28,21 @@ namespace TheSignal.Menu
                     Pause();
             }
         }
+        #region MainPanel
         public void Resume()
         {
+            MainMenuUI.SetActive(false);
             PauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
             inputManager.isPressingESC = false;
-            camera.SetActive(true);
+            camera_.SetActive(true);
 
         }
         public void MainMenu()
         {
-            //here we will load the main menu.
+            PauseMenuUI.SetActive(false);
+            MainMenuUI.SetActive(true);
         }
         public void Quit()
         {
@@ -57,8 +62,22 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            camera.SetActive(false);
+            camera_.SetActive(false);
             
         }
+        #endregion
+        #region Main Menu Button
+        public void MainMenuButtonYes(string MainMenuName)
+        {
+            GameIsPaused = false;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(MainMenuName);
+        }
+        public void MainMenuButtonNo()
+        {
+            MainMenuUI.SetActive(false);
+            PauseMenuUI.SetActive(true);
+        }
+        #endregion
     }
 }
