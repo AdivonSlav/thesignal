@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 38656555ab73d214d9c09d662a0be482
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Object174
+    100002: Object175
+    100004: Object176
+    100006: Object177
+    100008: Object178
+    100010: Object179
+    100012: Object180
+    100014: Object181
+    100016: Object182
+    100018: Object183
+    100020: Object184
+    100022: Object185
+    100024: Object186
+    100026: Object187
+    100028: Object188
+    100030: Object189
+    100032: //RootNode
+    400000: Object174
+    400002: Object175
+    400004: Object176
+    400006: Object177
+    400008: Object178
+    400010: Object179
+    400012: Object180
+    400014: Object181
+    400016: Object182
+    400018: Object183
+    400020: Object184
+    400022: Object185
+    400024: Object186
+    400026: Object187
+    400028: Object188
+    400030: Object189
+    400032: //RootNode
+    2100000: 'Material #25'
+    2300000: Object174
+    2300002: Object175
+    2300004: Object176
+    2300006: Object177
+    2300008: Object178
+    2300010: Object179
+    2300012: Object180
+    2300014: Object181
+    2300016: Object182
+    2300018: Object183
+    2300020: Object184
+    2300022: Object185
+    2300024: Object186
+    2300026: Object187
+    2300028: Object188
+    2300030: Object189
+    3300000: Object174
+    3300002: Object175
+    3300004: Object176
+    3300006: Object177
+    3300008: Object178
+    3300010: Object179
+    3300012: Object180
+    3300014: Object181
+    3300016: Object182
+    3300018: Object183
+    3300020: Object184
+    3300022: Object185
+    3300024: Object186
+    3300026: Object187
+    3300028: Object188
+    3300030: Object189
+    4300000: Object174
+    4300002: Object175
+    4300004: Object176
+    4300006: Object177
+    4300008: Object178
+    4300010: Object179
+    4300012: Object180
+    4300014: Object181
+    4300016: Object182
+    4300018: Object183
+    4300020: Object184
+    4300022: Object185
+    4300024: Object186
+    4300026: Object187
+    4300028: Object188
+    4300030: Object189
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

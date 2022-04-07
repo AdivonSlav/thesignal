@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 6ebcc3cf4b50b1b42b8d0bcc0e4a198f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cylinder065
+    100002: Object816
+    100004: Object817
+    100006: Object818
+    100008: Object819
+    100010: Object820
+    100012: Object821
+    100014: Object822
+    100016: //RootNode
+    400000: Cylinder065
+    400002: Object816
+    400004: Object817
+    400006: Object818
+    400008: Object819
+    400010: Object820
+    400012: Object821
+    400014: Object822
+    400016: //RootNode
+    2100000: 'Material #27'
+    2300000: Cylinder065
+    2300002: Object816
+    2300004: Object817
+    2300006: Object818
+    2300008: Object819
+    2300010: Object820
+    2300012: Object821
+    2300014: Object822
+    3300000: Cylinder065
+    3300002: Object816
+    3300004: Object817
+    3300006: Object818
+    3300008: Object819
+    3300010: Object820
+    3300012: Object821
+    3300014: Object822
+    4300000: Cylinder065
+    4300002: Object816
+    4300004: Object817
+    4300006: Object818
+    4300008: Object819
+    4300010: Object820
+    4300012: Object821
+    4300014: Object822
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
