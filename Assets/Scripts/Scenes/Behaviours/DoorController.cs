@@ -9,17 +9,16 @@ namespace TheSignal.Scenes.Behaviours
     public class DoorController : MonoBehaviour
     {
         [SerializeField] private GameObject player;
-        private InputManager inputManager;
         [SerializeField] private GameObject door;
-
-        private MeshRenderer terminalRenderer;
+        [SerializeField] private MeshRenderer[] terminalRenderers;
+        
+        private InputManager inputManager;
         private Animator doorAnimator;
         private bool playerPresent;
 
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
-            terminalRenderer = GetComponentInParent<MeshRenderer>();
             doorAnimator = door.GetComponent<Animator>();
         }
 
@@ -27,7 +26,8 @@ namespace TheSignal.Scenes.Behaviours
         {
             if (playerPresent)
             {
-                terminalRenderer.enabled = true;
+                foreach (var terminalRenderer in terminalRenderers)
+                    terminalRenderer.enabled = true;
 
                 if (inputManager.isInteracting)
                 {
@@ -36,7 +36,8 @@ namespace TheSignal.Scenes.Behaviours
             }
             else
             {
-                terminalRenderer.enabled = false;
+                foreach (var terminalRenderer in terminalRenderers)
+                    terminalRenderer.enabled = false;
                 
                 doorAnimator.SetBool("isOpening", false);
             }

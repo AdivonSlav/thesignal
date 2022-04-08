@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7838520789096014840
+--- !u!1 &81003369445983199
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7838520789096014843}
-  - component: {fileID: 7838520789096014836}
-  - component: {fileID: 7838520789096014837}
-  - component: {fileID: 7838520789096014842}
+  - component: {fileID: 81003369445983196}
+  - component: {fileID: 81003369445983187}
+  - component: {fileID: 81003369445983186}
+  - component: {fileID: 81003369445983197}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -19,39 +19,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7838520789096014843
+--- !u!4 &81003369445983196
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789096014840}
+  m_GameObject: {fileID: 81003369445983199}
   m_LocalRotation: {x: 0.09465444, y: -0.018695587, z: 0.001479339, w: -0.9953336}
   m_LocalPosition: {x: -0.10428975, y: -1.4520228, z: 2.4009533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7838520789753127137}
+  m_Father: {fileID: 81003370937761990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7838520789096014836
+--- !u!114 &81003369445983187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789096014840}
+  m_GameObject: {fileID: 81003369445983199}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7838520789096014837
+--- !u!114 &81003369445983186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789096014840}
+  m_GameObject: {fileID: 81003369445983199}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c9beda531928fc40968802117a5d256, type: 3}
@@ -107,13 +107,13 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_ApplyBeforeBody: 0
---- !u!114 &7838520789096014842
+--- !u!114 &81003369445983197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789096014840}
+  m_GameObject: {fileID: 81003369445983199}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
---- !u!1 &7838520789753127141
+--- !u!1 &81003370937761986
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7838520789753127137}
-  - component: {fileID: 7838520789753127142}
-  - component: {fileID: 7838520789753127143}
-  - component: {fileID: 7838520789753127140}
+  - component: {fileID: 81003370937761990}
+  - component: {fileID: 81003370937761985}
+  - component: {fileID: 81003370937761984}
+  - component: {fileID: 81003370937761989}
   m_Layer: 0
   m_Name: CM 3P Aim Camera
   m_TagString: Untagged
@@ -169,28 +169,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7838520789753127137
+--- !u!4 &81003370937761990
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789753127141}
+  m_GameObject: {fileID: 81003370937761986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73793006, y: 1.5878596, z: -2.6}
+  m_LocalPosition: {x: -1.7729242, y: 1.6678405, z: -2.5968685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7838520789096014843}
+  - {fileID: 81003369445983196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7838520789753127142
+--- !u!114 &81003370937761985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789753127141}
+  m_GameObject: {fileID: 81003370937761986}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -218,14 +218,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 7838520789096014843}
---- !u!114 &7838520789753127143
+  m_ComponentOwner: {fileID: 81003369445983196}
+--- !u!114 &81003370937761984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789753127141}
+  m_GameObject: {fileID: 81003370937761986}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
@@ -234,13 +234,13 @@ MonoBehaviour:
   PlayerIndex: -1
   XYAxis: {fileID: 196058429339290955, guid: b2dd3e69c69c45f4bbdd58080108ab73, type: 3}
   ZAxis: {fileID: 196058429339290955, guid: b2dd3e69c69c45f4bbdd58080108ab73, type: 3}
---- !u!114 &7838520789753127140
+--- !u!114 &81003370937761989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838520789753127141}
+  m_GameObject: {fileID: 81003370937761986}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 0
+  m_Strategy: 1
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
