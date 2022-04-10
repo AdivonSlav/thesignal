@@ -10,16 +10,27 @@ namespace TheSignal.Scenes.Behaviours
     {
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject door;
-        [SerializeField] private MeshRenderer[] terminalRenderers;
-        
+        [SerializeField] private GameObject[] terminals;
+
         private InputManager inputManager;
         private Animator doorAnimator;
+        private MeshRenderer[] terminalRenderers = new MeshRenderer[2];
         private bool playerPresent;
 
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
             doorAnimator = door.GetComponent<Animator>();
+
+            for (var i = 0; i < terminals.Length; i++)
+            {
+                // [1] in order to skip the renderer returned from the actual GameObject terminal renderer
+                terminalRenderers[i] = terminals[i].GetComponentsInChildren<MeshRenderer>()[1];
+                
+                // Cloning the material for the renderer so we can update it for each object separately
+                var terminalMaterial = terminals[i].GetComponent<Renderer>().material;
+                terminals[i].GetComponent<Renderer>().material = new Material(terminalMaterial);
+            }
         }
 
         void LateUpdate()
@@ -31,13 +42,25 @@ namespace TheSignal.Scenes.Behaviours
 
                 if (inputManager.isInteracting)
                 {
+                    foreach (var terminal in terminals)
+                    {
+                        terminal.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+                        terminal.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                        DynamicGI.UpdateEnvironment();
+                    }
+                    
                     doorAnimator.SetBool("isOpening", true);
                 }
             }
             else
             {
-                foreach (var terminalRenderer in terminalRenderers)
-                    terminalRenderer.enabled = false;
+                for (var i = 0; i < terminals.Length; i++)
+                {
+                    terminalRenderers[i].enabled = false;
+                    terminals[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
+                    terminals[i].GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                    DynamicGI.UpdateEnvironment();
+                }
                 
                 doorAnimator.SetBool("isOpening", false);
             }
