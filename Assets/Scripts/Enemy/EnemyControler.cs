@@ -10,6 +10,7 @@ namespace TheSignal.Scripts.Enemy
         private NavMeshAgent agent = null;
         [SerializeField] private Transform target;
         private Animator anim = null;
+        public float enemyDistance = 0.7f;
         private void Start()
         {
             getRefeences();
@@ -21,11 +22,16 @@ namespace TheSignal.Scripts.Enemy
             if (result > 1.0f)
             {
                 MoveToPlayer();
-                RotateToTarget();
+                //RotateToTarget();
             }
             else
             {
-                anim.SetFloat("Movement", 0f,0.2f,Time.deltaTime);
+                anim.SetFloat("Movement", 0f, 0.2f, Time.deltaTime);
+            }
+            if (Vector3.Distance(transform.position, target.position) < enemyDistance)
+            {
+                gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+                anim.Play("Soft Attack");
             }
         }
         private void getRefeences()
