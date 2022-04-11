@@ -22,7 +22,7 @@ namespace TheSignal.Scripts.Enemy
             if (result > 1.0f)
             {
                 MoveToPlayer();
-                //RotateToTarget();
+                RotateToTarget();
             }
             else
             {
