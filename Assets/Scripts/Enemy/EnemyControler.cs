@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TheSignal.Player;
+using TheSignal.Scripts.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +13,12 @@ namespace TheSignal.Scripts.Enemy
         [SerializeField] private Transform target;
         private Animator anim = null;
         public float enemyDistance = 0.7f;
+        public int MaxHealth = 100;
+        int CurrentHealth;
+        [SerializeField] private GameObject rightFist;
+        [SerializeField] private GameObject LeftFist;
+        private float enemyCooldown = 3;
+        private float lastAtack = 0;
         private void Start()
         {
             getRefeences();
@@ -22,19 +30,38 @@ namespace TheSignal.Scripts.Enemy
             {
                 gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
                 anim.Play("Soft Attack");
+                //if (Time.time-lastAtack>enemyCooldown)
+                //{
+                //    lastAtack = Time.time;
+                //    target.GetComponent<PlayerHealthDamage>().TakeDamage(20);
+                //}
             }
             else
             {
-             MoveToPlayer();
-             RotateToTarget();
-
+                MoveToPlayer();
+                RotateToTarget();
+                rightFist.GetComponent<Collider>().enabled = false;
             }
         }
         private void getRefeences()
         {
+            CurrentHealth = MaxHealth;
             agent = GetComponent<NavMeshAgent>();
             anim = GetComponent<Animator>();
         }
+        public void TakeDamage(int damage)
+        {
+            CurrentHealth -= damage;
+
+            if (CurrentHealth<=0)
+            {
+                Die();
+            }
+        }
+        private void Die()
+        {
+
+        }    
         private void MoveToPlayer()
         {
             agent.SetDestination(target.position);

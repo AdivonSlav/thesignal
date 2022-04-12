@@ -1,3 +1,4 @@
+
 using TheSignal.Animation;
 using TheSignal.Player.Combat;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace TheSignal.Player
         private PlayerAiming playerAiming;
         private PlayerShooting playerShooting;
 
+
         [HideInInspector] public bool isInteracting;
 
         private void Awake()
@@ -25,12 +27,10 @@ namespace TheSignal.Player
             playerAiming = GetComponent<PlayerAiming>();
             playerShooting = GetComponent<PlayerShooting>();
         }
-
         private void Update()
         {
             inputManager.HandleAllInputs();
         }
-
         private void FixedUpdate()
         {
             playerLocomotion.HandleAllMovement();
