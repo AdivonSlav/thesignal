@@ -17,21 +17,17 @@ namespace TheSignal.Scripts.Enemy
         }
         private void Update()
         {
-            float distance = Vector3.Distance(transform.position, target.position);
-            float result = distance - agent.stoppingDistance;
-            if (result > 1.0f)
-            {
-                MoveToPlayer();
-                RotateToTarget();
-            }
-            else
-            {
-                anim.SetFloat("Movement", 0f, 0.2f, Time.deltaTime);
-            }
+
             if (Vector3.Distance(transform.position, target.position) < enemyDistance)
             {
                 gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
                 anim.Play("Soft Attack");
+            }
+            else
+            {
+             MoveToPlayer();
+             RotateToTarget();
+
             }
         }
         private void getRefeences()
