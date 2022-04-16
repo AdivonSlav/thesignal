@@ -23,7 +23,8 @@ namespace TheSignal.Player.Input
         [HideInInspector] public bool isFiring;
         [HideInInspector] public bool isInteracting;
         [HideInInspector] public bool isPressingESC;
-    
+        [HideInInspector] public bool isPressingK;
+
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
@@ -49,6 +50,8 @@ namespace TheSignal.Player.Input
                 playerControls.Player.Fire1.canceled += i => isFiring = i.ReadValueAsButton();
                 playerControls.Player.Escape.performed += i => isPressingESC = i.ReadValueAsButton();
                 playerControls.Player.Interact.performed += i => isInteracting = i.ReadValueAsButton();
+                playerControls.Player.SlowMo.performed += i => isPressingK = i.ReadValueAsButton();
+                playerControls.Player.SlowMo.canceled += i => isPressingK = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
