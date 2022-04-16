@@ -10,11 +10,10 @@ namespace TheSignal.Scenes.Behaviours
     {
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject door;
-        [SerializeField] private GameObject[] terminals;
+        [SerializeField] private MeshRenderer[] terminalRenderers;
 
         private InputManager inputManager;
         private Animator doorAnimator;
-        private MeshRenderer[] terminalRenderers = new MeshRenderer[2];
         private bool playerPresent;
 
         private void Awake()
@@ -22,14 +21,11 @@ namespace TheSignal.Scenes.Behaviours
             inputManager = player.GetComponent<InputManager>();
             doorAnimator = door.GetComponent<Animator>();
 
-            for (var i = 0; i < terminals.Length; i++)
+            // Since we use one material for all terminal renderers in the scene, we must clone the material at runtime in order to change
+            // the emission color for just this door
+            foreach (var terminalRenderer in terminalRenderers)
             {
-                // [1] in order to skip the renderer returned from the actual GameObject terminal renderer
-                terminalRenderers[i] = terminals[i].GetComponentsInChildren<MeshRenderer>()[1];
-                
-                // Cloning the material for the renderer so we can update it for each object separately
-                var terminalMaterial = terminals[i].GetComponent<Renderer>().material;
-                terminals[i].GetComponent<Renderer>().material = new Material(terminalMaterial);
+                terminalRenderer.material = new Material(terminalRenderer.material);
             }
         }
 
@@ -42,11 +38,9 @@ namespace TheSignal.Scenes.Behaviours
 
                 if (inputManager.isInteracting)
                 {
-                    foreach (var terminal in terminals)
+                    foreach (var terminalRenderer in terminalRenderers)     
                     {
-                        terminal.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
-                        terminal.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-                        DynamicGI.UpdateEnvironment();
+                        terminalRenderer.material.SetColor("_EmissionColor", Color.green);
                     }
                     
                     doorAnimator.SetBool("isOpening", true);
@@ -54,15 +48,15 @@ namespace TheSignal.Scenes.Behaviours
             }
             else
             {
-                for (var i = 0; i < terminals.Length; i++)
+                if (doorAnimator.GetBool("isOpening"))
                 {
-                    terminalRenderers[i].enabled = false;
-                    terminals[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
-                    terminals[i].GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-                    DynamicGI.UpdateEnvironment();
+                    foreach (var terminalRenderer in terminalRenderers)     
+                    {
+                        terminalRenderer.material.SetColor("_EmissionColor", Color.yellow);
+                    }
+                    
+                    doorAnimator.SetBool("isOpening", false);
                 }
-                
-                doorAnimator.SetBool("isOpening", false);
             }
         }
         
