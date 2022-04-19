@@ -1501,7 +1501,7 @@ RectTransform:
   m_GameObject: {fileID: 322749640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children:
   - {fileID: 1043209201}
   - {fileID: 184211378}
@@ -1510,7 +1510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 254.95, y: -163.76}
+  m_AnchoredPosition: {x: 351, y: -163.76}
   m_SizeDelta: {x: 141.4, y: 35.501}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322749642
@@ -2522,7 +2522,7 @@ RectTransform:
   m_GameObject: {fileID: 727227228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children:
   - {fileID: 1792194913}
   - {fileID: 1865783625}
@@ -2531,7 +2531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: -163}
+  m_AnchoredPosition: {x: -317, y: -163}
   m_SizeDelta: {x: 154.291, y: 17.2894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727227230
@@ -2597,7 +2597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3886a3099f32266499e5ee5bdbe0eafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 727227230}
 --- !u!114 &728852989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 81003370937761985, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
@@ -6923,7 +6922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785535645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9081618, y: 1.6678405, z: -2.5968685}
+  m_LocalPosition: {x: -1.9165255, y: 1.6678405, z: -2.5968685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8670,7 +8669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9081618
+      value: -1.9165255
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
