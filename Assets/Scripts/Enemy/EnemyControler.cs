@@ -17,8 +17,6 @@ namespace TheSignal.Scripts.Enemy
         int CurrentHealth;
         [SerializeField] private GameObject rightFist;
         [SerializeField] private GameObject LeftFist;
-        private float enemyCooldown = 3;
-        private float lastAtack = 0;
         private void Start()
         {
             getRefeences();
@@ -30,11 +28,6 @@ namespace TheSignal.Scripts.Enemy
             {
                 gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
                 anim.Play("Soft Attack");
-                //if (Time.time-lastAtack>enemyCooldown)
-                //{
-                //    lastAtack = Time.time;
-                //    target.GetComponent<PlayerHealthDamage>().TakeDamage(20);
-                //}
             }
             else
             {
