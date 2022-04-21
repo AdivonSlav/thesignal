@@ -30,10 +30,10 @@ namespace TheSignal.Player
         private void Update()
         {
             inputManager.HandleAllInputs();
+            playerLocomotion.HandleAllMovement();
         }
         private void FixedUpdate()
         {
-            playerLocomotion.HandleAllMovement();
             playerAiming.HandleAiming();
         }
 

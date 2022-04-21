@@ -13,24 +13,21 @@ namespace TheSignal.Player.Combat
     {
         private InputManager inputManager;
         private PlayerAiming playerAiming;
-        private RaycastWeapon raycastWeapon;
+        private ProjectileWeapon projectileWeapon;
         
         private void Awake()
         {
             inputManager = GetComponent<InputManager>();
             playerAiming = GetComponent<PlayerAiming>();
-            raycastWeapon = GetComponentInChildren<RaycastWeapon>();
+            projectileWeapon = GetComponentInChildren<ProjectileWeapon>();
         }
 
         public void HandleShooting() 
         {
             if (inputManager.isFiring && inputManager.isAiming)
             {
-                raycastWeapon.StartFiring();
-                raycastWeapon.UpdateFiring(Time.deltaTime);
+                projectileWeapon.StartFiring();
             }
-            
-            raycastWeapon.UpdateBullets(Time.deltaTime);
         }
         
     }

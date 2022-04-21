@@ -68,6 +68,8 @@ namespace TheSignal.Player
             if (isJumping)
                 return;
 
+            Debug.Log($"{inputManager.verticalInput} {isJumping}");
+            
             moveDirection = cameraTransform.forward * inputManager.verticalInput;
             moveDirection = moveDirection + cameraTransform.right * inputManager.horizontalInput;
             moveDirection.Normalize();
