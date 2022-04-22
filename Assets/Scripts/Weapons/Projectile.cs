@@ -3,65 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TheSignal.Weapons
 {
     public class Projectile : MonoBehaviour
     {
+        private Rigidbody projectileRB;
+        
         private Vector3 shootDirection;
         private float projectileSpeed;
-        private ParticleSystem metalHitEffect;
-        private ParticleSystem fleshHitEffect;
-        private LayerMask hitMask;
+        [SerializeField] private ParticleSystem metalHitEffect;
+        [SerializeField] private ParticleSystem fleshHitEffect;
 
         private void Awake()
         {
-            hitMask = LayerMask.GetMask("Default", "Enemy");
+            projectileRB = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        public void Init(Vector3 direction, float speed)
         {
-            Translate(Time.deltaTime);
-        }
+            shootDirection = direction;
+            projectileSpeed = speed;
 
-        public void Init(Vector3 shootDirection, float projectileSpeed, ParticleSystem metalHitEffect, ParticleSystem fleshHitEffect)
-        {
-            this.shootDirection = shootDirection;
-            this.projectileSpeed = projectileSpeed;
-            this.metalHitEffect = metalHitEffect;
-            this.fleshHitEffect = fleshHitEffect;
+            projectileRB.MoveRotation(Quaternion.LookRotation(shootDirection));
+            projectileRB.AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.VelocityChange);
             
-            transform.rotation = Quaternion.LookRotation(shootDirection);
+            Destroy(gameObject, 2);
         }
 
-        public void Translate(float deltaTime)
-        {
-            transform.position += shootDirection * projectileSpeed * deltaTime;
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            // Layer 0 - Default
-            // Layer 8 - Enemy
-            if (other.gameObject.layer == 0 || other.gameObject.layer == 8)
+        private void OnCollisionEnter(Collision collision)
+        { 
+            var contact = collision.GetContact(0);
+            
+            if (collision.gameObject.layer == 0)
             {
-                RaycastHit hit;
-                Physics.Raycast(transform.position, transform.forward, out hit,100.0f, hitMask);
-
-                if (other.gameObject.layer == 8)
-                {
-                    fleshHitEffect.transform.position = hit.point;
-                    fleshHitEffect.transform.forward = hit.normal;
-                    fleshHitEffect.Emit(1);
-                }
-                else
-                {
-                    metalHitEffect.transform.position = hit.point;
-                    metalHitEffect.transform.forward = hit.normal;
-                    metalHitEffect.Emit(1);
-                }
-                
-                
+                Instantiate(metalHitEffect,contact.point, Quaternion.LookRotation(contact.normal));
+                Destroy(gameObject);
+            }
+            else if (collision.gameObject.layer == 8)
+            {
+                Instantiate(fleshHitEffect, contact.point, Quaternion.LookRotation(contact.normal));
                 Destroy(gameObject);
             }
         }

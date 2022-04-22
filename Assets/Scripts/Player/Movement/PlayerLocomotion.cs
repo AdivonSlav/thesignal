@@ -7,6 +7,7 @@ using Vector3 = UnityEngine.Vector3;
 using TheSignal.Animation;
 using TheSignal.Player.Combat;
 using TheSignal.Player.Input;
+using UnityEngine.Animations.Rigging;
 
 namespace TheSignal.Player
 {
@@ -35,7 +36,7 @@ namespace TheSignal.Player
         public float runSpeed;
         public float sprintSpeed;
         public float rotationSpeed;
-        
+
         [HideInInspector] public bool isJumping;
 
         [Header("Jump Speeds")]
@@ -68,14 +69,12 @@ namespace TheSignal.Player
             if (isJumping)
                 return;
 
-            Debug.Log($"{inputManager.verticalInput} {isJumping}");
-            
             moveDirection = cameraTransform.forward * inputManager.verticalInput;
-            moveDirection = moveDirection + cameraTransform.right * inputManager.horizontalInput;
+            moveDirection += cameraTransform.right * inputManager.horizontalInput;
             moveDirection.Normalize();
             moveDirection.y = 0.0f;
 
-            if (inputManager.isRunning && inputManager.moveAmount > 0.5f)
+            if (inputManager.isRunning && inputManager.moveAmount > 0.5f && !inputManager.isAiming)
                 moveDirection *= runSpeed;
             else if (inputManager.isSprinting)
                 moveDirection *= sprintSpeed;

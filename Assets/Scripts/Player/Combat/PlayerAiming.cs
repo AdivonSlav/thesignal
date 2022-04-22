@@ -15,18 +15,15 @@ namespace TheSignal.Player.Combat
     public class PlayerAiming : MonoBehaviour
     {
         private InputManager inputManager;
-        private Camera mainCamera;
 
         [SerializeField] private CinemachineVirtualCamera normalCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
         [SerializeField] private Image crosshair;
         [SerializeField] private Transform aimTarget;
-        [SerializeField] private Rig aimRigLayer;
 
         private void Awake()
         {
             inputManager = GetComponent<InputManager>();
-            mainCamera = Camera.main;
         }
 
         private void Start()
@@ -43,13 +40,11 @@ namespace TheSignal.Player.Combat
                 crosshair.gameObject.SetActive(true);
                 
                 RotateWithLook();
-                SetAimRig(1.0f);
             }
             else
             {
                 aimCamera.gameObject.SetActive(false);
                 crosshair.gameObject.SetActive(false);
-                SetAimRig(0.0f);
             }
         }
 
@@ -64,21 +59,5 @@ namespace TheSignal.Player.Combat
 
             transform.rotation = targetRotation;
         }
-
-        private void SetAimRig(float weight)
-        {
-            aimRigLayer.weight = Mathf.Lerp(aimRigLayer.weight, weight, 15.0f);
-        }
-
-        // private RaycastHit GetHit()
-        // {
-        //     Vector2 screenCenterPoint = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
-        //     Ray ray = mainCamera.ScreenPointToRay(screenCenterPoint);
-        //     RaycastHit hit;
-        //
-        //     Physics.Raycast(ray, out hit, 999.0f, aimLayer);
-        //     
-        //     return hit;
-        // }
     }
 }

@@ -12,13 +12,11 @@ namespace TheSignal.Player.Combat
     public class PlayerShooting : MonoBehaviour
     {
         private InputManager inputManager;
-        private PlayerAiming playerAiming;
         private ProjectileWeapon projectileWeapon;
         
         private void Awake()
         {
             inputManager = GetComponent<InputManager>();
-            playerAiming = GetComponent<PlayerAiming>();
             projectileWeapon = GetComponentInChildren<ProjectileWeapon>();
         }
 

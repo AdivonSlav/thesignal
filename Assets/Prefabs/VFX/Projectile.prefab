@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 775490390131409837}
   - component: {fileID: 775490390131409834}
-  - component: {fileID: 7761788948250845620}
-  - component: {fileID: 2656167882535850736}
   - component: {fileID: 7474906440132893390}
+  - component: {fileID: 6504990874420064067}
+  - component: {fileID: 5351883889567023115}
   m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
@@ -132,35 +132,6 @@ LineRenderer:
     generateLightingData: 1
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!65 &7761788948250845620
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775490390131409835}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0.49999997}
---- !u!54 &2656167882535850736
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775490390131409835}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!114 &7474906440132893390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,5 +144,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad477b6a267cfc46992823dd72a767d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metalHitEffect: {fileID: 2810588766882830269, guid: bc6faaf85753d944e8639d10a360472d, type: 3}
+  metalHitEffect: {fileID: 7860074937970713017, guid: bc6faaf85753d944e8639d10a360472d, type: 3}
   fleshHitEffect: {fileID: 3567332095231165273, guid: 3ac7d61167d1b03409c7d49b051049ae, type: 3}
+--- !u!54 &6504990874420064067
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775490390131409835}
+  serializedVersion: 2
+  m_Mass: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &5351883889567023115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775490390131409835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07, y: 0.07, z: -0.52}
+  m_Center: {x: 0, y: 0, z: 0.45}

@@ -9,17 +9,18 @@ namespace TheSignal.Weapons
     {
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform startPoint;
-        [SerializeField] private Transform aimTarget;
+        [SerializeField] private Transform target;
         [SerializeField] private float projectileSpeed;
-        [SerializeField] private ParticleSystem metalHitEffect;
-        [SerializeField] private ParticleSystem fleshHitEffect;
+        [SerializeField] private float fireRate;
+        [SerializeField] private ParticleSystem muzzleFlash;
 
         public void StartFiring()
         {
-            var projectile = Instantiate(this.projectilePrefab, startPoint.position, Quaternion.identity);
-            var shootDirection = (aimTarget.position - startPoint.position).normalized;
+            var projectile = Instantiate(projectilePrefab, startPoint.position, Quaternion.identity);
+            var shootDirection = (target.position - startPoint.position).normalized;
             
-            projectile.GetComponent<Projectile>().Init(shootDirection, projectileSpeed, metalHitEffect, fleshHitEffect);   
+            projectile.GetComponent<Projectile>().Init(shootDirection, projectileSpeed);
+            muzzleFlash.Emit(1);
         }
     }
 }
