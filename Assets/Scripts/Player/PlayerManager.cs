@@ -27,19 +27,26 @@ namespace TheSignal.Player
             playerAiming = GetComponent<PlayerAiming>();
             playerShooting = GetComponent<PlayerShooting>();
         }
+
+        void Start()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
         private void Update()
         {
             inputManager.HandleAllInputs();
         }
         private void FixedUpdate()
         {
-            playerLocomotion.HandleAllMovement();
             playerAiming.HandleAiming();
+            playerShooting.HandleShooting();
+            playerLocomotion.HandleAllMovement();
         }
 
         private void LateUpdate()
         {
-            playerShooting.HandleShooting();
             isInteracting = animator.GetBool(AnimatorManager.Interacting);
             playerLocomotion.isJumping = animator.GetBool(AnimatorManager.Jumping);
             animator.SetBool(AnimatorManager.Grounded, playerLocomotion.isGrounded);
