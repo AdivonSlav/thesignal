@@ -41,7 +41,6 @@ namespace TheSignal.Player
             for (float elapsed = 0.0f; elapsed < waitTime; elapsed += timeDelta)
             {
                 rig.weight = Mathf.Lerp(rig.weight, weight, elapsed / waitTime);
-                Debug.Log(rig.weight);
             }
 
             yield return null;
