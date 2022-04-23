@@ -8,6 +8,7 @@ TagManager:
   - RightFistEnemyOne
   - FirstAid
   - SlowMoKit
+  - Novi
   layers:
   - Default
   - TransparentFX

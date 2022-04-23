@@ -12,7 +12,10 @@ namespace TheSignal.Menu
         public GameObject PauseMenuUI;
         public GameObject MainMenuUI;
         public GameObject DeadScreenUI;
+        public GameObject ObjectiveActive;
+        public GameObject ObjectiveInactive;
         private InputManager inputManager;
+        private bool ObjectiveTab;
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject camera_;
         [SerializeField] private GameObject HealthAndMissionUI;
@@ -31,12 +34,42 @@ namespace TheSignal.Menu
                     else
                         Pause();
                 }
+                if (inputManager.isPressingI)
+                {
+                    if (ObjectiveTab)
+                    {
+                        ObjectiveTabActive();
+                    }
+                    else
+                    {
+                        ObjectiveTabInactive();
+                    }
+                }
+                {
+
+                }
             }
             else
             {
                 PauseDead();
             }
         }
+        #region ObjectiveTab
+        void ObjectiveTabActive()
+        {
+            ObjectiveTab = false;
+            ObjectiveActive.SetActive(false);
+            ObjectiveInactive.SetActive(true);
+            inputManager.isPressingI = false;
+        }
+        void ObjectiveTabInactive()
+        {
+            ObjectiveTab = true;
+            ObjectiveInactive.SetActive(false);
+            ObjectiveActive.SetActive(true);
+            inputManager.isPressingI = false;
+        }
+        #endregion
         #region MainPanel
         public void Resume()
         {
@@ -47,6 +80,8 @@ namespace TheSignal.Menu
             inputManager.isPressingESC = false;
             camera_.SetActive(true);
             HealthAndMissionUI.SetActive(true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         public void MainMenu()
         {
@@ -73,6 +108,8 @@ namespace TheSignal.Menu
             inputManager.isPressingESC = false;
             camera_.SetActive(false);
             HealthAndMissionUI.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         void PauseDead()
         {
@@ -81,6 +118,8 @@ namespace TheSignal.Menu
             inputManager.isPressingESC = false;
             camera_.SetActive(false);
             HealthAndMissionUI.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         #endregion
         #region Main Menu Button
@@ -106,6 +145,8 @@ namespace TheSignal.Menu
             MainMenuUI.SetActive(false);
             PauseMenuUI.SetActive(false);
             DeadScreenUI.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Resume();
         }
         public void DeadScreenButtonNo(string MainMenuName)

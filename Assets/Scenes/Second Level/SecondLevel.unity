@@ -45178,7 +45178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819075081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.147166, y: 1.6758431, z: -4.517214}
+  m_LocalPosition: {x: 2.1562033, y: 1.6758431, z: -4.517214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51943,7 +51943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.147166
+      value: 2.1562033
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52778,7 +52778,7 @@ MonoBehaviour:
   DeadScreenUI: {fileID: 1720987128}
   player: {fileID: 74797411}
   camera_: {fileID: 567658797}
-  HealthAndMissionUI: {fileID: 0}
+  HealthAndMissionUI: {fileID: 1899187706}
 --- !u!114 &2018594110
 MonoBehaviour:
   m_ObjectHideFlags: 0
