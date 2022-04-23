@@ -1,27 +1,14 @@
-using Cinemachine;
 using UnityEngine;
-using UnityEngine.UI;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 using TheSignal.Animation;
 using TheSignal.Player.Combat;
 using TheSignal.Player.Input;
-using UnityEngine.Animations.Rigging;
 
 namespace TheSignal.Player
 {
+    [RequireComponent(typeof(PlayerManager))]
     public class PlayerLocomotion : MonoBehaviour
     {
-        private PlayerManager playerManager;
-        private AnimatorManager animatorManager;
-        private InputManager inputManager;
-        private PlayerAiming playerAiming;
-
-        private Vector3 moveDirection;
-        private Transform cameraTransform;
-        private Rigidbody playerRB;
-
         [Header("Falling")]
         public float leapVelocity;
         [HideInInspector] public float inAirTimer;
@@ -42,13 +29,21 @@ namespace TheSignal.Player
         [Header("Jump Speeds")]
         public float jumpHeight;
         public float gravityAccel;
+        
+        private PlayerManager playerManager;
+        private AnimatorManager animatorManager;
+        private InputManager inputManager;
+
+        private Vector3 moveDirection;
+        private Transform cameraTransform;
+        private Rigidbody playerRB;
+
 
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
             animatorManager = GetComponent<AnimatorManager>();
             inputManager = GetComponent<InputManager>();
-            playerAiming = GetComponent<PlayerAiming>();
             playerRB = GetComponent<Rigidbody>();
             cameraTransform = Camera.main.transform;
         }
@@ -90,10 +85,8 @@ namespace TheSignal.Player
             if (isJumping || inputManager.isAiming)
                 return;
 
-            Vector3 targetDirection = Vector3.zero;
-
-            targetDirection = cameraTransform.forward * inputManager.verticalInput;
-            targetDirection = targetDirection + cameraTransform.right * inputManager.horizontalInput;
+            Vector3 targetDirection = cameraTransform.forward * inputManager.verticalInput;
+            targetDirection += cameraTransform.right * inputManager.horizontalInput;
             targetDirection.Normalize();
             targetDirection.y = 0.0f;
 
@@ -101,9 +94,9 @@ namespace TheSignal.Player
                 targetDirection = transform.forward;
 
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            targetRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            transform.rotation = playerRotation;
+            playerRB.MoveRotation(targetRotation);
         }
 
         private void HandleFalling()

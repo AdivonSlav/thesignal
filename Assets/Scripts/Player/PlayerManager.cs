@@ -1,13 +1,15 @@
 
+using System.Runtime.CompilerServices;
 using TheSignal.Animation;
 using TheSignal.Player.Combat;
 using UnityEngine;
 
 using TheSignal.Player.Input;
+using UnityEditor;
 
 namespace TheSignal.Player
 {
-    [RequireComponent(typeof(InputManager), typeof(PlayerLocomotion))]
+    [RequireComponent(typeof(InputManager), typeof(PlayerLocomotion), typeof(Animator))]
     public class PlayerManager : MonoBehaviour
     {
         private InputManager inputManager;
