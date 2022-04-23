@@ -9,23 +9,28 @@ namespace TheSignal.Menu
     public class PauseMenu : MonoBehaviour
     {
         public static bool GameIsPaused = false;
-        public GameObject PauseMenuUI;
-        public GameObject MainMenuUI;
-        public GameObject DeadScreenUI;
-        public GameObject ObjectiveActive;
-        public GameObject ObjectiveInactive;
+        
         private InputManager inputManager;
-        private bool ObjectiveTab;
+        private GameObject mainCamera;
+        
+        [SerializeField] private GameObject pauseMenuUI;
+        [SerializeField] private GameObject mainMenuUI;
+        [SerializeField] private GameObject deathScreenUI;
+        [SerializeField] private GameObject objectiveActive;
+        [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject player;
-        [SerializeField] private GameObject camera_;
-        [SerializeField] private GameObject HealthAndMissionUI;
+        [SerializeField] private GameObject healthAndMissionUI;
+
+        private bool objectiveTab;
+        
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
+            mainCamera = Camera.main.gameObject;
         }
         void Update()
         {
-            if (!DeadScreenUI.activeInHierarchy)
+            if (!deathScreenUI.activeInHierarchy)
             {
                 if (inputManager.isPressingESC)
                 {
@@ -36,7 +41,7 @@ namespace TheSignal.Menu
                 }
                 if (inputManager.isPressingI)
                 {
-                    if (ObjectiveTab)
+                    if (objectiveTab)
                     {
                         ObjectiveTabActive();
                     }
@@ -57,36 +62,36 @@ namespace TheSignal.Menu
         #region ObjectiveTab
         void ObjectiveTabActive()
         {
-            ObjectiveTab = false;
-            ObjectiveActive.SetActive(false);
-            ObjectiveInactive.SetActive(true);
+            objectiveTab = false;
+            objectiveActive.SetActive(false);
+            objectiveInactive.SetActive(true);
             inputManager.isPressingI = false;
         }
         void ObjectiveTabInactive()
         {
-            ObjectiveTab = true;
-            ObjectiveInactive.SetActive(false);
-            ObjectiveActive.SetActive(true);
+            objectiveTab = true;
+            objectiveInactive.SetActive(false);
+            objectiveActive.SetActive(true);
             inputManager.isPressingI = false;
         }
         #endregion
         #region MainPanel
         public void Resume()
         {
-            MainMenuUI.SetActive(false);
-            PauseMenuUI.SetActive(false);
+            mainMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
             inputManager.isPressingESC = false;
-            camera_.SetActive(true);
-            HealthAndMissionUI.SetActive(true);
+            mainCamera.SetActive(true);
+            healthAndMissionUI.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
         public void MainMenu()
         {
-            PauseMenuUI.SetActive(false);
-            MainMenuUI.SetActive(true);
+            pauseMenuUI.SetActive(false);
+            mainMenuUI.SetActive(true);
         }
         public void Quit()
         {
@@ -102,12 +107,12 @@ namespace TheSignal.Menu
         }
         void Pause()
         {
-            PauseMenuUI.SetActive(true);
+            pauseMenuUI.SetActive(true);
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            camera_.SetActive(false);
-            HealthAndMissionUI.SetActive(false);
+            mainCamera.SetActive(false);
+            healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -116,8 +121,8 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            camera_.SetActive(false);
-            HealthAndMissionUI.SetActive(false);
+            mainCamera.SetActive(false);
+            healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -131,8 +136,8 @@ namespace TheSignal.Menu
         }
         public void MainMenuButtonNo()
         {
-            MainMenuUI.SetActive(false);
-            PauseMenuUI.SetActive(true);
+            mainMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(true);
         }
         #endregion
         #region DeadScreen
@@ -142,9 +147,9 @@ namespace TheSignal.Menu
             GameIsPaused = false;
             Time.timeScale = 1f;
             SceneManager.LoadScene(current.name);
-            MainMenuUI.SetActive(false);
-            PauseMenuUI.SetActive(false);
-            DeadScreenUI.SetActive(false);
+            mainMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
+            deathScreenUI.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             Resume();

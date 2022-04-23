@@ -1,11 +1,7 @@
-﻿using Cinemachine;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 using TheSignal.Player.Input;
-using TheSignal.Animation;
 using TheSignal.Weapons;
-using UnityEngine.Animations.Rigging;
 
 namespace TheSignal.Player.Combat
 {

@@ -3,7 +3,7 @@ using TheSignal.Animation;
 
 namespace TheSignal.Player.Input
 {
-    [RequireComponent(typeof(AnimatorManager))]
+    [RequireComponent(typeof(AnimatorManager), typeof(PlayerLocomotion))]
     public class InputManager : MonoBehaviour
     {
         private PlayerControls playerControls;

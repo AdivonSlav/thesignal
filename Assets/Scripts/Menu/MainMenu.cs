@@ -7,25 +7,26 @@ namespace TheSignal.Menu
 {
     public class MainMenu : MonoBehaviour
     {
-        public GameObject NewGamePanel;
-        public GameObject MainPanel;
-        public GameObject QuitGamePanel;
-        public GameObject CreditsPanel;
+        public GameObject newGamePanel;
+        public GameObject mainPanel;
+        public GameObject quitGamePanel;
+        public GameObject creditsPanel;
+        
         #region MainPanel
         public void NewGameButton()
         {
-            MainPanel.SetActive(false);
-            NewGamePanel.SetActive(true);
+            mainPanel.SetActive(false);
+            newGamePanel.SetActive(true);
         }
         public void QuitGameButton()
         {
-            MainPanel.SetActive(false);
-            QuitGamePanel.SetActive(true);
+            mainPanel.SetActive(false);
+            quitGamePanel.SetActive(true);
         }
         public void CreditsButton()
         {
-            MainPanel.SetActive(false);
-            CreditsPanel.SetActive(true);
+            mainPanel.SetActive(false);
+            creditsPanel.SetActive(true);
         }
         //this needs to be scripted after we implement load/save
         public void LoadGameButton()
@@ -41,8 +42,8 @@ namespace TheSignal.Menu
         #region Newgame
         public void CancelNewGame()
         {
-            NewGamePanel.SetActive(false);
-            MainPanel.SetActive(true);
+            newGamePanel.SetActive(false);
+            mainPanel.SetActive(true);
         }
         public void YesNewGame(string lvlName)
         {
@@ -55,8 +56,8 @@ namespace TheSignal.Menu
         #region Credits
         public void BackButtonCredits()
         {
-            CreditsPanel.SetActive(false);
-            MainPanel.SetActive(true);
+            creditsPanel.SetActive(false);
+            mainPanel.SetActive(true);
         }
         #endregion
         #region Quit
@@ -66,8 +67,8 @@ namespace TheSignal.Menu
         }
         public void NoQuit()
         {
-            QuitGamePanel.SetActive(false);
-            MainPanel.SetActive(true);
+            quitGamePanel.SetActive(false);
+            mainPanel.SetActive(true);
         }
         #endregion
     }

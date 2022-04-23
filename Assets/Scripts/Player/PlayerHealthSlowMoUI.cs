@@ -1,41 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TheSignal.Player.Input;
 
 namespace TheSignal.Scripts.Player
 {
+    [RequireComponent(typeof(InputManager))]
     public class PlayerHealthSlowMoUI : MonoBehaviour
     {
-        private int CurrentHealth;
-        private float CurrentSlowmo;
-        public GameObject DeadScreen;
+        private InputManager inputManager;
+        
+        public GameObject deathScreen;
         public Slider Healthslider;
         public Slider SlowMoSlider;
-        private InputManager inputManager;
-        bool dead = false;
-        bool slowMo = false;
-        float timeOfDeath = 0;
-        float timeOfSlowMo = 0;
-        private Animator anim = null;
-        float changedTime;
-        float timeOfSlowMoDeactivation = 0f;
-        private float MaxSlowMo;
+        private Animator anim;
+
+        private float changedTime;
+        private float timeOfSlowMoDeactivation;
+        
+        private int currentHealth;
+        private float maxSlowMo;
+        private float currentSlowMo;
+        private float timeOfSlowMo;
+        private bool slowMo;
+        private bool dead;
+        private float timeOfDeath;
+        
         private void Start()
         {
             inputManager = GetComponent<InputManager>();
             anim = GetComponent<Animator>();
-            CurrentHealth = 100;
-            MaxSlowMo = SlowMoSlider.maxValue;
-            CurrentSlowmo = MaxSlowMo;
-            SlowMoSlider.value = MaxSlowMo;
+            currentHealth = 100;
+            maxSlowMo = SlowMoSlider.maxValue;
+            currentSlowMo = maxSlowMo;
+            SlowMoSlider.value = maxSlowMo;
             Healthslider.value = 100;
         }
         private void Update()
         {
-
-            if (CurrentHealth <= 0 && !dead)
+            if (currentHealth <= 0 && !dead)
             {
                 timeOfDeath = Time.realtimeSinceStartup;
                 Time.timeScale = 0.2f;
@@ -46,29 +48,29 @@ namespace TheSignal.Scripts.Player
             {
                 Die();
             }
-            if (inputManager.isPressingK && !slowMo && CurrentSlowmo==MaxSlowMo)
+            if (inputManager.isPressingK && !slowMo && currentSlowMo == maxSlowMo)
             {
                 SlowMoTriggered();
             }
-            if (slowMo && CurrentSlowmo > 0)
+            if (slowMo && currentSlowMo > 0)
             {
-                if (timeOfSlowMo + MaxSlowMo > Time.realtimeSinceStartup && ((int)changedTime)+1== ((int)Time.realtimeSinceStartup))
+                if (timeOfSlowMo + maxSlowMo > Time.realtimeSinceStartup && ((int)changedTime)+1== ((int)Time.realtimeSinceStartup))
                 {
-                    CurrentSlowmo -= 1;
-                    SlowMoSlider.value = CurrentSlowmo;
+                    currentSlowMo -= 1;
+                    SlowMoSlider.value = currentSlowMo;
                     changedTime += 1;
                 }
             }
-            if ((Time.realtimeSinceStartup - timeOfSlowMo) > MaxSlowMo && slowMo)
+            if ((Time.realtimeSinceStartup - timeOfSlowMo) > maxSlowMo && slowMo)
             {
                 SlowMoEnded();
             }
-            if (!slowMo && CurrentSlowmo < MaxSlowMo)
+            if (!slowMo && currentSlowMo < maxSlowMo)
             {
                 if (timeOfSlowMoDeactivation+80>Time.realtimeSinceStartup&& ((int)changedTime) + 1 == ((int)Time.realtimeSinceStartup))
                 {
-                    CurrentSlowmo += 0.25f;
-                    SlowMoSlider.value = CurrentSlowmo;
+                    currentSlowMo += 0.25f;
+                    SlowMoSlider.value = currentSlowMo;
                     changedTime += 1;
                 }
             }
@@ -89,16 +91,16 @@ namespace TheSignal.Scripts.Player
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Fist")
+            if (other.CompareTag("Fist"))
             {
                 TakeDamage(20);
             }
-            if (other.gameObject.tag=="FirstAid" && CurrentHealth<100)
+            if (other.CompareTag("FirstAid") && currentHealth<100)
             {
                 Heal();
                 other.gameObject.SetActive(false);
             }
-            if (other.gameObject.tag == "SlowMoKit" && CurrentSlowmo<MaxSlowMo && !slowMo)
+            if (other.CompareTag("SlowMoKit") && currentSlowMo<maxSlowMo && !slowMo)
             {
                 RefilSlowMo();
                 other.gameObject.SetActive(false);
@@ -106,33 +108,33 @@ namespace TheSignal.Scripts.Player
         }
         private void RefilSlowMo()
         {
-            CurrentSlowmo = MaxSlowMo;
-            SlowMoSlider.value = CurrentHealth;
+            currentSlowMo = maxSlowMo;
+            SlowMoSlider.value = currentHealth;
         }
         private void Heal()
         {
-                if (CurrentHealth<75)
+                if (currentHealth<75)
                 {
-                    CurrentHealth += 25;
-                    Healthslider.value = CurrentHealth;
+                    currentHealth += 25;
+                    Healthslider.value = currentHealth;
                 }
                 else
                 {
-                    CurrentHealth = 100;
-                    Healthslider.value = CurrentHealth;
+                    currentHealth = 100;
+                    Healthslider.value = currentHealth;
                 }
         }
         public void TakeDamage(int damage)
         {
-            CurrentHealth -= damage;
-            Healthslider.value = CurrentHealth;
+            currentHealth -= damage;
+            Healthslider.value = currentHealth;
         }
         private void Die()
         {
             dead = false;
-            DeadScreen.SetActive(true);
+            deathScreen.SetActive(true);
             Time.timeScale = 0.0f;
-            CurrentHealth = 100;
+            currentHealth = 100;
             Start();
         }
     }

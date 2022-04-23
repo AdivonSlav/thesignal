@@ -1,29 +1,26 @@
-using System;
-using System.Numerics;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
-using UnityEngine.UI;
+
 using TheSignal.Player.Input;
-using UnityEditor;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
 namespace TheSignal.Player.Combat
 {
     public class PlayerAiming : MonoBehaviour
     {
-        private InputManager inputManager;
-
+        [SerializeField] private Canvas crosshairCanvas;
+        [SerializeField] private Transform aimTarget;
+        
+        [Header("Cinemachine cameras")]
         [SerializeField] private CinemachineVirtualCamera normalCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
-        [SerializeField] private Image crosshair;
-        [SerializeField] private Transform aimTarget;
+
+        private InputManager inputManager;
+        private Rigidbody playerRB;
 
         private void Awake()
         {
             inputManager = GetComponent<InputManager>();
+            playerRB = GetComponent<Rigidbody>();
         }
 
         private void Start()
@@ -34,18 +31,11 @@ namespace TheSignal.Player.Combat
 
         public void HandleAiming()
         {
+            aimCamera.enabled = inputManager.isAiming;
+            crosshairCanvas.enabled = inputManager.isAiming;
+            
             if (inputManager.isAiming)
-            {
-                aimCamera.gameObject.SetActive(true);
-                crosshair.gameObject.SetActive(true);
-                
                 RotateWithLook();
-            }
-            else
-            {
-                aimCamera.gameObject.SetActive(false);
-                crosshair.gameObject.SetActive(false);
-            }
         }
 
         private void RotateWithLook()
@@ -57,7 +47,7 @@ namespace TheSignal.Player.Combat
             Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
             targetRotation = Quaternion.Slerp(transform.rotation, targetRotation, 15.0f * Time.fixedDeltaTime);
 
-            transform.rotation = targetRotation;
+            playerRB.MoveRotation(targetRotation);
         }
     }
 }

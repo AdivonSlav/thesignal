@@ -1,7 +1,9 @@
+using TheSignal.Player;
 using UnityEngine;
 
 namespace TheSignal.Animation
 {
+    [RequireComponent(typeof(PlayerManager))]
     public class AnimatorManager : MonoBehaviour
     {
         [HideInInspector] public Animator animator;

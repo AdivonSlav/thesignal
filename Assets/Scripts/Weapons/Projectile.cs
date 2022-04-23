@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 namespace TheSignal.Weapons
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class Projectile : MonoBehaviour
     {
         private Rigidbody projectileRB;
