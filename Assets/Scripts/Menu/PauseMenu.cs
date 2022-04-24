@@ -11,8 +11,7 @@ namespace TheSignal.Menu
         public static bool GameIsPaused = false;
         
         private InputManager inputManager;
-        private GameObject mainCamera;
-        
+        [SerializeField]private GameObject mainCamera;
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject mainMenuUI;
         [SerializeField] private GameObject deathScreenUI;
@@ -26,7 +25,6 @@ namespace TheSignal.Menu
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
-            mainCamera = Camera.main.gameObject;
         }
         void Update()
         {

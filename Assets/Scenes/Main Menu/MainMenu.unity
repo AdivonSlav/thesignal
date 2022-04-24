@@ -3980,10 +3980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0e19dfc63405f4588b2e4c5844c17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewGamePanel: {fileID: 471620933}
-  MainPanel: {fileID: 86626452}
-  QuitGamePanel: {fileID: 1825394179}
-  CreditsPanel: {fileID: 2003827425}
+  newGamePanel: {fileID: 471620933}
+  mainPanel: {fileID: 86626452}
+  quitGamePanel: {fileID: 1825394179}
+  creditsPanel: {fileID: 2003827425}
 --- !u!224 &1956894585 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224941542278216406, guid: c7567417421e6874a8d56da7964771a8, type: 3}
