@@ -31,7 +31,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isPressingESC && !JournalUI.activeInHierarchy)
+                if (inputManager.isPressingESC && !JournalUI.activeInHierarchy && !inputManager.isAiming)
                 {
                     if(GameIsPaused)
                         Resume();
