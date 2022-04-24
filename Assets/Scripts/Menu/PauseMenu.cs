@@ -19,6 +19,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject healthAndMissionUI;
+        [SerializeField] private GameObject JournalUI;
 
         private bool objectiveTab;
         
@@ -30,7 +31,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isPressingESC)
+                if (inputManager.isPressingESC && !JournalUI.activeInHierarchy)
                 {
                     if(GameIsPaused)
                         Resume();
@@ -48,9 +49,7 @@ namespace TheSignal.Menu
                         ObjectiveTabInactive();
                     }
                 }
-                {
 
-                }
             }
             else
             {

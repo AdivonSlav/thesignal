@@ -28,7 +28,7 @@ namespace TheSignal.Player
             else if (!inputManager.isAiming && aimingRig.weight > 0.0f)
                 StartCoroutine(SetRig(aimingRig, 0.0f, Time.deltaTime));
 
-            if (inputManager.isRunning && runningRig.weight < 1.0f)
+            if (inputManager.isRunning && runningRig.weight < 1.0f && inputManager.moveAmount!=0)
                 StartCoroutine(SetRig(runningRig, 1.0f, Time.deltaTime));
             else if (!inputManager.isRunning && runningRig.weight > 0.0f)
                 StartCoroutine(SetRig(runningRig, 0.0f, Time.deltaTime));
