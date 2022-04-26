@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TheSignal.SFX;
 using UnityEngine;
 
 namespace TheSignal.Weapons
@@ -14,14 +15,17 @@ namespace TheSignal.Weapons
         [SerializeField] private float fireDelay;
         [SerializeField] private ParticleSystem muzzleFlash;
 
-        private float lastShot = 0.0f;
-        
-        public void StartFiring()
+        private WeaponSoundController weaponSFX;
+
+        private void Awake()
         {
-            // We track how much time has passed since the player last fired
-            // If it is over the fire delay that is set, a new shot can be fired
-            lastShot += Time.deltaTime;
-            
+            weaponSFX = GetComponent<WeaponSoundController>();
+        }
+        
+        // lastShot is continuosly updated in the PlayerShooting and passed here
+        // Whenever sustained fire is made, last shot is reset and allowed to tick again in order to achieve a delay in fire
+        public void StartFiring(ref float lastShot)
+        {
             if (lastShot >= fireDelay)
             {
                 var projectile = Instantiate(projectilePrefab, startPoint.position, Quaternion.identity);
@@ -29,6 +33,7 @@ namespace TheSignal.Weapons
                 
                 projectile.GetComponent<Projectile>().Init(shootDirection, projectileSpeed);
                 muzzleFlash.Emit(1);
+                weaponSFX.PlayShot();
 
                 lastShot = 0.0f;
             }

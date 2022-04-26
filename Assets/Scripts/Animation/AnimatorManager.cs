@@ -1,3 +1,4 @@
+using System;
 using TheSignal.Player;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace TheSignal.Animation
     public class AnimatorManager : MonoBehaviour
     {
         [HideInInspector] public Animator animator;
-        
+        private AnimatorStateInfo stateInfo;
+
         // Animator parameter IDs for more effective fetching
         private static readonly int horizontalInput = Animator.StringToHash("hInput");
         private static readonly int verticalInput = Animator.StringToHash("vInput");
@@ -71,6 +73,13 @@ namespace TheSignal.Animation
             return 0.0f;
         }
 
+        private void OnAnimatorMove()
+        {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(2);
+            
+            if (!stateInfo.IsTag("FallingJumping"))
+                animator.ApplyBuiltinRootMotion();
+        }
     }
 }
 

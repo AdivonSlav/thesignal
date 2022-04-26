@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,6 +37,7 @@ namespace TheSignal.Menu
 
         }
         #endregion
+        
         #region Newgame
         public void CancelNewGame()
         {
@@ -51,8 +50,10 @@ namespace TheSignal.Menu
             SceneManager.LoadScene(lvlName);
         }
         #endregion
+        
         #region Settings
         #endregion
+        
         #region Credits
         public void BackButtonCredits()
         {
@@ -60,6 +61,7 @@ namespace TheSignal.Menu
             mainPanel.SetActive(true);
         }
         #endregion
+        
         #region Quit
         public void YesQuit()
         {

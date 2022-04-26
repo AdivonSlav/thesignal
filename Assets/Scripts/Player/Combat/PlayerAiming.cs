@@ -2,6 +2,7 @@ using Cinemachine;
 using UnityEngine;
 
 using TheSignal.Player.Input;
+using TheSignal.SFX;
 
 namespace TheSignal.Player.Combat
 {
@@ -13,6 +14,8 @@ namespace TheSignal.Player.Combat
         [Header("Cinemachine cameras")]
         [SerializeField] private CinemachineVirtualCamera normalCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
+
+        [SerializeField] private GameObject equippedWeapon;
 
         private InputManager inputManager;
         private Rigidbody playerRB;
@@ -35,7 +38,9 @@ namespace TheSignal.Player.Combat
             crosshairCanvas.enabled = inputManager.isAiming;
             
             if (inputManager.isAiming)
+            {
                 RotateWithLook();
+            }
         }
 
         private void RotateWithLook()
