@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using TheSignal.Player.Input;
 using UnityEngine;
 
-namespace TheSignal.Journal
+namespace TheSignal
 {
     public class Journal : MonoBehaviour
     {
         [SerializeField] private GameObject mainCamera;
         [SerializeField] private GameObject JournalUI;
         [SerializeField] private GameObject player;
+        private bool isInTheZone;
 
         private InputManager inputManager;
-        private Renderer textE;
-        
+
         void Awake()
         {
-            textE = this.GetComponent<Renderer>();
             inputManager = player.GetComponent<InputManager>();
         }
         private void Update()
         {
-            if (this.gameObject.activeInHierarchy && inputManager.isInteracting)
+            if (isInTheZone && inputManager.isInteracting)
             {
                 OpenJournal();
             }
-            else if (this.gameObject.activeInHierarchy && inputManager.isPressingESC)
+            if (JournalUI.activeInHierarchy && inputManager.isPressingESC)
             {
                 CloseJournal();
             }
@@ -47,19 +46,13 @@ namespace TheSignal.Journal
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             inputManager.isPressingESC = false;
+            this.gameObject.SetActive(false);
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                textE.enabled = true;
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                textE.enabled=false;
+                isInTheZone = true;
             }
         }
     }
