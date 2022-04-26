@@ -9,6 +9,8 @@ namespace TheSignal.Player.Combat
     {
         private InputManager inputManager;
         private ProjectileWeapon projectileWeapon;
+
+        private float lastShot = 0.0f;
         
         private void Awake()
         {
@@ -16,11 +18,13 @@ namespace TheSignal.Player.Combat
             projectileWeapon = GetComponentInChildren<ProjectileWeapon>();
         }
 
-        public void HandleShooting() 
+        public void HandleShooting()
         {
+            lastShot += Time.deltaTime;            
+            
             if (inputManager.isFiring && inputManager.isAiming)
             {
-                projectileWeapon.StartFiring();
+                projectileWeapon.StartFiring(ref lastShot);
             }
         }
         

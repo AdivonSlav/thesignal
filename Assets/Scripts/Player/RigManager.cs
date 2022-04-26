@@ -10,8 +10,6 @@ namespace TheSignal.Player
     {
         private InputManager inputManager;
 
-        [SerializeField] private float interpolationValue;
-        
         [Header("Rigs")]
         [SerializeField] private Rig aimingRig;
         [SerializeField] private Rig runningRig;

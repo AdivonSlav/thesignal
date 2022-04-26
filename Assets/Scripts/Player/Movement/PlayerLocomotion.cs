@@ -148,7 +148,11 @@ namespace TheSignal.Player
                 isGrounded = true;
             }
             else
+            {
                 isGrounded = false;
+            }
+            
+            Debug.Log($"Grounded: {isGrounded}");
         }
         
     }
