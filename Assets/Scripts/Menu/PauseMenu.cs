@@ -11,13 +11,17 @@ namespace TheSignal.Menu
         public static bool GameIsPaused = false;
         
         private InputManager inputManager;
-        [SerializeField]private GameObject mainCamera;
+        
+        [SerializeField] private GameObject player;
+        [Header("Cameras")]
+        [SerializeField]private GameObject normalCamera;
+        [SerializeField]private GameObject aimCamera;
+        [Header("UI")]
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject mainMenuUI;
         [SerializeField] private GameObject deathScreenUI;
         [SerializeField] private GameObject objectiveActive;
         [SerializeField] private GameObject objectiveInactive;
-        [SerializeField] private GameObject player;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject JournalUI;
 
@@ -80,7 +84,8 @@ namespace TheSignal.Menu
             Time.timeScale = 1f;
             GameIsPaused = false;
             inputManager.isPressingESC = false;
-            mainCamera.SetActive(true);
+            normalCamera.SetActive(true);
+            aimCamera.SetActive(true);
             healthAndMissionUI.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -108,7 +113,8 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            mainCamera.SetActive(false);
+            normalCamera.SetActive(true);
+            aimCamera.SetActive(true);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -118,7 +124,8 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            mainCamera.SetActive(false);
+            normalCamera.SetActive(true);
+            aimCamera.SetActive(true);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

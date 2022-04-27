@@ -3652,6 +3652,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1166821388}
     - target: {fileID: 632689401233633610, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: barrelEnd
+      value: 
+      objectReference: {fileID: 1432472174}
+    - target: {fileID: 632689401233633610, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 1060824275}
@@ -3666,7 +3670,7 @@ PrefabInstance:
     - target: {fileID: 1933166547556309862, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
-      objectReference: {fileID: 8343727656215592096}
+      objectReference: {fileID: 1166821388}
     - target: {fileID: 1933166547939049658, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
@@ -4699,6 +4703,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &477162073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 81003370937761986, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
+  m_PrefabInstance: {fileID: 7915020280486506689}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &489908523
 Light:
   m_ObjectHideFlags: 0
@@ -7203,6 +7212,7 @@ GameObject:
   - component: {fileID: 650005535}
   - component: {fileID: 648630113}
   - component: {fileID: 639402921}
+  - component: {fileID: 646768862}
   m_Layer: 0
   m_Name: door_1_right
   m_TagString: Untagged
@@ -7210,6 +7220,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &646768862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646768861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.622798, y: 3.8586204, z: 0.14652932}
+  m_Center: {x: 0.8620846, y: 2, z: 0.0000038146973}
 --- !u!1 &646943149
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,6 +7245,7 @@ GameObject:
   - component: {fileID: 650084949}
   - component: {fileID: 648971805}
   - component: {fileID: 639418167}
+  - component: {fileID: 646943150}
   m_Layer: 0
   m_Name: door_1_left
   m_TagString: Untagged
@@ -7229,6 +7253,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &646943150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646943149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3490467, y: 3.8586204, z: 0.14652932}
+  m_Center: {x: -0.7254759, y: 2, z: 0.0000019073486}
 --- !u!23 &648630113
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14106,7 +14143,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 980374795}
     - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+      propertyPath: aimCamera
+      value: 
+      objectReference: {fileID: 477162073}
+    - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
       propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 542897}
+    - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+      propertyPath: normalCamera
       value: 
       objectReference: {fileID: 542897}
     - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
@@ -14508,6 +14553,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!4 &1432472174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 632689402958333385, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+  m_PrefabInstance: {fileID: 391066030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1434693880
 GameObject:
   m_ObjectHideFlags: 0
@@ -62505,6 +62555,8 @@ GameObject:
   - component: {fileID: 7326091841381473237}
   - component: {fileID: 1399204367}
   - component: {fileID: 7521740185395257940}
+  - component: {fileID: 7521740185395257941}
+  - component: {fileID: 7521740185395257942}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -62531,6 +62583,117 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7521740185395257941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521740185395257939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ab359a11e33b841905e40072087cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0.15
+  doorSlide: {fileID: 8300000, guid: 668666a830e60e349a0fa995a18721fe, type: 3}
+  terminalConfirmation: {fileID: 8300000, guid: a2bb4d8e52aaf5c48956cb4e243e8def, type: 3}
+--- !u!82 &7521740185395257942
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521740185395257939}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.083333336
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!23 &7584400076446297053
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62949,7 +63112,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 81003370937761985, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
   m_PrefabInstance: {fileID: 7915020280486506689}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 477162073}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -63008,7 +63171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5204778
+      value: -2.5440128
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63439,7 +63602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5204778
+      value: -2.5440128
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y

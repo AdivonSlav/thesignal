@@ -1,8 +1,10 @@
+using System;
 using Cinemachine;
 using UnityEngine;
 
 using TheSignal.Player.Input;
 using TheSignal.SFX;
+using UnityEditor;
 
 namespace TheSignal.Player.Combat
 {
@@ -10,13 +12,14 @@ namespace TheSignal.Player.Combat
     {
         [SerializeField] private Canvas crosshairCanvas;
         [SerializeField] private Transform aimTarget;
+        [SerializeField] private Transform distanceCheckOrigin;
         
         [Header("Cinemachine cameras")]
         [SerializeField] private CinemachineVirtualCamera normalCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
 
-        [SerializeField] private GameObject equippedWeapon;
-
+        [HideInInspector] public bool allowedFire;
+        
         private InputManager inputManager;
         private Rigidbody playerRB;
 
@@ -24,6 +27,8 @@ namespace TheSignal.Player.Combat
         {
             inputManager = GetComponent<InputManager>();
             playerRB = GetComponent<Rigidbody>();
+
+            allowedFire = true;
         }
 
         private void Start()
@@ -39,6 +44,7 @@ namespace TheSignal.Player.Combat
             
             if (inputManager.isAiming)
             {
+                CheckDistance();
                 RotateWithLook();
             }
         }
@@ -53,6 +59,29 @@ namespace TheSignal.Player.Combat
             targetRotation = Quaternion.Slerp(transform.rotation, targetRotation, 15.0f * Time.fixedDeltaTime);
 
             playerRB.MoveRotation(targetRotation);
+        }
+
+        private void CheckDistance()
+        {
+            var ray = new Ray
+            {
+                origin = distanceCheckOrigin.position,
+                direction = distanceCheckOrigin.forward
+            };
+            
+            var hit = new RaycastHit();
+
+            if (Physics.Raycast(ray, out hit, 1.5f))
+            {
+                allowedFire = false;
+            }
+            else
+                allowedFire = true;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Debug.DrawRay(distanceCheckOrigin.position, distanceCheckOrigin.forward * 1.5f, Color.red);
         }
     }
 }

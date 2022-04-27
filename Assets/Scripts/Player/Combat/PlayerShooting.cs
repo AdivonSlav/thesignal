@@ -8,6 +8,7 @@ namespace TheSignal.Player.Combat
     public class PlayerShooting : MonoBehaviour
     {
         private InputManager inputManager;
+        private PlayerAiming playerAiming;
         private ProjectileWeapon projectileWeapon;
 
         private float lastShot = 0.0f;
@@ -15,6 +16,7 @@ namespace TheSignal.Player.Combat
         private void Awake()
         {
             inputManager = GetComponent<InputManager>();
+            playerAiming = GetComponent<PlayerAiming>();
             projectileWeapon = GetComponentInChildren<ProjectileWeapon>();
         }
 
@@ -22,7 +24,7 @@ namespace TheSignal.Player.Combat
         {
             lastShot += Time.deltaTime;            
             
-            if (inputManager.isFiring && inputManager.isAiming)
+            if (inputManager.isFiring && inputManager.isAiming && playerAiming.allowedFire)
             {
                 projectileWeapon.StartFiring(ref lastShot);
             }
