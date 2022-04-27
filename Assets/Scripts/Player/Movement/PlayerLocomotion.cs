@@ -71,8 +71,6 @@ namespace TheSignal.Player
 
             if (inputManager.isRunning && inputManager.moveAmount > 0.5f && !inputManager.isAiming)
                 moveDirection *= runSpeed;
-            else if (inputManager.isSprinting)
-                moveDirection *= sprintSpeed;
             else
                 moveDirection *= walkSpeed;
 
@@ -124,13 +122,14 @@ namespace TheSignal.Player
         {
             if (isGrounded)
             {
+                animatorManager.animator.applyRootMotion = false;
                 animatorManager.animator.SetBool(AnimatorManager.Jumping, true);
                 animatorManager.PlayAnimation("JumpUp", false);
 
-                float jumpVelocity = Mathf.Sqrt(-2.0f * gravityAccel * jumpHeight);
-                Vector3 playerVelocity = moveDirection;
-                playerVelocity.y = jumpVelocity;
-                playerRB.velocity = playerVelocity;
+                var jumpVelocity = Mathf.Sqrt(-2.0f * gravityAccel * jumpHeight);
+                var newVelocity = moveDirection;
+                newVelocity.y = jumpVelocity;
+                playerRB.AddForce(newVelocity, ForceMode.Impulse);
             }
         }
 
@@ -141,8 +140,12 @@ namespace TheSignal.Player
             
             if (Physics.SphereCast(raycastStart, 0.2f, Vector3.down, out hit, 1.0f, groundLayer))
             {
+                
                 if (!isGrounded && playerManager.isInteracting)
+                {
                     animatorManager.PlayAnimation("Land", true);
+                    animatorManager.animator.applyRootMotion = true;
+                }
 
                 inAirTimer = 0;
                 isGrounded = true;
@@ -151,8 +154,6 @@ namespace TheSignal.Player
             {
                 isGrounded = false;
             }
-            
-            Debug.Log($"Grounded: {isGrounded}");
         }
         
     }

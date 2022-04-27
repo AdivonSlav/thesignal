@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TheSignal.Player.Input;
+using TheSignal.SFX;
+using TMPro;
+using UnityEngine.Rendering.Universal.Internal;
 
 namespace TheSignal.Scenes.Behaviours
 {
@@ -11,15 +11,18 @@ namespace TheSignal.Scenes.Behaviours
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject door;
         [SerializeField] private MeshRenderer[] terminalRenderers;
+        [SerializeField] private GameObject[] terminalPopups;
 
         private InputManager inputManager;
         private Animator doorAnimator;
+        private DoorSoundController soundController;
         private bool playerPresent;
 
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
             doorAnimator = door.GetComponent<Animator>();
+            soundController = door.GetComponent<DoorSoundController>();
 
             // Since we use one material for all terminal renderers in the scene, we must clone the material at runtime in order to change
             // the emission color for just this door
@@ -31,11 +34,13 @@ namespace TheSignal.Scenes.Behaviours
 
         void LateUpdate()
         {
+            foreach (var popup in terminalPopups)
+            {
+                popup.SetActive(playerPresent);
+            }
+            
             if (playerPresent)
             {
-                foreach (var terminalRenderer in terminalRenderers)
-                    terminalRenderer.enabled = true;
-
                 if (inputManager.isInteracting)
                 {
                     foreach (var terminalRenderer in terminalRenderers)     
@@ -44,6 +49,7 @@ namespace TheSignal.Scenes.Behaviours
                     }
                     
                     doorAnimator.SetBool("isOpening", true);
+                    soundController.PlayConfirmation();
                 }
             }
             else
