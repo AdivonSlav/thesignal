@@ -11198,6 +11198,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713967755}
     m_Modifications:
+    - target: {fileID: 2185195267956840246, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_Text
+      value: "The war against the Mentorians is still at a stalemate. The Human \u2013
+        Antolic Aliance is strong but the elections for the supreme leader of the
+        Antolics will soon begin and if Meric wins we might have a problem. Merics
+        politics are of racial supremacy just like that of the Mentorians so the
+        aliance could break. But this is a distant worry. Now the most pressing issue
+        is the new recruits coming in and training them for the battlefield. I gave
+        some time off to my men so they can go see their families. It has been a
+        rough couple of years... I hope with the new weapon we are transporting that
+        we can manage to turn the tide of the war."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185195267956840246, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185195267956840246, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607219053925714384, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_Text
+      value: 'Find The Journals
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3607219054586690051, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11213,6 +11239,12 @@ PrefabInstance:
     - target: {fileID: 3607219055033131200, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607219055288319794, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_Text
+      value: 'Go to the other Ship
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 3607219055357085260, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_Name
@@ -11300,6 +11332,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3607219055357085296, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435845744265390595, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 239.309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435845744265390595, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435845744265390595, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435845744265390595, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -102
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083220934280249275, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14146,6 +14198,10 @@ PrefabInstance:
       propertyPath: aimCamera
       value: 
       objectReference: {fileID: 477162073}
+    - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+      propertyPath: JournalUI2
+      value: 
+      objectReference: {fileID: 40315231}
     - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
       propertyPath: mainCamera
       value: 
@@ -26307,8 +26363,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: -44.821}
-  m_SizeDelta: {x: 239.614, y: 226.596}
+  m_AnchoredPosition: {x: -40, y: -77.373924}
+  m_SizeDelta: {x: 239.614, y: 250.708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043074310
 MonoBehaviour:
@@ -26343,14 +26399,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: "The war agains the Mentorians is still at a stale mate. The Human \u2013
-    Antolic Aliance is strong but the elections for the supreme leader of the Antolics
-    will soon begin and if Meric wins we might have a problem. Merics politics are
-    of racial supremacy just like that of the Mentorians so the aliance could break.
-    But this is a distant worry. Now the most pressing issue is the new recruits
-    coming in and training them for the battlefieled. I gave some of my man time
-    off to go see their families. It has been a rough couple of years... I hope we
-    can turn the tide of the war."
+  m_Text: 'The Mentorians are a warrior race. For centuries they have been conquering
+    the Northen Galaxies but 300 years ago when our people first met we knew that
+    war would be inevitable. At first the war was in their favour but after the humans
+    made their allience with the Antolics things changed. Losses turned into wins
+    and we started to gain back some planets, but soon the stalemate came. For more
+    than 130 years, we are playing a back and forth game and the end was nowhere
+    to be found until recently when the new weapon was discovered that could change
+    everything. '
 --- !u!222 &2043074311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63171,7 +63227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5440128
+      value: -2.5204778
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63602,7 +63658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5440128
+      value: -2.5204778
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y

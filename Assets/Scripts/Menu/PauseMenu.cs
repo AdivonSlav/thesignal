@@ -24,6 +24,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject JournalUI;
+        [SerializeField] private GameObject JournalUI2;
 
         private bool objectiveTab;
         
@@ -35,7 +36,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isPressingESC && !JournalUI.activeInHierarchy && !inputManager.isAiming)
+                if (inputManager.isPressingESC && !inputManager.isAiming && !JournalUI.activeInHierarchy && !JournalUI2.activeInHierarchy)
                 {
                     if(GameIsPaused)
                         Resume();
@@ -113,8 +114,8 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            normalCamera.SetActive(true);
-            aimCamera.SetActive(true);
+            normalCamera.SetActive(false);
+            aimCamera.SetActive(false);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
