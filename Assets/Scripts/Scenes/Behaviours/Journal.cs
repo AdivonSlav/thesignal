@@ -1,53 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using TheSignal.Player.Input;
 using UnityEngine;
 
-namespace TheSignal
+namespace TheSignal.Scenes.Behaviours
 {
     public class Journal : MonoBehaviour
     {
-        [SerializeField] private GameObject mainCamera;
-        [SerializeField] private GameObject JournalUI;
+        [SerializeField] private GameObject journalUI;
         [SerializeField] private GameObject player;
+        
         private bool isInTheZone;
 
         private InputManager inputManager;
+        private CinemachineController cinemachineController;
 
-        void Awake()
+        private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
+            cinemachineController = Camera.main.GetComponent<CinemachineController>();
         }
+        
         private void Update()
         {
             if (isInTheZone && inputManager.isInteracting)
             {
                 OpenJournal();
             }
-            if (JournalUI.activeInHierarchy && inputManager.isPressingESC)
+            if (journalUI.activeInHierarchy && inputManager.isPressingESC)
             {
                 CloseJournal();
             }
         }
+        
         private void OpenJournal()
         {
-            JournalUI.SetActive(true);
+            cinemachineController.TogglePause(inputManager.isAiming);
+            
+            journalUI.SetActive(true);
             Time.timeScale = 0.0f;
             inputManager.isInteracting = false;
-            mainCamera.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        
         private void CloseJournal()
         {
-            JournalUI.SetActive(false);
+            cinemachineController.TogglePause(inputManager.isAiming);
+            
+            journalUI.SetActive(false);
             Time.timeScale = 1.0f;
-            mainCamera.SetActive(true);
+            inputManager.isPressingESC = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            inputManager.isPressingESC = false;
-            this.gameObject.SetActive(false);
+            
+            Destroy(gameObject);
         }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))

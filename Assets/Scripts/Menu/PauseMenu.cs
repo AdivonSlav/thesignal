@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TheSignal.Player.Input;
+using TheSignal.Scenes.Behaviours;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +12,9 @@ namespace TheSignal.Menu
         public static bool GameIsPaused = false;
         
         private InputManager inputManager;
+        private CinemachineController cinemachineController;
         
         [SerializeField] private GameObject player;
-        [Header("Cameras")]
-        [SerializeField]private GameObject normalCamera;
-        [SerializeField]private GameObject aimCamera;
         [Header("UI")]
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject mainMenuUI;
@@ -23,20 +22,20 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveActive;
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
-        [SerializeField] private GameObject JournalUI;
-        [SerializeField] private GameObject JournalUI2;
+        [SerializeField] private GameObject journalUI;
 
         private bool objectiveTab;
         
         private void Awake()
         {
+            cinemachineController = Camera.main.GetComponent<CinemachineController>();
             inputManager = player.GetComponent<InputManager>();
         }
         void Update()
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isPressingESC && !inputManager.isAiming && !JournalUI.activeInHierarchy && !JournalUI2.activeInHierarchy)
+                if (inputManager.isPressingESC && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy)
                 {
                     if(GameIsPaused)
                         Resume();
@@ -85,8 +84,7 @@ namespace TheSignal.Menu
             Time.timeScale = 1f;
             GameIsPaused = false;
             inputManager.isPressingESC = false;
-            normalCamera.SetActive(true);
-            aimCamera.SetActive(true);
+            cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -114,8 +112,7 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            normalCamera.SetActive(false);
-            aimCamera.SetActive(false);
+            cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -125,8 +122,7 @@ namespace TheSignal.Menu
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isPressingESC = false;
-            normalCamera.SetActive(true);
-            aimCamera.SetActive(true);
+            cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

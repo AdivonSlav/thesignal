@@ -78,10 +78,5 @@ namespace TheSignal.Player.Combat
             else
                 allowedFire = true;
         }
-
-        private void OnDrawGizmos()
-        {
-            Debug.DrawRay(distanceCheckOrigin.position, distanceCheckOrigin.forward * 1.5f, Color.red);
-        }
     }
 }
