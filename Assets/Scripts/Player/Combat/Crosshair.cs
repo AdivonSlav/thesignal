@@ -17,9 +17,9 @@ namespace TheSignal.Player.Combat
         {
             ray.origin = cameraTransform.position;
             ray.direction = cameraTransform.forward;
-
+            
             Physics.Raycast(ray, out hitInfo);
-
+            
             transform.position = hitInfo.point;
         }
     }

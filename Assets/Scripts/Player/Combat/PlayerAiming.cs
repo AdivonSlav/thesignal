@@ -3,6 +3,7 @@ using Cinemachine;
 using UnityEngine;
 
 using TheSignal.Player.Input;
+using TheSignal.Scenes.Behaviours;
 using TheSignal.SFX;
 using UnityEditor;
 
@@ -27,7 +28,7 @@ namespace TheSignal.Player.Combat
         {
             inputManager = GetComponent<InputManager>();
             playerRB = GetComponent<Rigidbody>();
-
+            
             allowedFire = true;
         }
 
@@ -77,11 +78,6 @@ namespace TheSignal.Player.Combat
             }
             else
                 allowedFire = true;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Debug.DrawRay(distanceCheckOrigin.position, distanceCheckOrigin.forward * 1.5f, Color.red);
         }
     }
 }

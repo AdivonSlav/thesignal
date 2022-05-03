@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ab359a11e33b841905e40072087cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.15
+  volume: 0.1
   doorSlide: {fileID: 8300000, guid: 668666a830e60e349a0fa995a18721fe, type: 3}
   terminalConfirmation: {fileID: 8300000, guid: a2bb4d8e52aaf5c48956cb4e243e8def, type: 3}
 --- !u!82 &6652204612315787338
