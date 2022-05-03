@@ -10,7 +10,7 @@ namespace TheSignal.Scenes.Behaviours
         [SerializeField] private CinemachineVirtualCamera freelookCamera;
         [SerializeField] private CinemachineVirtualCamera aimCamera;
 
-        private void Awake()
+        private void Start()
         {
             brain = GetComponent<CinemachineBrain>();
         }
@@ -23,6 +23,15 @@ namespace TheSignal.Scenes.Behaviours
                 aimCamera.enabled = !aimCamera.enabled;
             else
                 freelookCamera.enabled = !freelookCamera.enabled;
+            
+            Cursor.visible = !Cursor.visible;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            Time.timeScale = Time.timeScale == 0.0f ? 1.0f : 0.0f;
+        }
+
+        public bool Paused()
+        {
+            return !brain.enabled;
         }
     }
 }

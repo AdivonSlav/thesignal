@@ -10194,6 +10194,7 @@ GameObject:
   - component: {fileID: 632689401233633590}
   - component: {fileID: 2601164843931965901}
   - component: {fileID: 384710797171765684}
+  - component: {fileID: 2144876831379527336}
   m_Layer: 7
   m_Name: Player (NewRig)
   m_TagString: Player
@@ -10286,14 +10287,14 @@ MonoBehaviour:
   strafingHorizontal: 0
   strafingVertical: 0
   isRunning: 0
-  isSprinting: 0
   isJumping: 0
   isAiming: 0
   isFiring: 0
   isInteracting: 0
-  isPressingESC: 0
   isPressingK: 0
   isPressingI: 0
+  isSelecting: 0
+  isExiting: 0
 --- !u!114 &632689401233633613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10598,6 +10599,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d51df139d4e50794993d2130348b08d9, type: 3}
   - {fileID: 8300000, guid: 39ca7e88dc461e8458d02a2284708c0d, type: 3}
   - {fileID: 8300000, guid: d772d1b334ef5f148bf1308d5fb3e4b0, type: 3}
+--- !u!114 &2144876831379527336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632689401233633591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db678323ae77850419fa0e5b5de59b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  journalEntries:
+  - {fileID: 4900000, guid: 7ec885da0c31a4e41b1499f7ca15076a, type: 3}
+  - {fileID: 4900000, guid: c6b58b859a56ea441a091680ee1ea6f3, type: 3}
+  - {fileID: 4900000, guid: 8b1362006fe94fa43b791ea4c915da5f, type: 3}
+  - {fileID: 4900000, guid: 163f6bda0b29f6d47b608ae34302c839, type: 3}
+  - {fileID: 4900000, guid: 55215fb22582aa94d87cee75db068e76, type: 3}
+  - {fileID: 4900000, guid: cfe34441f5499bd4dbe98d98657e0d38, type: 3}
 --- !u!1 &632689402137162839
 GameObject:
   m_ObjectHideFlags: 0

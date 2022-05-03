@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using TheSignal.Animation;
+using TheSignal.Scenes.Behaviours;
 
 namespace TheSignal.Player.Input
 {
@@ -9,7 +11,8 @@ namespace TheSignal.Player.Input
         private PlayerControls playerControls;
         private AnimatorManager animatorManager;
         private PlayerLocomotion playerLocomotion;
-    
+        private CinemachineController cinemachineController;
+
         [HideInInspector] public Vector2 movementInput;
         [HideInInspector] public float moveAmount;
         [HideInInspector] public float verticalInput;
@@ -17,43 +20,47 @@ namespace TheSignal.Player.Input
         [HideInInspector] public float strafingHorizontal;
         [HideInInspector] public float strafingVertical;
         [HideInInspector] public bool isRunning;
-        [HideInInspector] public bool isSprinting;
         [HideInInspector] public bool isJumping;
         [HideInInspector] public bool isAiming;
         [HideInInspector] public bool isFiring;
         [HideInInspector] public bool isInteracting;
-        [HideInInspector] public bool isPressingESC;
         [HideInInspector] public bool isPressingK;
         [HideInInspector] public bool isPressingI;
+
+        [HideInInspector] public bool isSelecting;
+        [HideInInspector] public bool isExiting;
 
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            cinemachineController = Camera.main.GetComponent<CinemachineController>();
         }
-    
+
         private void OnEnable()
         {
             if (playerControls == null)
             {
                 playerControls = new PlayerControls();
-    
+
                 // Simply storing the result of each key event
                 playerControls.Player.Move.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.Player.Run.performed += i => isRunning = i.ReadValueAsButton();
                 playerControls.Player.Run.canceled += i => isRunning = i.ReadValueAsButton();
-                playerControls.Player.Sprint.performed += i => isSprinting = i.ReadValueAsButton();
-                playerControls.Player.Sprint.canceled += i => isSprinting = i.ReadValueAsButton();
                 playerControls.Player.Jump.performed += i => isJumping = i.ReadValueAsButton();
                 playerControls.Player.Aim.performed += i => isAiming = i.ReadValueAsButton();
                 playerControls.Player.Aim.canceled += i => isAiming = i.ReadValueAsButton();
                 playerControls.Player.Fire1.performed += i => isFiring = i.ReadValueAsButton();
                 playerControls.Player.Fire1.canceled += i => isFiring = i.ReadValueAsButton();
-                playerControls.Player.Escape.performed += i => isPressingESC = i.ReadValueAsButton();
                 playerControls.Player.Interact.performed += i => isInteracting = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.performed += i => isPressingK = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.canceled += i => isPressingK = i.ReadValueAsButton();
                 playerControls.Player.ObjectiveTab.performed += i => isPressingI = i.ReadValueAsButton();
+
+                playerControls.UI.Select.performed += i => isSelecting = i.ReadValueAsButton();
+                playerControls.UI.Select.canceled += i => isSelecting = i.ReadValueAsButton();
+                playerControls.UI.Exit.performed += i => isExiting = i.ReadValueAsButton();
+                playerControls.UI.Exit.canceled += i => isExiting = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
@@ -63,7 +70,17 @@ namespace TheSignal.Player.Input
         {
             playerControls.Disable();
         }
-    
+
+        private void Update()
+        {
+            bool ignoreInput = cinemachineController.Paused();
+
+            if (ignoreInput && playerControls.Player.enabled)
+                playerControls.Player.Disable();
+            else if (!ignoreInput && !playerControls.Player.enabled)
+                playerControls.Player.Enable();
+        }
+
         public void HandleAllInputs()
         {
             HandleMovementInput();

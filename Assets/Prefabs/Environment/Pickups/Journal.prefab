@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3139009141622190021}
   - component: {fileID: 3139009141621222661}
   - component: {fileID: 3139009141623387491}
-  - component: {fileID: 3139009141623485380}
+  - component: {fileID: 3716425881393882311}
   m_Layer: 0
   m_Name: Journal
   m_TagString: Journal
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6103652, y: 2.4927561, z: 0.008173068}
   m_Center: {x: -0.26361358, y: -0.008314372, z: 0.0040866076}
---- !u!114 &3139009141623485380
+--- !u!114 &3716425881393882311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,9 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b484f8fba4130df43951925f75d31922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  JournalUI: {fileID: 0}
   player: {fileID: 0}
+  popup: {fileID: 5436518157871774819}
+  journalEntry: {fileID: 0}
+  journalImage: {fileID: 0}
+  headerText: {fileID: 0}
+  bodyText: {fileID: 0}
 --- !u!1 &5436518157871774819
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isPressingESC && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy)
+                if (inputManager.isExiting && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy)
                 {
                     if(GameIsPaused)
                         Resume();
@@ -53,7 +53,6 @@ namespace TheSignal.Menu
                         ObjectiveTabInactive();
                     }
                 }
-
             }
             else
             {
@@ -83,11 +82,11 @@ namespace TheSignal.Menu
             pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
-            inputManager.isPressingESC = false;
+            inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(true);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
+            // Cursor.lockState = CursorLockMode.Locked;
         }
         public void MainMenu()
         {
@@ -111,7 +110,7 @@ namespace TheSignal.Menu
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0.0f;
             GameIsPaused = true;
-            inputManager.isPressingESC = false;
+            inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
@@ -121,7 +120,7 @@ namespace TheSignal.Menu
         {
             Time.timeScale = 0.0f;
             GameIsPaused = true;
-            inputManager.isPressingESC = false;
+            inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
             Cursor.visible = true;
