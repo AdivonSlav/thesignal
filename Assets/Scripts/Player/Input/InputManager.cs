@@ -25,10 +25,10 @@ namespace TheSignal.Player.Input
         [HideInInspector] public bool isFiring;
         [HideInInspector] public bool isInteracting;
         [HideInInspector] public bool isPressingK;
-        [HideInInspector] public bool isPressingI;
 
         [HideInInspector] public bool isSelecting;
         [HideInInspector] public bool isExiting;
+        [HideInInspector] public bool isPressingTab;
 
         private void Awake()
         {
@@ -55,12 +55,13 @@ namespace TheSignal.Player.Input
                 playerControls.Player.Interact.performed += i => isInteracting = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.performed += i => isPressingK = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.canceled += i => isPressingK = i.ReadValueAsButton();
-                playerControls.Player.ObjectiveTab.performed += i => isPressingI = i.ReadValueAsButton();
 
                 playerControls.UI.Select.performed += i => isSelecting = i.ReadValueAsButton();
                 playerControls.UI.Select.canceled += i => isSelecting = i.ReadValueAsButton();
                 playerControls.UI.Exit.performed += i => isExiting = i.ReadValueAsButton();
                 playerControls.UI.Exit.canceled += i => isExiting = i.ReadValueAsButton();
+                playerControls.UI.Objectives.performed += i => isPressingTab = i.ReadValueAsButton();
+                playerControls.UI.Objectives.canceled += i => isPressingTab = i.ReadValueAsButton();
             }
     
             playerControls.Enable();

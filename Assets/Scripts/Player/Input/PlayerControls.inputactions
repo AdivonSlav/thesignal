@@ -103,15 +103,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ObjectiveTab",
-                    "type": "Button",
-                    "id": "59fa48a9-aa6c-4d73-9ddf-fd26928ef7e9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -277,17 +268,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SlowMo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a8431e9-9d38-4194-aa23-79cc254bd9da",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ObjectiveTab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -4,6 +4,7 @@ using TheSignal.Player.Input;
 using TheSignal.Scenes.Behaviours;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace TheSignal.Menu
 {
@@ -42,16 +43,9 @@ namespace TheSignal.Menu
                     else
                         Pause();
                 }
-                if (inputManager.isPressingI)
+                if (inputManager.isPressingTab)
                 {
-                    if (objectiveTab)
-                    {
-                        ObjectiveTabActive();
-                    }
-                    else
-                    {
-                        ObjectiveTabInactive();
-                    }
+                    ToggleObjectives();
                 }
             }
             else
@@ -60,21 +54,14 @@ namespace TheSignal.Menu
             }
         }
         #region ObjectiveTab
-        void ObjectiveTabActive()
+        void ToggleObjectives()
         {
-            objectiveTab = false;
-            objectiveActive.SetActive(false);
-            objectiveInactive.SetActive(true);
-            inputManager.isPressingI = false;
-        }
-        void ObjectiveTabInactive()
-        {
-            objectiveTab = true;
-            objectiveInactive.SetActive(false);
-            objectiveActive.SetActive(true);
-            inputManager.isPressingI = false;
+            objectiveActive.SetActive(!objectiveActive.gameObject.activeInHierarchy);
+            objectiveInactive.SetActive(!objectiveActive.gameObject.activeInHierarchy);
+            inputManager.isPressingTab = false;
         }
         #endregion
+        
         #region MainPanel
         public void Resume()
         {
@@ -108,23 +95,17 @@ namespace TheSignal.Menu
         void Pause()
         {
             pauseMenuUI.SetActive(true);
-            Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
         void PauseDead()
         {
-            Time.timeScale = 0.0f;
             GameIsPaused = true;
             inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
         #endregion
         #region Main Menu Button

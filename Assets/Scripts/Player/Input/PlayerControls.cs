@@ -125,15 +125,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ObjectiveTab"",
-                    ""type"": ""Button"",
-                    ""id"": ""59fa48a9-aa6c-4d73-9ddf-fd26928ef7e9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -301,17 +292,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SlowMo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0a8431e9-9d38-4194-aa23-79cc254bd9da"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ObjectiveTab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -399,7 +379,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_SlowMo = m_Player.FindAction("SlowMo", throwIfNotFound: true);
-        m_Player_ObjectiveTab = m_Player.FindAction("ObjectiveTab", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
@@ -475,7 +454,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_SlowMo;
-    private readonly InputAction m_Player_ObjectiveTab;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -491,7 +469,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @SlowMo => m_Wrapper.m_Player_SlowMo;
-        public InputAction @ObjectiveTab => m_Wrapper.m_Player_ObjectiveTab;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -534,9 +511,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlowMo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
                 @SlowMo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
                 @SlowMo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
-                @ObjectiveTab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
-                @ObjectiveTab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
-                @ObjectiveTab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -574,9 +548,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlowMo.started += instance.OnSlowMo;
                 @SlowMo.performed += instance.OnSlowMo;
                 @SlowMo.canceled += instance.OnSlowMo;
-                @ObjectiveTab.started += instance.OnObjectiveTab;
-                @ObjectiveTab.performed += instance.OnObjectiveTab;
-                @ObjectiveTab.canceled += instance.OnObjectiveTab;
             }
         }
     }
@@ -643,7 +614,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnSlowMo(InputAction.CallbackContext context);
-        void OnObjectiveTab(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
