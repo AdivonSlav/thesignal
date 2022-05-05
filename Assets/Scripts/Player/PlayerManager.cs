@@ -1,11 +1,8 @@
-
-using System.Runtime.CompilerServices;
 using TheSignal.Animation;
 using TheSignal.Player.Combat;
 using UnityEngine;
-
 using TheSignal.Player.Input;
-using UnityEditor;
+using TheSignal.Player.Movement;
 
 namespace TheSignal.Player
 {
@@ -17,9 +14,6 @@ namespace TheSignal.Player
         private Animator animator;
         private PlayerAiming playerAiming;
         private PlayerShooting playerShooting;
-
-
-        [HideInInspector] public bool isInteracting;
 
         private void Awake()
         {
@@ -49,7 +43,6 @@ namespace TheSignal.Player
 
         private void LateUpdate()
         {
-            isInteracting = animator.GetBool(AnimatorManager.Interacting);
             playerLocomotion.isJumping = animator.GetBool(AnimatorManager.Jumping);
             animator.SetBool(AnimatorManager.Grounded, playerLocomotion.isGrounded);
         }

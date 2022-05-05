@@ -1,0 +1,18 @@
+{
+    "name": "Scripts.Player.Input",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7dd28bd06b5560044be1b6bed544a59a",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:22df117165cc7d642986a21891b2826b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

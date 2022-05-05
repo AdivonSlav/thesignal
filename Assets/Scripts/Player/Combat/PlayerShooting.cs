@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 using TheSignal.Player.Input;
 using TheSignal.Weapons;
 

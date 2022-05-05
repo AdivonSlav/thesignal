@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TheSignal.Player.Input;
 
-namespace TheSignal.Scripts.Player
+namespace TheSignal.Player.Combat.UI
 {
     [RequireComponent(typeof(InputManager))]
     public class PlayerHealthSlowMoUI : MonoBehaviour

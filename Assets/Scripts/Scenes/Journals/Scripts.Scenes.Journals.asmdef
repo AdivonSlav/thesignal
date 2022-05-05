@@ -1,0 +1,18 @@
+{
+    "name": "Scripts.Scenes.Journals",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a3ce8b92cca2a9e4483f07353f052bcf",
+        "GUID:1c0a78551b72c6344a7be610bad9bfe1",
+        "GUID:22df117165cc7d642986a21891b2826b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TheSignal.Player.Input;
 using UnityEngine;
 
-namespace TheSignal.SFX
+namespace TheSignal.SFX.Player
 {
     public class WeaponSoundController : MonoBehaviour
     {

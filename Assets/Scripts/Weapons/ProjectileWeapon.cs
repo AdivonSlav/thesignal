@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TheSignal.SFX;
+using TheSignal.SFX.Player;
 using UnityEngine;
 
 namespace TheSignal.Weapons

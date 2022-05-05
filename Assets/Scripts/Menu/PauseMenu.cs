@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using TheSignal.Player;
+using TheSignal.Camera;
 using TheSignal.Player.Input;
-using TheSignal.Scenes.Behaviours;
+using TheSignal.Player.Journal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace TheSignal.Menu
 {
@@ -29,7 +26,7 @@ namespace TheSignal.Menu
         
         private void Awake()
         {
-            cinemachineController = Camera.main.GetComponent<CinemachineController>();
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
             inputManager = player.GetComponent<InputManager>();
             playerJournal = player.GetComponent<PlayerJournal>();
         }

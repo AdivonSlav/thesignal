@@ -1,0 +1,16 @@
+{
+    "name": "Scripts.Weapons",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3010d6124224a934998ca30014ef11ad"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

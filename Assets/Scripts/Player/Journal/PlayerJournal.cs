@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using TheSignal.Camera;
 using TheSignal.Player.Input;
-using TheSignal.Scenes.Behaviours;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TheSignal.Player
+namespace TheSignal.Player.Journal
 {
     public class PlayerJournal : MonoBehaviour
     {
@@ -24,7 +24,7 @@ namespace TheSignal.Player
         {
             addedEntries = new List<TextAsset>();
             inputManager = GetComponent<InputManager>();
-            cinemachineController = Camera.main.GetComponent<CinemachineController>();
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
         }
 
         private void Update()

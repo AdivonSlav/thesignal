@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
 using TheSignal.Animation;
-using TheSignal.Scenes.Behaviours;
+using TheSignal.Camera;
 
 namespace TheSignal.Player.Input
 {
-    [RequireComponent(typeof(AnimatorManager), typeof(PlayerLocomotion))]
+    [RequireComponent(typeof(AnimatorManager))]
     public class InputManager : MonoBehaviour
     {
         private PlayerControls playerControls;
         private AnimatorManager animatorManager;
-        private PlayerLocomotion playerLocomotion;
         private CinemachineController cinemachineController;
 
         [HideInInspector] public Vector2 movementInput;
@@ -34,8 +32,7 @@ namespace TheSignal.Player.Input
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
-            playerLocomotion = GetComponent<PlayerLocomotion>();
-            cinemachineController = Camera.main.GetComponent<CinemachineController>();
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
         }
 
         private void OnEnable()
@@ -88,7 +85,6 @@ namespace TheSignal.Player.Input
         public void HandleAllInputs()
         {
             HandleMovementInput();
-            HandleJumpingInput();
             HandleAimingInput();
         }
     
@@ -98,15 +94,6 @@ namespace TheSignal.Player.Input
             horizontalInput = movementInput.x;
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
             animatorManager.UpdateMovementValues(moveAmount, moveAmount, moveAmount, isRunning);
-        }
-
-        private void HandleJumpingInput()
-        {
-            if (isJumping)
-            {
-               isJumping = false;
-               playerLocomotion.HandleJump();
-            }
         }
 
         private void HandleAimingInput()
