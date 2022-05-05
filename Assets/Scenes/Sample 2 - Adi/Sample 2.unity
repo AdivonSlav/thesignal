@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7199615697635440859, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8961199619764108381, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.9000244
@@ -296,6 +300,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+--- !u!1 &140572177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4924696639977073140, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+  m_PrefabInstance: {fileID: 140572176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &140572178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3818089443400042203, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+  m_PrefabInstance: {fileID: 140572176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &140572179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8468752465980700407, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+  m_PrefabInstance: {fileID: 140572176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &140572180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7199615697635440859, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+  m_PrefabInstance: {fileID: 140572176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170153602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2399,6 +2429,22 @@ PrefabInstance:
       propertyPath: m_SettingsGUIToggle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2144876831379527336, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: journal
+      value: 
+      objectReference: {fileID: 140572180}
+    - target: {fileID: 2144876831379527336, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: headerText
+      value: 
+      objectReference: {fileID: 140572179}
+    - target: {fileID: 2144876831379527336, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: entryContainer
+      value: 
+      objectReference: {fileID: 140572177}
+    - target: {fileID: 2144876831379527336, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: buttonContainer
+      value: 
+      objectReference: {fileID: 140572178}
     - target: {fileID: 2601164843931965901, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

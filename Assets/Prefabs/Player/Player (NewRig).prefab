@@ -10292,9 +10292,10 @@ MonoBehaviour:
   isFiring: 0
   isInteracting: 0
   isPressingK: 0
-  isPressingI: 0
   isSelecting: 0
   isExiting: 0
+  isPressingTab: 0
+  isOpeningJournal: 0
 --- !u!114 &632689401233633613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10611,13 +10612,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db678323ae77850419fa0e5b5de59b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalEntries:
-  - {fileID: 4900000, guid: 7ec885da0c31a4e41b1499f7ca15076a, type: 3}
-  - {fileID: 4900000, guid: c6b58b859a56ea441a091680ee1ea6f3, type: 3}
-  - {fileID: 4900000, guid: 8b1362006fe94fa43b791ea4c915da5f, type: 3}
-  - {fileID: 4900000, guid: 163f6bda0b29f6d47b608ae34302c839, type: 3}
-  - {fileID: 4900000, guid: 55215fb22582aa94d87cee75db068e76, type: 3}
-  - {fileID: 4900000, guid: cfe34441f5499bd4dbe98d98657e0d38, type: 3}
+  journal: {fileID: 0}
+  headerText: {fileID: 0}
+  entryContainer: {fileID: 0}
+  buttonContainer: {fileID: 0}
+  buttonPrefab: {fileID: 3245357634942048520, guid: 63ae63fbe4367154f92f0ba88f929052, type: 3}
+  journalOpened: 0
 --- !u!1 &632689402137162839
 GameObject:
   m_ObjectHideFlags: 0
