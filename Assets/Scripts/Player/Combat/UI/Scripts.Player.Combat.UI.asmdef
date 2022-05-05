@@ -1,0 +1,16 @@
+{
+    "name": "Scripts.Player.Combat.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1c0a78551b72c6344a7be610bad9bfe1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

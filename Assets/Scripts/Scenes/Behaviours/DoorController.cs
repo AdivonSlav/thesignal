@@ -1,8 +1,6 @@
 using UnityEngine;
 using TheSignal.Player.Input;
-using TheSignal.SFX;
-using TMPro;
-using UnityEngine.Rendering.Universal.Internal;
+using TheSignal.SFX.Environement;
 
 namespace TheSignal.Scenes.Behaviours
 {

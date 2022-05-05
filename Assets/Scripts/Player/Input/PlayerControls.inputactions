@@ -103,15 +103,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ObjectiveTab",
-                    "type": "Button",
-                    "id": "59fa48a9-aa6c-4d73-9ddf-fd26928ef7e9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -279,17 +270,6 @@
                     "action": "SlowMo",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a8431e9-9d38-4194-aa23-79cc254bd9da",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ObjectiveTab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -319,6 +299,15 @@
                     "name": "Objectives",
                     "type": "Button",
                     "id": "a1551285-58b2-47f6-8f0e-75365f6c5634",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Journal",
+                    "type": "Button",
+                    "id": "c0b1ad0b-ab03-42c5-969c-82abefc17c85",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -356,6 +345,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Objectives",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4125d958-76c6-4f5c-b8be-3f3e48a8e9d1",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Journal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

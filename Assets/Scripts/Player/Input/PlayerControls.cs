@@ -125,15 +125,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ObjectiveTab"",
-                    ""type"": ""Button"",
-                    ""id"": ""59fa48a9-aa6c-4d73-9ddf-fd26928ef7e9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -301,17 +292,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SlowMo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0a8431e9-9d38-4194-aa23-79cc254bd9da"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ObjectiveTab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -341,6 +321,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Objectives"",
                     ""type"": ""Button"",
                     ""id"": ""a1551285-58b2-47f6-8f0e-75365f6c5634"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Journal"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0b1ad0b-ab03-42c5-969c-82abefc17c85"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -380,6 +369,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Objectives"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4125d958-76c6-4f5c-b8be-3f3e48a8e9d1"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Journal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -399,12 +399,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_SlowMo = m_Player.FindAction("SlowMo", throwIfNotFound: true);
-        m_Player_ObjectiveTab = m_Player.FindAction("ObjectiveTab", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
         m_UI_Objectives = m_UI.FindAction("Objectives", throwIfNotFound: true);
+        m_UI_Journal = m_UI.FindAction("Journal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -475,7 +475,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_SlowMo;
-    private readonly InputAction m_Player_ObjectiveTab;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -491,7 +490,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @SlowMo => m_Wrapper.m_Player_SlowMo;
-        public InputAction @ObjectiveTab => m_Wrapper.m_Player_ObjectiveTab;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -534,9 +532,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlowMo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
                 @SlowMo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
                 @SlowMo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowMo;
-                @ObjectiveTab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
-                @ObjectiveTab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
-                @ObjectiveTab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnObjectiveTab;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -574,9 +569,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlowMo.started += instance.OnSlowMo;
                 @SlowMo.performed += instance.OnSlowMo;
                 @SlowMo.canceled += instance.OnSlowMo;
-                @ObjectiveTab.started += instance.OnObjectiveTab;
-                @ObjectiveTab.performed += instance.OnObjectiveTab;
-                @ObjectiveTab.canceled += instance.OnObjectiveTab;
             }
         }
     }
@@ -588,6 +580,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Select;
     private readonly InputAction m_UI_Exit;
     private readonly InputAction m_UI_Objectives;
+    private readonly InputAction m_UI_Journal;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
@@ -595,6 +588,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_UI_Select;
         public InputAction @Exit => m_Wrapper.m_UI_Exit;
         public InputAction @Objectives => m_Wrapper.m_UI_Objectives;
+        public InputAction @Journal => m_Wrapper.m_UI_Journal;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -613,6 +607,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Objectives.started -= m_Wrapper.m_UIActionsCallbackInterface.OnObjectives;
                 @Objectives.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnObjectives;
                 @Objectives.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnObjectives;
+                @Journal.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJournal;
+                @Journal.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJournal;
+                @Journal.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJournal;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -626,6 +623,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Objectives.started += instance.OnObjectives;
                 @Objectives.performed += instance.OnObjectives;
                 @Objectives.canceled += instance.OnObjectives;
+                @Journal.started += instance.OnJournal;
+                @Journal.performed += instance.OnJournal;
+                @Journal.canceled += instance.OnJournal;
             }
         }
     }
@@ -643,12 +643,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnSlowMo(InputAction.CallbackContext context);
-        void OnObjectiveTab(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnSelect(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnObjectives(InputAction.CallbackContext context);
+        void OnJournal(InputAction.CallbackContext context);
     }
 }

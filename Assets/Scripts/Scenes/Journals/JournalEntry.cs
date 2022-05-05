@@ -1,3 +1,5 @@
+using TheSignal.Camera;
+using TheSignal.Player.Journal;
 using TheSignal.Player.Input;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +26,8 @@ namespace TheSignal.Scenes.Behaviours
         private void Awake()
         {
             inputManager = player.GetComponent<InputManager>();
-            cinemachineController = Camera.main.GetComponent<CinemachineController>();
-            mainCameraTransform = Camera.main.transform;
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
+            mainCameraTransform = UnityEngine.Camera.main.transform;
             playerJournal = player.GetComponent<PlayerJournal>();
         }
         
@@ -60,7 +62,7 @@ namespace TheSignal.Scenes.Behaviours
         {
             cinemachineController.TogglePause(inputManager.isAiming);
             
-            playerJournal.AddEntry(ref journalEntry);
+            playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(false);
             inputManager.isExiting = false;
 

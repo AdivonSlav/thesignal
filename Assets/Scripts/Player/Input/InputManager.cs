@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
 using TheSignal.Animation;
-using TheSignal.Scenes.Behaviours;
+using TheSignal.Camera;
 
 namespace TheSignal.Player.Input
 {
-    [RequireComponent(typeof(AnimatorManager), typeof(PlayerLocomotion))]
+    [RequireComponent(typeof(AnimatorManager))]
     public class InputManager : MonoBehaviour
     {
         private PlayerControls playerControls;
         private AnimatorManager animatorManager;
-        private PlayerLocomotion playerLocomotion;
         private CinemachineController cinemachineController;
 
         [HideInInspector] public Vector2 movementInput;
@@ -25,16 +23,16 @@ namespace TheSignal.Player.Input
         [HideInInspector] public bool isFiring;
         [HideInInspector] public bool isInteracting;
         [HideInInspector] public bool isPressingK;
-        [HideInInspector] public bool isPressingI;
 
         [HideInInspector] public bool isSelecting;
         [HideInInspector] public bool isExiting;
+        [HideInInspector] public bool isPressingTab;
+        [HideInInspector] public bool isOpeningJournal;
 
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
-            playerLocomotion = GetComponent<PlayerLocomotion>();
-            cinemachineController = Camera.main.GetComponent<CinemachineController>();
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
         }
 
         private void OnEnable()
@@ -55,12 +53,15 @@ namespace TheSignal.Player.Input
                 playerControls.Player.Interact.performed += i => isInteracting = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.performed += i => isPressingK = i.ReadValueAsButton();
                 playerControls.Player.SlowMo.canceled += i => isPressingK = i.ReadValueAsButton();
-                playerControls.Player.ObjectiveTab.performed += i => isPressingI = i.ReadValueAsButton();
 
                 playerControls.UI.Select.performed += i => isSelecting = i.ReadValueAsButton();
                 playerControls.UI.Select.canceled += i => isSelecting = i.ReadValueAsButton();
                 playerControls.UI.Exit.performed += i => isExiting = i.ReadValueAsButton();
                 playerControls.UI.Exit.canceled += i => isExiting = i.ReadValueAsButton();
+                playerControls.UI.Objectives.performed += i => isPressingTab = i.ReadValueAsButton();
+                playerControls.UI.Objectives.canceled += i => isPressingTab = i.ReadValueAsButton();
+                playerControls.UI.Journal.performed += i => isOpeningJournal = i.ReadValueAsButton();
+                playerControls.UI.Journal.canceled += i => isOpeningJournal = i.ReadValueAsButton();
             }
     
             playerControls.Enable();
@@ -84,7 +85,6 @@ namespace TheSignal.Player.Input
         public void HandleAllInputs()
         {
             HandleMovementInput();
-            HandleJumpingInput();
             HandleAimingInput();
         }
     
@@ -94,15 +94,6 @@ namespace TheSignal.Player.Input
             horizontalInput = movementInput.x;
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
             animatorManager.UpdateMovementValues(moveAmount, moveAmount, moveAmount, isRunning);
-        }
-
-        private void HandleJumpingInput()
-        {
-            if (isJumping)
-            {
-               isJumping = false;
-               playerLocomotion.HandleJump();
-            }
         }
 
         private void HandleAimingInput()

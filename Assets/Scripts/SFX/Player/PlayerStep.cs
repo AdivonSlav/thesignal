@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TheSignal
+namespace TheSignal.SFX.Player
 {
     [RequireComponent(typeof(AudioSource))]
     public class PlayerStep : MonoBehaviour

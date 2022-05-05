@@ -4,7 +4,7 @@ using TheSignal.Player.Input;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-namespace TheSignal.Player
+namespace TheSignal.Animation.Rigging
 {
     [RequireComponent(typeof(InputManager))]
     public class RigManager : MonoBehaviour

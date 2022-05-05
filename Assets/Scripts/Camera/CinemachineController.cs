@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace TheSignal.Scenes.Behaviours
+namespace TheSignal.Camera
 {
     public class CinemachineController : MonoBehaviour
     {

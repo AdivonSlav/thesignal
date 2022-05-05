@@ -1,12 +1,9 @@
 using UnityEngine;
-
 using TheSignal.Animation;
-using TheSignal.Player.Combat;
 using TheSignal.Player.Input;
 
-namespace TheSignal.Player
+namespace TheSignal.Player.Movement
 {
-    [RequireComponent(typeof(PlayerManager))]
     public class PlayerLocomotion : MonoBehaviour
     {
         [Header("Falling")]
@@ -30,7 +27,6 @@ namespace TheSignal.Player
         public float jumpHeight;
         public float gravityAccel;
         
-        private PlayerManager playerManager;
         private AnimatorManager animatorManager;
         private InputManager inputManager;
 
@@ -38,10 +34,10 @@ namespace TheSignal.Player
         private Transform cameraTransform;
         private Rigidbody playerRB;
 
+        private bool isInteracting;
 
         private void Awake()
         {
-            playerManager = GetComponent<PlayerManager>();
             animatorManager = GetComponent<AnimatorManager>();
             inputManager = GetComponent<InputManager>();
             playerRB = GetComponent<Rigidbody>();
@@ -52,8 +48,14 @@ namespace TheSignal.Player
         {
             HandleFalling();
 
-            if (playerManager.isInteracting)
+            if (isInteracting)
                 return;
+
+            if (inputManager.isJumping)
+            {
+                inputManager.isJumping = false;
+                HandleJump();
+            }
 
             HandleMovement();
             HandleRotation();
@@ -104,7 +106,7 @@ namespace TheSignal.Player
             // If the player is in the air, play the fall loop animation
             if (!isGrounded && !isJumping)
             {
-                if (!playerManager.isInteracting)
+                if (!isInteracting)
                     animatorManager.PlayAnimation("FallLoop", true);
 
                 // Keeps track of how much time the player has spent in air
@@ -141,7 +143,7 @@ namespace TheSignal.Player
             if (Physics.SphereCast(raycastStart, 0.2f, Vector3.down, out hit, 1.0f, groundLayer))
             {
                 
-                if (!isGrounded && playerManager.isInteracting)
+                if (!isGrounded && isInteracting)
                 {
                     animatorManager.PlayAnimation("Land", true);
                     animatorManager.animator.applyRootMotion = true;
@@ -155,7 +157,11 @@ namespace TheSignal.Player
                 isGrounded = false;
             }
         }
-        
+
+        private void LateUpdate()
+        {
+            isInteracting = animatorManager.animator.GetBool(AnimatorManager.Interacting);
+        }
     }
 }
 

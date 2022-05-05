@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheSignal.Animation
+namespace TheSignal.Animation.Reset
 {
     public class ResetBool : StateMachineBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheSignal.SFX
+namespace TheSignal.SFX.Environement
 {
     public class DoorSoundController : MonoBehaviour
     {

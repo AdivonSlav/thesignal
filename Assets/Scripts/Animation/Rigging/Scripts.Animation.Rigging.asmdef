@@ -1,0 +1,18 @@
+{
+    "name": "Scripts.Animation.Rigging",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1c0a78551b72c6344a7be610bad9bfe1",
+        "GUID:548a1c0f5f8e12f42819aad7bbe98613",
+        "GUID:7f7d1af65c2641843945d409d28f2e20"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
