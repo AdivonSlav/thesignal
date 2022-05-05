@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TheSignal.Player;
 using TheSignal.Player.Input;
 using TheSignal.Scenes.Behaviours;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace TheSignal.Menu
         
         private InputManager inputManager;
         private CinemachineController cinemachineController;
+        private PlayerJournal playerJournal;
         
         [SerializeField] private GameObject player;
         [Header("UI")]
@@ -24,21 +26,20 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject journalUI;
-
-        private bool objectiveTab;
         
         private void Awake()
         {
             cinemachineController = Camera.main.GetComponent<CinemachineController>();
             inputManager = player.GetComponent<InputManager>();
+            playerJournal = player.GetComponent<PlayerJournal>();
         }
         void Update()
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isExiting && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy)
+                if (inputManager.isExiting && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
                 {
-                    if(GameIsPaused)
+                    if (GameIsPaused)
                         Resume();
                     else
                         Pause();
@@ -67,13 +68,10 @@ namespace TheSignal.Menu
         {
             mainMenuUI.SetActive(false);
             pauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
             GameIsPaused = false;
             inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(true);
-            // Cursor.visible = false;
-            // Cursor.lockState = CursorLockMode.Locked;
         }
         public void MainMenu()
         {

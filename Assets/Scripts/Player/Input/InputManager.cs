@@ -29,6 +29,7 @@ namespace TheSignal.Player.Input
         [HideInInspector] public bool isSelecting;
         [HideInInspector] public bool isExiting;
         [HideInInspector] public bool isPressingTab;
+        [HideInInspector] public bool isOpeningJournal;
 
         private void Awake()
         {
@@ -62,6 +63,8 @@ namespace TheSignal.Player.Input
                 playerControls.UI.Exit.canceled += i => isExiting = i.ReadValueAsButton();
                 playerControls.UI.Objectives.performed += i => isPressingTab = i.ReadValueAsButton();
                 playerControls.UI.Objectives.canceled += i => isPressingTab = i.ReadValueAsButton();
+                playerControls.UI.Journal.performed += i => isOpeningJournal = i.ReadValueAsButton();
+                playerControls.UI.Journal.canceled += i => isOpeningJournal = i.ReadValueAsButton();
             }
     
             playerControls.Enable();

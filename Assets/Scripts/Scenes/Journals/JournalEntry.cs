@@ -1,3 +1,4 @@
+using TheSignal.Player;
 using TheSignal.Player.Input;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,7 +61,7 @@ namespace TheSignal.Scenes.Behaviours
         {
             cinemachineController.TogglePause(inputManager.isAiming);
             
-            playerJournal.AddEntry(ref journalEntry);
+            playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(false);
             inputManager.isExiting = false;
 
