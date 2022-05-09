@@ -47,7 +47,7 @@ namespace TheSignal.Menu
         public void YesNewGame(string lvlName)
         {
             //ovo se mora zamjeniti sa .LoadSceneAync samo kada se napravi pocetna cut scena
-            SceneManager.LoadScene(lvlName);
+            SceneManager.LoadScene("Cutscene Level");
         }
         #endregion
         
