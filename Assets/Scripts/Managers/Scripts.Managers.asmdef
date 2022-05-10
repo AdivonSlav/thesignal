@@ -1,8 +1,8 @@
 {
-    "name": "Scripts.Animation",
+    "name": "Scripts.Managers",
     "rootNamespace": "",
     "references": [
-        "GUID:22df117165cc7d642986a21891b2826b"
+        "GUID:1c0a78551b72c6344a7be610bad9bfe1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

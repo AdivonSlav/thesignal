@@ -34,7 +34,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isExiting && !journalUI.activeInHierarchy && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
+                if (inputManager.isExiting && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
                 {
                     if (GameIsPaused)
                         Resume();
@@ -46,7 +46,7 @@ namespace TheSignal.Menu
                     ToggleObjectives();
                 }
             }
-            else
+            else if (!GameIsPaused)
             {
                 PauseDead();
             }
@@ -65,8 +65,7 @@ namespace TheSignal.Menu
         {
             mainMenuUI.SetActive(false);
             pauseMenuUI.SetActive(false);
-            GameIsPaused = false;
-            inputManager.isExiting = false;
+            GameIsPaused = false; 
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(true);
         }
@@ -91,14 +90,12 @@ namespace TheSignal.Menu
         {
             pauseMenuUI.SetActive(true);
             GameIsPaused = true;
-            inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
         }
         void PauseDead()
         {
             GameIsPaused = true;
-            inputManager.isExiting = false;
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(false);
         }

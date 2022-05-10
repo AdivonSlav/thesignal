@@ -13,7 +13,7 @@ namespace TheSignal.Player.Movement
         public LayerMask groundLayer;
         public float raycastHeightOffset;
 
-        [HideInInspector] public bool isGrounded;
+        public bool isGrounded;
 
         [Header("Movement Speeds")]
         public float walkSpeed;
@@ -29,7 +29,7 @@ namespace TheSignal.Player.Movement
         
         private AnimatorManager animatorManager;
         private InputManager inputManager;
-
+        
         private Vector3 moveDirection;
         private Transform cameraTransform;
         private Rigidbody playerRB;
@@ -63,14 +63,14 @@ namespace TheSignal.Player.Movement
 
         private void HandleMovement()
         {
-            if (isJumping)
-                return;
-
             moveDirection = cameraTransform.forward * inputManager.verticalInput;
             moveDirection += cameraTransform.right * inputManager.horizontalInput;
             moveDirection.Normalize();
             moveDirection.y = 0.0f;
-
+            
+            if (isJumping)
+                return;
+            
             if (inputManager.isRunning && inputManager.moveAmount > 0.5f && !inputManager.isAiming)
                 moveDirection *= runSpeed;
             else

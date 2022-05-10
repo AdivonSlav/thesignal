@@ -77,7 +77,10 @@ namespace TheSignal.Player.Input
             bool ignoreInput = cinemachineController.Paused();
 
             if (ignoreInput && playerControls.Player.enabled)
+            {
+                movementInput = Vector2.zero;
                 playerControls.Player.Disable();
+            }
             else if (!ignoreInput && !playerControls.Player.enabled)
                 playerControls.Player.Enable();
         }

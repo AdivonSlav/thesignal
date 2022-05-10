@@ -1,36 +1,46 @@
+using System.Diagnostics;
+using TheSignal.Managers;
 using UnityEngine;
 using UnityEngine.AI;
+using Debug = UnityEngine.Debug;
 
 namespace TheSignal.Enemy
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : TrackedEntity
     {
         [SerializeField] private int MaxHealth=100;
         [SerializeField] private Transform target;
         [SerializeField] private float enemyDistance = 0.7f;
 
-        private NavMeshAgent agent = null;
+        private NavMeshAgent agent;
         private Animator anim = null;
         int CurrentHealth;
+        
         private void Start()
         {
-            getRefeences();
+            GetReferences();
         }
         private void Update()
         {
-
-            if (Vector3.Distance(transform.position, target.position) < enemyDistance)
+            agent.velocity = Vector3.zero;
+            
+            if (!this.isRunning)
             {
-                gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-                anim.Play("Soft Attack");
+                anim.SetFloat("Movement", 0.0f, 0.3f, Time.deltaTime);
+                return;
             }
+
+            var targetDistance = Vector3.Distance(transform.position, target.position);
+            
+            if (targetDistance < enemyDistance)
+                anim.Play("Soft Attack");
             else
             {
                 MoveToPlayer();
                 RotateToTarget();
             }
         }
-        private void getRefeences()
+        private void GetReferences()
         {
             CurrentHealth = MaxHealth;
             agent = GetComponent<NavMeshAgent>();

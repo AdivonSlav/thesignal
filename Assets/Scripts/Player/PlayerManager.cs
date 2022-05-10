@@ -1,4 +1,5 @@
 using TheSignal.Animation;
+using TheSignal.Managers;
 using TheSignal.Player.Combat;
 using UnityEngine;
 using TheSignal.Player.Input;
@@ -7,7 +8,7 @@ using TheSignal.Player.Movement;
 namespace TheSignal.Player
 {
     [RequireComponent(typeof(InputManager), typeof(PlayerLocomotion), typeof(Animator))]
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : TrackedEntity
     {
         private InputManager inputManager;
         private PlayerLocomotion playerLocomotion;
@@ -32,10 +33,16 @@ namespace TheSignal.Player
         
         private void Update()
         {
+            if (!this.isRunning)
+                return;
+            
             inputManager.HandleAllInputs();
         }
         private void FixedUpdate()
         {
+            if (!this.isRunning)
+                return;
+            
             playerAiming.HandleAiming();
             playerShooting.HandleShooting();
             playerLocomotion.HandleAllMovement();
@@ -43,6 +50,9 @@ namespace TheSignal.Player
 
         private void LateUpdate()
         {
+            if (!this.isRunning)
+                return;
+            
             playerLocomotion.isJumping = animator.GetBool(AnimatorManager.Jumping);
             animator.SetBool(AnimatorManager.Grounded, playerLocomotion.isGrounded);
         }

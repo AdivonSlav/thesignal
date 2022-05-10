@@ -46,6 +46,7 @@ namespace TheSignal.Player.Combat.UI
             }
             if (Time.realtimeSinceStartup - timeOfDeath > 10 && dead)
             {
+                
                 Die();
             }
             if (inputManager.isPressingK && !slowMo && currentSlowMo == maxSlowMo)
@@ -133,7 +134,6 @@ namespace TheSignal.Player.Combat.UI
         {
             dead = false;
             deathScreen.SetActive(true);
-            Time.timeScale = 0.0f;
             currentHealth = 100;
             Start();
         }

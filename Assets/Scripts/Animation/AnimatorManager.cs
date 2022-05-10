@@ -1,3 +1,5 @@
+using System;
+using TheSignal.Camera;
 using UnityEngine;
 
 namespace TheSignal.Animation
@@ -6,6 +8,7 @@ namespace TheSignal.Animation
     {
         [HideInInspector] public Animator animator;
         private AnimatorStateInfo stateInfo;
+        private CinemachineController cinemachineController;
 
         // Animator parameter IDs for more effective fetching
         private static readonly int horizontalInput = Animator.StringToHash("hInput");
@@ -20,6 +23,16 @@ namespace TheSignal.Animation
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
+        }
+
+        private void Update()
+        {
+            if (!cinemachineController.Paused())
+                return;
+            
+            animator.SetFloat(horizontalInput, 0.0f, 0.1f, Time.deltaTime);
+            animator.SetFloat(verticalInput, 0.0f, 0.1f, Time.deltaTime);
         }
 
         public void PlayAnimation(string animationName, bool isInteracting)
