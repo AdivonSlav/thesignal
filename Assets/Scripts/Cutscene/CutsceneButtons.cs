@@ -11,6 +11,7 @@ namespace TheSignal.Cutscene
         [SerializeField] private GameObject panel2;
         [SerializeField] private GameObject button1;
         [SerializeField] private GameObject button2;
+        [SerializeField] private GameObject loading;
         public void ContinueButton()
         {
             panel1.SetActive(false);
@@ -20,6 +21,9 @@ namespace TheSignal.Cutscene
         }
         public void PlayButton()
         {
+            button2.SetActive(false);
+            panel2.SetActive(false);
+            loading.SetActive(true);
             SceneManager.LoadScene("First Level");
         }
     }

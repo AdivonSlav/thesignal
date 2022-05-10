@@ -9,6 +9,7 @@ TagManager:
   - FirstAid
   - SlowMoKit
   - Journal
+  - LevelTigger
   layers:
   - Default
   - TransparentFX
