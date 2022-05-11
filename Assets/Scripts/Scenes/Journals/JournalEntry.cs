@@ -1,7 +1,9 @@
+using System;
 using TheSignal.Camera;
 using TheSignal.Player.Journal;
 using TheSignal.Player.Input;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 namespace TheSignal.Scenes.Behaviours
@@ -20,8 +22,9 @@ namespace TheSignal.Scenes.Behaviours
         private CinemachineController cinemachineController;
         private Transform mainCameraTransform;
         private PlayerJournal playerJournal;
-        
-        private bool isInTheZone;
+
+        private GameObject entryToDestroy;
+        private bool playerPresent;
 
         private void Awake()
         {
@@ -29,25 +32,18 @@ namespace TheSignal.Scenes.Behaviours
             cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
             mainCameraTransform = UnityEngine.Camera.main.transform;
             playerJournal = player.GetComponent<PlayerJournal>();
+            
+            popup.SetActive(false);
         }
-        
+
         private void Update()
         {
-            popup.SetActive(isInTheZone);
-            
-            if (isInTheZone)
-                RotatePopup();
-            
-            if (isInTheZone && inputManager.isInteracting)
-            {
+            if (inputManager.isInteracting && playerPresent)
                 OpenJournal();
-            }
-            if (journalImage.activeInHierarchy && inputManager.isExiting)
-            {
+            else if (inputManager.isExiting && journalImage.activeInHierarchy)
                 CloseJournal();
-            }
         }
-        
+
         private void OpenJournal()
         {
             cinemachineController.TogglePause(inputManager.isAiming);
@@ -65,15 +61,14 @@ namespace TheSignal.Scenes.Behaviours
             playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(false);
             inputManager.isExiting = false;
-
-            Destroy(gameObject);
         }
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                isInTheZone = true;
+                popup.SetActive(true);
+                playerPresent = true;
             }
         }
 
@@ -81,8 +76,14 @@ namespace TheSignal.Scenes.Behaviours
         {
             if (other.CompareTag("Player"))
             {
-                isInTheZone = false;
+                popup.SetActive(false);
+                playerPresent = false;
             }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            RotatePopup();
         }
 
         private void RotatePopup()
