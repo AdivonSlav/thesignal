@@ -1654,30 +1654,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1996054083}
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: bodyText
-      value: 
-      objectReference: {fileID: 1356499198}
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: journalUI
-      value: 
-      objectReference: {fileID: 593274480}
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: headerText
-      value: 
-      objectReference: {fileID: 1543329274}
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: journalEntry
-      value: 
-      objectReference: {fileID: 4900000, guid: 7ec885da0c31a4e41b1499f7ca15076a, type: 3}
-    - target: {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: journalImage
-      value: 
-      objectReference: {fileID: 593274480}
     - target: {fileID: 3139009141623485381, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: m_Name
       value: Journal
@@ -1735,23 +1711,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1356499198}
     - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: thisEntry
-      value: 
-      objectReference: {fileID: 1287563836}
-    - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: headerText
       value: 
       objectReference: {fileID: 1543329274}
     - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-      propertyPath: journalEntry
-      value: 
-      objectReference: {fileID: 4900000, guid: 7ec885da0c31a4e41b1499f7ca15076a, type: 3}
-    - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: journalImage
       value: 
       objectReference: {fileID: 593274480}
-    m_RemovedComponents:
-    - {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
 --- !u!1001 &1162930137
 PrefabInstance:
@@ -1999,11 +1966,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e0e689b15cc4344ae19a22e7213ea2, type: 3}
---- !u!1 &1287563836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3139009141623485381, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
-  m_PrefabInstance: {fileID: 1117907998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1356499198 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2185195267956840246, guid: 8da868c4946d24047b82678aa008a390, type: 3}
