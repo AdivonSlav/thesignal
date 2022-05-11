@@ -13,12 +13,11 @@ namespace TheSignal.Player.Movement
         public LayerMask groundLayer;
         public float raycastHeightOffset;
 
-        public bool isGrounded;
+        [HideInInspector] public bool isGrounded;
 
         [Header("Movement Speeds")]
         public float walkSpeed;
         public float runSpeed;
-        public float sprintSpeed;
         public float rotationSpeed;
 
         [HideInInspector] public bool isJumping;
@@ -48,8 +47,8 @@ namespace TheSignal.Player.Movement
         {
             HandleFalling();
 
-            if (isInteracting)
-                return;
+            // if (isInteracting)
+                // return;
 
             if (inputManager.isJumping)
             {
@@ -76,8 +75,7 @@ namespace TheSignal.Player.Movement
             else
                 moveDirection *= walkSpeed;
 
-            Vector3 movementVelocity = moveDirection;
-            playerRB.velocity = movementVelocity;
+            playerRB.velocity = moveDirection;
         }
 
         private void HandleRotation()
@@ -114,17 +112,16 @@ namespace TheSignal.Player.Movement
                 // Then a downwards force that will increase the longer the player is in the air
                 inAirTimer += Time.deltaTime;
                 playerRB.AddForce(transform.forward * leapVelocity);
-                playerRB.AddForce(Vector3.down * fallVelocity * inAirTimer);
+                playerRB.AddForce(Vector3.down * (fallVelocity * inAirTimer));
             }
 
             CheckGrounded(ref hit);
         }
         
-        public void HandleJump()
+        private void HandleJump()
         {
             if (isGrounded)
             {
-                animatorManager.animator.applyRootMotion = false;
                 animatorManager.animator.SetBool(AnimatorManager.Jumping, true);
                 animatorManager.PlayAnimation("JumpUp", false);
 
@@ -144,10 +141,7 @@ namespace TheSignal.Player.Movement
             {
                 
                 if (!isGrounded && isInteracting)
-                {
                     animatorManager.PlayAnimation("Land", true);
-                    animatorManager.animator.applyRootMotion = true;
-                }
 
                 inAirTimer = 0;
                 isGrounded = true;

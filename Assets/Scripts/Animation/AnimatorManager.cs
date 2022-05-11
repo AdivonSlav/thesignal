@@ -87,8 +87,8 @@ namespace TheSignal.Animation
         {
             stateInfo = animator.GetCurrentAnimatorStateInfo(2);
             
-            if (!stateInfo.IsTag("FallingJumping"))
-                animator.ApplyBuiltinRootMotion();
+            // if (!stateInfo.IsTag("FallingJumping"))
+            //     // animator.ApplyBuiltinRootMotion();
         }
     }
 }

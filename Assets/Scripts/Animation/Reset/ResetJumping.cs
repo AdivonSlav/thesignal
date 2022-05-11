@@ -6,7 +6,7 @@ namespace TheSignal.Animation.Reset
     {
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool(Animator.StringToHash("Jumping"), false);
+            animator.SetBool(Animator.StringToHash("isJumping"), false);
         }
     }
 }
