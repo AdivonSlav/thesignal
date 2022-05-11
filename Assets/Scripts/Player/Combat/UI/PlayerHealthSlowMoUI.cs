@@ -44,7 +44,7 @@ namespace TheSignal.Player.Combat.UI
                 anim.SetTrigger("Death");
                 dead = true;
             }
-            if (Time.realtimeSinceStartup - timeOfDeath > 10 && dead)
+            if (Time.realtimeSinceStartup - timeOfDeath > 0.5 && dead)
             {
                 
                 Die();

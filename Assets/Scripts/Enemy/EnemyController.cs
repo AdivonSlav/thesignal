@@ -11,6 +11,8 @@ namespace TheSignal.Enemy
         [SerializeField] private int MaxHealth=100;
         [SerializeField] private Transform target;
         [SerializeField] private float enemyDistance = 0.7f;
+        [SerializeField] private GameObject PauseUI;
+        [SerializeField] private float ViewingDistance;
 
         private NavMeshAgent agent;
         private Animator anim = null;
@@ -24,8 +26,11 @@ namespace TheSignal.Enemy
         {
             agent.velocity = Vector3.zero;
             
-            if (!this.isRunning)
+            if (PauseUI.activeInHierarchy)
             {
+                anim.gameObject.SetActive(false);
+                anim.gameObject.SetActive(true);
+                transform.rotation.Set(transform.rotation.x, transform.rotation.y, transform.rotation.z,transform.rotation.w);
                 anim.SetFloat("Movement", 0.0f, 0.3f, Time.deltaTime);
                 return;
             }
@@ -34,10 +39,14 @@ namespace TheSignal.Enemy
             
             if (targetDistance < enemyDistance)
                 anim.Play("Soft Attack");
-            else
+            else if(ViewingDistance>=targetDistance)
             {
                 MoveToPlayer();
                 RotateToTarget();
+            }
+            else
+            {
+                anim.SetFloat("Movement", 0.0f, 0.3f, Time.deltaTime);
             }
         }
         private void GetReferences()
