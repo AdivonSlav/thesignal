@@ -48024,6 +48024,13 @@ PrefabInstance:
         of humans and thousand of other races. The Antolics wanted to be mediators
         of peace by calming both sides down and keeping themselves out of the conflict.
       objectReference: {fileID: 0}
+    - target: {fileID: 3607219053925714384, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_Text
+      value: 'Put out the fire
+
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3607219054586690051, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -48039,6 +48046,14 @@ PrefabInstance:
     - target: {fileID: 3607219055033131200, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607219055199248209, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607219055288319794, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_Text
+      value: Go to the main floor
       objectReference: {fileID: 0}
     - target: {fileID: 3607219055357085260, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_Name
