@@ -11,6 +11,8 @@ namespace TheSignal.Weapons
         private float projectileSpeed;
         [SerializeField] private ParticleSystem metalHitEffect;
         [SerializeField] private ParticleSystem fleshHitEffect;
+        
+        public int maxDamage;
 
         private void Awake()
         {

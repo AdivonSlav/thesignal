@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5351883889567023115}
   m_Layer: 9
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metalHitEffect: {fileID: 7860074937970713017, guid: bc6faaf85753d944e8639d10a360472d, type: 3}
   fleshHitEffect: {fileID: 3567332095231165273, guid: 3ac7d61167d1b03409c7d49b051049ae, type: 3}
+  maxDamage: 15
 --- !u!54 &6504990874420064067
 Rigidbody:
   m_ObjectHideFlags: 0

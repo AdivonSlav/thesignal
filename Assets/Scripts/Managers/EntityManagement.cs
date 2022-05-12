@@ -17,11 +17,8 @@ namespace TheSignal.Managers
 
         public void Update()
         {
-            Debug.Log(inputManager.isExiting);
-            
             if (!inputManager.isExiting)
                 return;
-
             
             foreach (var t in trackedEntities)
             {
