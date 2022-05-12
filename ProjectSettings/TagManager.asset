@@ -10,6 +10,7 @@ TagManager:
   - SlowMoKit
   - Journal
   - LevelTigger
+  - Projectile
   layers:
   - Default
   - TransparentFX

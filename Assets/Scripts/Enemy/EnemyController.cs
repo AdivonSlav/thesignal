@@ -1,22 +1,21 @@
-using System.Diagnostics;
+using System;
 using TheSignal.Managers;
 using UnityEngine;
 using UnityEngine.AI;
-using Debug = UnityEngine.Debug;
 
 namespace TheSignal.Enemy
 {
     public class EnemyController : TrackedEntity
     {
-        [SerializeField] private int MaxHealth=100;
+        [SerializeField] private int maxHealth;
         [SerializeField] private Transform target;
-        [SerializeField] private float enemyDistance = 0.7f;
-        [SerializeField] private GameObject PauseUI;
-        [SerializeField] private float ViewingDistance;
+        [SerializeField] private float enemyDistance;
+        [SerializeField] private GameObject pauseUI;
+        [SerializeField] private float viewingDistance;
 
         private NavMeshAgent agent;
-        private Animator anim = null;
-        int CurrentHealth;
+        private Animator anim;
+        private int currentHealth;
         
         private void Start()
         {
@@ -26,7 +25,7 @@ namespace TheSignal.Enemy
         {
             agent.velocity = Vector3.zero;
             
-            if (PauseUI.activeInHierarchy)
+            if (pauseUI.activeInHierarchy)
             {
                 anim.gameObject.SetActive(false);
                 anim.gameObject.SetActive(true);
@@ -39,7 +38,7 @@ namespace TheSignal.Enemy
             
             if (targetDistance < enemyDistance)
                 anim.Play("Soft Attack");
-            else if(ViewingDistance>=targetDistance)
+            else if(viewingDistance>=targetDistance)
             {
                 MoveToPlayer();
                 RotateToTarget();
@@ -51,23 +50,30 @@ namespace TheSignal.Enemy
         }
         private void GetReferences()
         {
-            CurrentHealth = MaxHealth;
+            currentHealth = maxHealth;
             agent = GetComponent<NavMeshAgent>();
             anim = GetComponent<Animator>();
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damageBonus, int maxDamage)
         {
-            CurrentHealth -= damage;
+            // Damage bonus is the bonus applied if the enemy was hit in the head, torso etc.
+            // Max damage is the maximum damage you can apply based on the projectile type (fetched from the Projectile script)
 
-            if (CurrentHealth <= 0)
-            {
+            int damage = CalculateDamage(maxDamage);
+            damage += damageBonus;
+            currentHealth -= damage;
+
+            Debug.Log($"Dealt {damage} damage!");
+            
+            if (currentHealth <= 0)
                 Die();
-            }
         }
+        
         private void Die()
         {
-
+            Destroy(this.gameObject);
         }
+        
         private void MoveToPlayer()
         {
             agent.SetDestination(target.position);
@@ -78,6 +84,18 @@ namespace TheSignal.Enemy
             Vector3 direction = target.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = rotation;
+        }
+
+        private int CalculateDamage(int maxDamage)
+        {
+            var rnd = new System.Random(Guid.NewGuid().GetHashCode());
+            var damage = rnd.Next(1, maxDamage + 1);
+
+            // If the damage is at least 75% of the maxDamage, apply a critical bonus
+            if (damage >= maxDamage * 0.75f)
+                damage += rnd.Next(1, 6);
+
+            return damage;
         }
     }
 }
