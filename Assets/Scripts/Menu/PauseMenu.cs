@@ -3,6 +3,8 @@ using TheSignal.Player.Input;
 using TheSignal.Player.Journal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TheSignal.SaveLoad;
+using UnityEngine.UI;
 
 namespace TheSignal.Menu
 {
@@ -23,7 +25,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject journalUI;
-        
+
         private void Awake()
         {
             cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
@@ -80,11 +82,13 @@ namespace TheSignal.Menu
         }
         public void Load()
         {
-
+            PlayerData data = SaveSystem.LoadPlayer();
+            Resume();
+            SceneManager.LoadScene(data.level);
         }
         public void Save()
         {
-
+            SaveSystem.SavePlayer(SceneManager.GetActiveScene().buildIndex);
         }
         void Pause()
         {

@@ -1,11 +1,9 @@
 {
-    "name": "Scripts.Menu",
+    "name": "SaveLoadAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:1c0a78551b72c6344a7be610bad9bfe1",
-        "GUID:22df117165cc7d642986a21891b2826b",
-        "GUID:a3ce8b92cca2a9e4483f07353f052bcf",
-        "GUID:4dd3467c7e10a68489e4b071d8fba0b8"
+        "GUID:ecb3fec7d0f482b418e6a43645c90705",
+        "GUID:af4a3ceb227b8f94cb8375f40e156398"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

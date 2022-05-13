@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TheSignal.Player.Input;
+using UnityEngine.SceneManagement;
 
 namespace TheSignal.Player.Combat.UI
 {
@@ -8,16 +9,18 @@ namespace TheSignal.Player.Combat.UI
     public class PlayerHealthSlowMoUI : MonoBehaviour
     {
         private InputManager inputManager;
-        
+
+        [SerializeField] GameObject PauseScreenUI;
         public GameObject deathScreen;
         public Slider Healthslider;
         public Slider SlowMoSlider;
+        public int CurrentLevel;
         private Animator anim;
 
         private float changedTime;
         private float timeOfSlowMoDeactivation;
         
-        private int currentHealth;
+        [HideInInspector] public int currentHealth;
         private float maxSlowMo;
         private float currentSlowMo;
         private float timeOfSlowMo;
@@ -37,6 +40,7 @@ namespace TheSignal.Player.Combat.UI
         }
         private void Update()
         {
+            CurrentLevel = SceneManager.GetActiveScene().buildIndex;
             if (currentHealth <= 0 && !dead)
             {
                 timeOfDeath = Time.realtimeSinceStartup;
@@ -44,11 +48,9 @@ namespace TheSignal.Player.Combat.UI
                 anim.SetTrigger("Death");
                 dead = true;
             }
-            if (Time.realtimeSinceStartup - timeOfDeath > 0.5 && dead)
-            {
-                
+            if (Time.realtimeSinceStartup - timeOfDeath > 0.5 && dead)  
                 Die();
-            }
+
             if (inputManager.isPressingK && !slowMo && currentSlowMo == maxSlowMo)
             {
                 SlowMoTriggered();
@@ -92,10 +94,13 @@ namespace TheSignal.Player.Combat.UI
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Fist"))
+            if (!PauseScreenUI.activeInHierarchy)
             {
+
+               if (other.CompareTag("Fist"))
+               {
                 TakeDamage(20);
-            }
+               }
             if (other.CompareTag("FirstAid") && currentHealth<100)
             {
                 Heal();
@@ -105,6 +110,7 @@ namespace TheSignal.Player.Combat.UI
             {
                 RefilSlowMo();
                 other.gameObject.SetActive(false);
+            }
             }
         }
         private void RefilSlowMo()

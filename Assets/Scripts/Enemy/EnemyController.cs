@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TheSignal.Managers;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,7 +17,6 @@ namespace TheSignal.Enemy
         private NavMeshAgent agent;
         private Animator anim;
         private int currentHealth;
-        
         private void Start()
         {
             GetReferences();
@@ -36,7 +36,7 @@ namespace TheSignal.Enemy
 
             var targetDistance = Vector3.Distance(transform.position, target.position);
             
-            if (targetDistance < enemyDistance)
+            if (targetDistance < enemyDistance && currentHealth>0)
                 anim.Play("Soft Attack");
             else if(viewingDistance>=targetDistance)
             {
@@ -46,6 +46,7 @@ namespace TheSignal.Enemy
             else
             {
                 anim.SetFloat("Movement", 0.0f, 0.3f, Time.deltaTime);
+                
             }
         }
         private void GetReferences()
@@ -64,14 +65,23 @@ namespace TheSignal.Enemy
             currentHealth -= damage;
 
             Debug.Log($"Dealt {damage} damage!");
-            
+
             if (currentHealth <= 0)
+            {
                 Die();
+            }
         }
         
         private void Die()
         {
-            Destroy(this.gameObject);
+            //disables capsule collider for the arm and with that it disables damage after dying
+            var arm =gameObject.GetComponentsInChildren<CapsuleCollider>();
+            foreach (var item in arm)
+            {
+                item.enabled = false;
+            }
+            anim.Play("Dying");
+            Destroy(this.gameObject, 2.17f);
         }
         
         private void MoveToPlayer()

@@ -1,3 +1,4 @@
+using TheSignal.SaveLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace TheSignal.Menu
         public GameObject mainPanel;
         public GameObject quitGamePanel;
         public GameObject creditsPanel;
+        public GameObject LoadingPanel;
         
         #region MainPanel
         public void NewGameButton()
@@ -29,7 +31,9 @@ namespace TheSignal.Menu
         //this needs to be scripted after we implement load/save
         public void LoadGameButton()
         {
-
+            LoadingPanel.SetActive(true);
+            PlayerData data = SaveSystem.LoadPlayer();
+            SceneManager.LoadScene(data.level);
         }
         //this needs to be scripted when we make our minds up about settings
         public void SettingsButton()
@@ -46,7 +50,6 @@ namespace TheSignal.Menu
         }
         public void YesNewGame(string lvlName)
         {
-            //ovo se mora zamjeniti sa .LoadSceneAync samo kada se napravi pocetna cut scena
             SceneManager.LoadScene("Cutscene Level");
         }
         #endregion
@@ -59,6 +62,10 @@ namespace TheSignal.Menu
         {
             creditsPanel.SetActive(false);
             mainPanel.SetActive(true);
+        }
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
         #endregion
         
