@@ -7,6 +7,8 @@ namespace TheSignal.Scenes.Behaviours
     {
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject fixPopup;
+        [SerializeField] private GameObject popupText;
+        [SerializeField] private GameObject door;
         [SerializeField] private ParticleSystem fuxeboxSparks;
         [SerializeField] private ParticleSystem[] sprinklerShowers;
 
@@ -35,6 +37,8 @@ namespace TheSignal.Scenes.Behaviours
                     }
 
                     sprinklersStarted = true;
+                    door.SetActive(true);
+                    popupText.SetActive(true);
                     fixPopup.SetActive(false);
                     this.enabled = false;
                 }

@@ -13,11 +13,13 @@ namespace TheSignal.Scenes.Behaviours
         private SprinklerFix sprinklerFix;
         private float fireHealth = 100.0f;
         private bool fireExtinguished = false;
+        private BoxCollider colliderForFire;
         
         private void Awake()
         {
             fire = GetComponent<ParticleSystem>();
-            
+
+            colliderForFire = GetComponent<BoxCollider>();
             sprinklerFix = sprinklerFusebox.GetComponentInChildren<SprinklerFix>();
         }
 
@@ -37,6 +39,10 @@ namespace TheSignal.Scenes.Behaviours
                         fire.Stop(true);
                     }
                 }
+            }
+            if (fireExtinguished)
+            {
+                colliderForFire.enabled = false;
             }
         }
     }

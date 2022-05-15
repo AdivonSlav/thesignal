@@ -11,6 +11,7 @@ TagManager:
   - Journal
   - LevelTigger
   - Projectile
+  - Flames
   layers:
   - Default
   - TransparentFX

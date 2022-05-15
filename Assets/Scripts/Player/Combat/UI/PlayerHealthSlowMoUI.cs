@@ -20,7 +20,7 @@ namespace TheSignal.Player.Combat.UI
         private float changedTime;
         private float timeOfSlowMoDeactivation;
         
-        [HideInInspector] public int currentHealth;
+        [HideInInspector] public float currentHealth;
         private float maxSlowMo;
         private float currentSlowMo;
         private float timeOfSlowMo;
@@ -113,6 +113,16 @@ namespace TheSignal.Player.Combat.UI
             }
             }
         }
+        private void OnTriggerStay(Collider other)
+        {
+            if (!PauseScreenUI.activeInHierarchy)
+            {
+                if (other.CompareTag("Flames"))
+                {
+                    TakeDamage(0.5f);
+                }
+            }
+        }
         private void RefilSlowMo()
         {
             currentSlowMo = maxSlowMo;
@@ -131,7 +141,7 @@ namespace TheSignal.Player.Combat.UI
                     Healthslider.value = currentHealth;
                 }
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             currentHealth -= damage;
             Healthslider.value = currentHealth;
