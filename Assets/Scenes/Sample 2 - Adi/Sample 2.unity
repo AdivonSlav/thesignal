@@ -563,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509761471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0657525, y: 1.2678431, z: -9.578291}
+  m_LocalPosition: {x: -2.0655236, y: 1.2678431, z: -9.578291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1015232817}
@@ -1818,7 +1818,7 @@ PrefabInstance:
     - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: journalEntry
       value: 
-      objectReference: {fileID: 4900000, guid: c6b58b859a56ea441a091680ee1ea6f3, type: 3}
+      objectReference: {fileID: 4900000, guid: 8b1362006fe94fa43b791ea4c915da5f, type: 3}
     - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: journalImage
       value: 
@@ -1826,6 +1826,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3139009141623485380, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
+--- !u!1 &1181537915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 255846149474520869, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+  m_PrefabInstance: {fileID: 1084176375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1184105918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.0657525
+      value: -2.0655236
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2377,6 +2382,10 @@ PrefabInstance:
       propertyPath: SlowMoSlider
       value: 
       objectReference: {fileID: 1847745606}
+    - target: {fileID: 632689401233633588, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: PauseScreenUI
+      value: 
+      objectReference: {fileID: 1181537915}
     - target: {fileID: 632689401233633591, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: m_Name
       value: Player (NewRig)
