@@ -10,7 +10,8 @@ namespace TheSignal.Menu
         public GameObject mainPanel;
         public GameObject quitGamePanel;
         public GameObject creditsPanel;
-        public GameObject LoadingPanel;
+        public GameObject loadingPanel;
+        public GameObject settingsPanel;
         
         #region MainPanel
         public void NewGameButton()
@@ -31,14 +32,21 @@ namespace TheSignal.Menu
         //this needs to be scripted after we implement load/save
         public void LoadGameButton()
         {
-            LoadingPanel.SetActive(true);
+            loadingPanel.SetActive(true);
             PlayerData data = SaveSystem.LoadPlayer();
             SceneManager.LoadScene(data.level);
         }
         //this needs to be scripted when we make our minds up about settings
         public void SettingsButton()
         {
+            mainPanel.SetActive(false);
+            settingsPanel.SetActive(true);
+        }
 
+        public void BackSettingsButton()
+        {
+            mainPanel.SetActive(true);
+            settingsPanel.SetActive(false);
         }
         #endregion
         

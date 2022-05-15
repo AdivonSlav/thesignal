@@ -50,6 +50,7 @@ namespace TheSignal.Scenes.Behaviours
 
             headerText.text = journalEntry.name;
             bodyText.text = journalEntry.text;
+            playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(true);
             inputManager.isInteracting = false;
         }
@@ -57,8 +58,6 @@ namespace TheSignal.Scenes.Behaviours
         private void CloseJournal()
         {
             cinemachineController.TogglePause(inputManager.isAiming);
-            
-            playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(false);
             inputManager.isExiting = false;
         }

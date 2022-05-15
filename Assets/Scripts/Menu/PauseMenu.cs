@@ -10,7 +10,7 @@ namespace TheSignal.Menu
 {
     public class PauseMenu : MonoBehaviour
     {
-        public static bool GameIsPaused = false;
+        private static bool GameIsPaused = false;
         
         private InputManager inputManager;
         private CinemachineController cinemachineController;

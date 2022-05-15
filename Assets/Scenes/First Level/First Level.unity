@@ -3566,6 +3566,10 @@ PrefabInstance:
       propertyPath: SlowMoSlider
       value: 
       objectReference: {fileID: 1500633041}
+    - target: {fileID: 632689401233633588, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: PauseScreenUI
+      value: 
+      objectReference: {fileID: 1793189847}
     - target: {fileID: 632689401233633591, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: m_Name
       value: Player (NewRig)
@@ -23717,6 +23721,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 4, z: 0.47500858}
   m_Center: {x: 0, y: 2, z: 0.23750414}
+--- !u!1 &1793189847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 255846150381595209, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+  m_PrefabInstance: {fileID: 1382598473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!205 &1796318102
 LODGroup:
   m_ObjectHideFlags: 0
@@ -63504,7 +63513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.571476
+      value: -2.571247
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63943,7 +63952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.571476
+      value: -2.571247
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y
