@@ -5775,13 +5775,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2713885077177730879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a6cdd4844051a94685dd7da8f67edc6, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b02a727aa5a0c49a290f9640452211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
-  resolutionDropdown: {fileID: 5975562449565875404}
   postProcessing: {fileID: 0}
   ssao: {fileID: -5676987143808587283, guid: a17cf0ff090cc40489f25c7a00775ce8, type: 2}
+  resolutionDropdown: {fileID: 5975562449565875404}
+  fullscreenToggle: {fileID: 6109907231925714303}
+  volumeSlider: {fileID: 2889609292423212538}
+  graphicsDropdown: {fileID: 1576543556416833619}
+  bloomToggle: {fileID: 7389310296825617174}
+  vignetteToggle: {fileID: 7146181779342289642}
+  dofToggle: {fileID: 8673084344724737834}
+  ssaoToggle: {fileID: 2681792210429276643}
 --- !u!114 &1382598475
 MonoBehaviour:
   m_ObjectHideFlags: 0

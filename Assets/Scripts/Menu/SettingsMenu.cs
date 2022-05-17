@@ -10,9 +10,17 @@ namespace TheSignal.Menu
     public class SettingsMenu : MonoBehaviour
     {
         public AudioMixer audioMixer;
-        [SerializeField] private Dropdown resolutionDropdown;
         [SerializeField] private PostProcessing postProcessing;
         [SerializeField] private ScriptableRendererFeature ssao;
+        [Header("UI")]
+        [SerializeField] private Dropdown resolutionDropdown;
+        [SerializeField] private Toggle fullscreenToggle;
+        [SerializeField] private Slider volumeSlider;
+        [SerializeField] private Dropdown graphicsDropdown;
+        [SerializeField] private Toggle bloomToggle;
+        [SerializeField] private Toggle vignetteToggle;
+        [SerializeField] private Toggle dofToggle;
+        [SerializeField] private Toggle ssaoToggle;
         
         private Resolution[] resolutions;
 
@@ -22,6 +30,7 @@ namespace TheSignal.Menu
             
             resolutionDropdown.ClearOptions();
             PopulateOptions();
+            SetControls();
         }
 
         private void PopulateOptions()
@@ -43,6 +52,8 @@ namespace TheSignal.Menu
             resolutionDropdown.AddOptions(resOptions);
             resolutionDropdown.value = currentRes;
             resolutionDropdown.RefreshShownValue();
+
+            graphicsDropdown.value = QualitySettings.GetQualityLevel();
         }
         
         public void SetVolume(float volume)
@@ -84,6 +95,17 @@ namespace TheSignal.Menu
         public void SetSSAO(bool ssaoToggle)
         {
             ssao.SetActive(ssaoToggle);
+        }
+        
+        private void SetControls()
+        {
+            fullscreenToggle.isOn = Screen.fullScreen;
+            audioMixer.GetFloat("volume", out var volumeValue);
+            volumeSlider.value = volumeValue;
+            bloomToggle.isOn = PostProcessingSettings.bloom;
+            vignetteToggle.isOn = PostProcessingSettings.vignette;
+            dofToggle.isOn = PostProcessingSettings.dof;
+            ssaoToggle.isOn = ssao.isActive;
         }
     }
 }
