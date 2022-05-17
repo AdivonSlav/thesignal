@@ -3679,6 +3679,10 @@ PrefabInstance:
       propertyPath: buttonContainer
       value: 
       objectReference: {fileID: 1010064511}
+    - target: {fileID: 2144876831379527336, guid: 97900813ed4a9c947b89685639d601af, type: 3}
+      propertyPath: textAssets.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6692154717766359617, guid: 97900813ed4a9c947b89685639d601af, type: 3}
       propertyPath: target
       value: 
@@ -63497,7 +63501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.571247
+      value: -2.5714989
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63936,7 +63940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.571247
+      value: -2.5714989
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y
