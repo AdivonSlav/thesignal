@@ -403,17 +403,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &390432316 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6709045046825455531, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-  m_PrefabInstance: {fileID: 1997919922}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a6cdd4844051a94685dd7da8f67edc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &746917536
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,46 +977,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: m_IsOn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 390432316}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetBloom
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TheSignal.Menu.SettingsMenu, Scripts.Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 329738215, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176108202, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVignette
-      objectReference: {fileID: 0}
-    - target: {fileID: 1671321714, guid: c7567417421e6874a8d56da7964771a8, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetDOF
-      objectReference: {fileID: 0}
     - target: {fileID: 1001887609820212, guid: c7567417421e6874a8d56da7964771a8, type: 3}
       propertyPath: m_Name
       value: Main Menu

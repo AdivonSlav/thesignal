@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TheSignal.Camera;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace TheSignal.Menu
@@ -11,6 +12,7 @@ namespace TheSignal.Menu
         public AudioMixer audioMixer;
         [SerializeField] private Dropdown resolutionDropdown;
         [SerializeField] private PostProcessing postProcessing;
+        [SerializeField] private ScriptableRendererFeature ssao;
         
         private Resolution[] resolutions;
 
@@ -77,6 +79,11 @@ namespace TheSignal.Menu
         public void SetDOF(bool dof)
         {
             postProcessing.SetDOF(dof);
+        }
+
+        public void SetSSAO(bool ssaoToggle)
+        {
+            ssao.SetActive(ssaoToggle);
         }
     }
 }
