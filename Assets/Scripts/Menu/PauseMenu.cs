@@ -19,6 +19,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject player;
         [Header("UI")]
         [SerializeField] private GameObject pauseMenuUI;
+        [SerializeField] private GameObject settingsUI;
         [SerializeField] private GameObject mainMenuUI;
         [SerializeField] private GameObject deathScreenUI;
         [SerializeField] private GameObject objectiveActive;
@@ -67,6 +68,7 @@ namespace TheSignal.Menu
         {
             mainMenuUI.SetActive(false);
             pauseMenuUI.SetActive(false);
+            settingsUI.SetActive(false);
             GameIsPaused = false; 
             cinemachineController.TogglePause(inputManager.isAiming);
             healthAndMissionUI.SetActive(true);
@@ -138,5 +140,17 @@ namespace TheSignal.Menu
             SceneManager.LoadScene(MainMenuName);
         }
         #endregion
+
+        public void SettingsButton()
+        {
+            settingsUI.SetActive(true);
+            pauseMenuUI.SetActive(false);
+        }
+
+        public void SettingsBackButton()
+        {
+            settingsUI.SetActive(false);
+            pauseMenuUI.SetActive(true);
+        }
     }
 }

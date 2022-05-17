@@ -1,62 +1,89 @@
 using System.Collections.Generic;
+using TheSignal.Camera;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+namespace TheSignal.Menu
 {
-    public AudioMixer audioMixer;
-    [SerializeField] private Dropdown resolutionDropdown;
-
-    private Resolution[] resolutions;
-    
-    private void Start()
+    public class SettingsMenu : MonoBehaviour
     {
-        resolutions = Screen.resolutions;
+        public AudioMixer audioMixer;
+        [SerializeField] private Dropdown resolutionDropdown;
+        [SerializeField] private PostProcessing postProcessing;
+        [SerializeField] private ScriptableRendererFeature ssao;
         
-        resolutionDropdown.ClearOptions();
-        PopulateOptions();
-    }
+        private Resolution[] resolutions;
 
-    private void PopulateOptions()
-    {
-        var resOptions = new List<string>();
-
-        var currentRes = 0;
-        
-        for (var i = 0; i < resolutions.Length; i++)
+        private void Start()
         {
-            var resOption = $"{resolutions[i].width} x {resolutions[i].height}";
-            resOptions.Add(resOption);
+            resolutions = Screen.resolutions;
+            
+            resolutionDropdown.ClearOptions();
+            PopulateOptions();
+        }
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-                currentRes = i;
+        private void PopulateOptions()
+        {
+            var resOptions = new List<string>();
+
+            var currentRes = 0;
+            
+            for (var i = 0; i < resolutions.Length; i++)
+            {
+                var resOption = $"{resolutions[i].width} x {resolutions[i].height}";
+                resOptions.Add(resOption);
+
+                if (resolutions[i].width == Screen.currentResolution.width &&
+                    resolutions[i].height == Screen.currentResolution.height)
+                    currentRes = i;
+            }
+            
+            resolutionDropdown.AddOptions(resOptions);
+            resolutionDropdown.value = currentRes;
+            resolutionDropdown.RefreshShownValue();
         }
         
-        resolutionDropdown.AddOptions(resOptions);
-        resolutionDropdown.value = currentRes;
-        resolutionDropdown.RefreshShownValue();
-    }
-    
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
-    }
+        public void SetVolume(float volume)
+        {
+            audioMixer.SetFloat("volume", volume);
+        }
 
-    public void SetQualityPreset(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-    }
+        public void SetQualityPreset(int qualityIndex)
+        {
+            QualitySettings.SetQualityLevel(qualityIndex);
+        }
 
-    public void SetFullscreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
+        public void SetFullscreen(bool isFullscreen)
+        {
+            Screen.fullScreen = isFullscreen;
+        }
 
-    public void SetResolution(int resIndex)
-    {
-        var res = resolutions[resIndex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        public void SetResolution(int resIndex)
+        {
+            var res = resolutions[resIndex];
+            Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        }
+
+        public void SetBloom(bool bloom)
+        {
+            postProcessing.SetBloom(bloom);
+        }
+
+        public void SetVignette(bool vignette)
+        {
+            postProcessing.SetVignette(vignette);
+        }
+
+        public void SetDOF(bool dof)
+        {
+            postProcessing.SetDOF(dof);
+        }
+
+        public void SetSSAO(bool ssaoToggle)
+        {
+            ssao.SetActive(ssaoToggle);
+        }
     }
 }
