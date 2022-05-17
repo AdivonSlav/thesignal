@@ -23,7 +23,6 @@ namespace TheSignal.Scenes.Behaviours
         private Transform mainCameraTransform;
         private PlayerJournal playerJournal;
 
-        private GameObject entryToDestroy;
         private bool playerPresent;
 
         private void Awake()
@@ -50,7 +49,8 @@ namespace TheSignal.Scenes.Behaviours
 
             headerText.text = journalEntry.name;
             bodyText.text = journalEntry.text;
-            playerJournal.AddEntry(journalEntry);
+            if (!AddedEntries.IsPresent(journalEntry))
+                playerJournal.AddEntry(journalEntry);
             journalImage.SetActive(true);
             inputManager.isInteracting = false;
         }

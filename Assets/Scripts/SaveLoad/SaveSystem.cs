@@ -1,4 +1,6 @@
 //used for working with files
+
+using System.Collections.Generic;
 using System.IO;
 //allows accessing the binary formatter
 using System.Runtime.Serialization.Formatters.Binary;
@@ -8,7 +10,7 @@ namespace TheSignal.SaveLoad
 {
     public static class SaveSystem 
     {
-        public static void SavePlayer(int CurrentLevel)
+        public static void SavePlayer(int CurrentLevel, List<int> addedEntries)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             //the path were we will save our file
@@ -17,7 +19,7 @@ namespace TheSignal.SaveLoad
             //cerated the file on the system
             FileStream stream = new FileStream(path,FileMode.Create);
 
-            PlayerData data = new PlayerData(CurrentLevel);
+            PlayerData data = new PlayerData(CurrentLevel, addedEntries);
             formatter.Serialize(stream, data);
             stream.Close();
         }

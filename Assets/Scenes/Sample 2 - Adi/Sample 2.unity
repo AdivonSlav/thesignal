@@ -1715,6 +1715,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1543329274}
     - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
+      propertyPath: journalEntry
+      value: 
+      objectReference: {fileID: 4900000, guid: 8b1362006fe94fa43b791ea4c915da5f, type: 3}
+    - target: {fileID: 3716425881393882311, guid: 0eb8fe1a015cb2347b5b32b00ef829de, type: 3}
       propertyPath: journalImage
       value: 
       objectReference: {fileID: 593274480}

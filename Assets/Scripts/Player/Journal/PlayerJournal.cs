@@ -6,6 +6,16 @@ using UnityEngine.UI;
 
 namespace TheSignal.Player.Journal
 {
+    public static class AddedEntries
+    {
+        public static Dictionary<int, TextAsset> entries = new Dictionary<int, TextAsset>();
+        
+        public static bool IsPresent(TextAsset entry)
+        {
+            return entries.ContainsValue(entry);
+        }
+    }
+    
     public class PlayerJournal : MonoBehaviour
     {
         [SerializeField] private GameObject journal;
@@ -14,17 +24,24 @@ namespace TheSignal.Player.Journal
         [SerializeField] private GameObject buttonContainer;
         [SerializeField] private GameObject buttonPrefab;
 
-        private List<TextAsset> addedEntries;
+        [SerializeField] private List<TextAsset> textAssets;
         private InputManager inputManager;
         private CinemachineController cinemachineController;
 
         public bool journalOpened;
-        
+
         private void Awake()
         {
-            addedEntries = new List<TextAsset>();
             inputManager = GetComponent<InputManager>();
             cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
+        }
+
+        private void Start()
+        {
+            foreach (var entry in AddedEntries.entries)
+            {
+                AddEntry(entry.Value);
+            }
         }
 
         private void Update()
@@ -54,8 +71,8 @@ namespace TheSignal.Player.Journal
         
         public void AddEntry(TextAsset entry)
         {
-            addedEntries.Add(entry);
-
+            if (!AddedEntries.IsPresent(entry))
+                AddedEntries.entries.Add(textAssets.IndexOf(entry), entry);
             var button = Instantiate(buttonPrefab, buttonContainer.transform, true);
             button.GetComponent<Text>().text = entry.name;
             button.GetComponent<Button>().onClick.AddListener(delegate { OpenEntry(entry.name); });
@@ -66,7 +83,7 @@ namespace TheSignal.Player.Journal
             headerText.text = entryName;
             entryContainer.SetActive(true);
             buttonContainer.SetActive(false);
-            entryContainer.GetComponentInChildren<Text>().text = addedEntries.Find(entry => entry.name == entryName).text;
+            entryContainer.GetComponentInChildren<Text>().text = textAssets.Find(entry => entry.name == entryName).text;
         }
         
         private void CloseEntry()
@@ -75,6 +92,16 @@ namespace TheSignal.Player.Journal
             entryContainer.SetActive(false);
             buttonContainer.SetActive(true);
             inputManager.isExiting = false;
+        }
+
+        public void LoadEntries(List<int> keys)
+        {
+            AddedEntries.entries = new Dictionary<int, TextAsset>();
+
+            for (var i = 0; i < keys.Count; i++)
+            {
+                AddedEntries.entries.Add(keys[i], textAssets[keys[i]]);
+            }
         }
     }
 }

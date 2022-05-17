@@ -1,3 +1,4 @@
+using System.Linq;
 using TheSignal.Camera;
 using TheSignal.Player.Input;
 using TheSignal.Player.Journal;
@@ -26,7 +27,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject journalUI;
-
+        
         private void Awake()
         {
             cinemachineController = UnityEngine.Camera.main.GetComponent<CinemachineController>();
@@ -86,11 +87,12 @@ namespace TheSignal.Menu
         {
             PlayerData data = SaveSystem.LoadPlayer();
             Resume();
+            playerJournal.LoadEntries(data.addedEntries);            
             SceneManager.LoadScene(data.level);
         }
         public void Save()
         {
-            SaveSystem.SavePlayer(SceneManager.GetActiveScene().buildIndex);
+            SaveSystem.SavePlayer(SceneManager.GetActiveScene().buildIndex, AddedEntries.entries.Keys.ToList());
         }
         void Pause()
         {
