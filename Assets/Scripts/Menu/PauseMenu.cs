@@ -38,12 +38,17 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-                if (inputManager.isExiting && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
+                if (inputManager.isExiting)
                 {
-                    if (GameIsPaused)
-                        Resume();
-                    else
-                        Pause();
+
+
+                    if (inputManager.isExiting && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
+                    {
+                        if (GameIsPaused)
+                            Resume();
+                        else
+                            Pause();
+                    }
                 }
                 if (inputManager.isPressingTab)
                 {
