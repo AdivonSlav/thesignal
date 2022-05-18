@@ -10517,13 +10517,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5657118368722629825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a6cdd4844051a94685dd7da8f67edc6, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b02a727aa5a0c49a290f9640452211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
-  resolutionDropdown: {fileID: 4265609138039771991}
   postProcessing: {fileID: 0}
   ssao: {fileID: -5676987143808587283, guid: a17cf0ff090cc40489f25c7a00775ce8, type: 2}
+  resolutionDropdown: {fileID: 4265609138039771991}
+  fullscreenToggle: {fileID: 2738677174963290103}
+  volumeSlider: {fileID: 942314092703650400}
+  graphicsDropdown: {fileID: 5357419356540522335}
+  bloomToggle: {fileID: 329738215}
+  vignetteToggle: {fileID: 1176108202}
+  dofToggle: {fileID: 1671321714}
+  ssaoToggle: {fileID: 8590273858912446991}
 --- !u!1 &6212249848751182731
 GameObject:
   m_ObjectHideFlags: 0
