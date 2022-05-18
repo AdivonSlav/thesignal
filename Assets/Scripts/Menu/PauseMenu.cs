@@ -27,6 +27,7 @@ namespace TheSignal.Menu
         [SerializeField] private GameObject objectiveInactive;
         [SerializeField] private GameObject healthAndMissionUI;
         [SerializeField] private GameObject journalUI;
+        [SerializeField] private GameObject HelpUI;
         
         private void Awake()
         {
@@ -38,6 +39,7 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
+
                 if (inputManager.isExiting)
                 {
 
@@ -84,9 +86,15 @@ namespace TheSignal.Menu
             pauseMenuUI.SetActive(false);
             mainMenuUI.SetActive(true);
         }
-        public void Quit()
+        public void Help()
         {
-            Application.Quit();
+            pauseMenuUI.SetActive(false);
+            HelpUI.SetActive(true);
+        }
+        public void HelpBackButton()
+        {
+            HelpUI.SetActive(false);
+            pauseMenuUI.SetActive(true);
         }
         public void Load()
         {
