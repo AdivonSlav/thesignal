@@ -12,6 +12,7 @@ TagManager:
   - LevelTigger
   - Projectile
   - Flames
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - Enemy
   - Projectile
-  - 
+  - Sound
   - 
   - 
   - 
