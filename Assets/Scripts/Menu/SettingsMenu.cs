@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TheSignal.Camera;
 using UnityEngine;
@@ -23,6 +24,11 @@ namespace TheSignal.Menu
         [SerializeField] private Toggle ssaoToggle;
         
         private Resolution[] resolutions;
+
+        private void Awake()
+        {
+            Application.targetFrameRate = -1;
+        }
 
         private void Start()
         {

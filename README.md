@@ -7,6 +7,14 @@ The Signal is a third-person shooter with horror vibes created by myself and a c
 
 The game features two camera types for the player: a normal movement one and an aim camera that quickly snaps to the player model's shoulder. The weapon the player has is an automatic pulse rifle that is reasonably powerful in taking down any of the multitude of baddies that litter our scenes.
 
+!<img src="https://media.giphy.com/media/i1M3VOxu50bBLPrR6v/giphy.gif" width="385"> !<img src="https://media.giphy.com/media/f1tG4C0i2ZJ1NoyPvE/giphy.gif" width="385">
+
 The game features three scenes that have the player investigate the derelict ship which has been infested with aliens. The mood we went with is that of a horror-esque game, with a run-down looking environement that suits the theme well. Besides the elimination of the hordes of enemies on the station, the player can also collect several logs that are placed in various locations in the game that give some background and explanations as to what is happening. They serve as sort of an achievement and collected logs can always be viewed again in the player's journal.
 
+!<img src="https://media.giphy.com/media/pJV7Ltz7Wnf04p03Cn/giphy.gif" width="385"> !<img src="https://media.giphy.com/media/4fTxwZsptjAHQ9SucW/giphy.gif" width="385">
+
 As for enemy types, we have 4 enemy types with varying characteristics such as speed, attack power and health with some being naturally harder to kill due to lower damage bonuses from headshots or torso shots. There is also a boss that awaits the player at the last scene, whom by killing the game ends.
+
+<p align="center">
+  <img width="750" src="https://i.imgur.com/4moe7yG.png">
+</p>
