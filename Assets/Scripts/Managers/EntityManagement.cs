@@ -15,7 +15,7 @@ namespace TheSignal.Managers
             inputManager = trackedEntities[0].GetComponent<InputManager>();
         }
 
-        public void Update()
+        public void LateUpdate()
         {
             if (!inputManager.isExiting)
                 return;

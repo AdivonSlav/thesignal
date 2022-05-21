@@ -23,7 +23,7 @@ namespace TheSignal.SFX
         }
 
         public void PlayTrack(bool enemyPresent, bool bossPresent = false)
-        {
+        {        
             if (audioSource.isPlaying)
                 StartCoroutine(FadeOut());
 
@@ -53,6 +53,11 @@ namespace TheSignal.SFX
             
             audioSource.clip = enemyPresent ? enemyFightTrack : ambienceTrack;
             audioSource.Play();
+        }
+
+        public bool IsPlaying()
+        {
+            return audioSource.isPlaying;
         }
     }
 }

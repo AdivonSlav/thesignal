@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace TheSignal.Enemy
 {
-    public class BossControler : MonoBehaviour
+    public class BossControler : TrackedEntity
     {
         [SerializeField] private int maxHealth;
         [SerializeField] private Transform target;

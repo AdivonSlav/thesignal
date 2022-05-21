@@ -39,11 +39,8 @@ namespace TheSignal.Menu
         {
             if (!deathScreenUI.activeInHierarchy)
             {
-
                 if (inputManager.isExiting)
                 {
-
-
                     if (inputManager.isExiting && !journalUI.activeInHierarchy && !playerJournal.journalOpened)
                     {
                         if (GameIsPaused)
