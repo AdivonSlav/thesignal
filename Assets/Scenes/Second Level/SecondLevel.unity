@@ -11784,7 +11784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725209, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725212, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_UseGravity
@@ -20328,7 +20328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6477296
+      value: 1.6479812
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22770,7 +22770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725209, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725212, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_UseGravity
@@ -40299,13 +40299,32 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2654893242503987612, guid: 126b2c575cf932341a8f0414ccd5b254, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 126b2c575cf932341a8f0414ccd5b254, type: 3}
 --- !u!4 &1568861724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5133627903560087177, guid: 126b2c575cf932341a8f0414ccd5b254, type: 3}
   m_PrefabInstance: {fileID: 1568861723}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1568861725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170962087039567002, guid: 126b2c575cf932341a8f0414ccd5b254, type: 3}
+  m_PrefabInstance: {fileID: 1568861723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1568861726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568861725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3987719, y: 0.99934554, z: 0.97389764}
+  m_Center: {x: -0.08513429, y: 0.49934974, z: 0.000004708767}
 --- !u!1001 &1569506658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40826,7 +40845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725209, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1936386238754725212, guid: dd5aca29713b4e243b3e3d66adf7c6cf, type: 3}
       propertyPath: m_UseGravity
@@ -50382,6 +50401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI - Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3607219055357085260, guid: 8da868c4946d24047b82678aa008a390, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3607219055357085296, guid: 8da868c4946d24047b82678aa008a390, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -52713,7 +52736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6477296
+      value: 1.6479812
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y

@@ -96,9 +96,12 @@ namespace TheSignal.Menu
         public void Load()
         {
             PlayerData data = SaveSystem.LoadPlayer();
-            Resume();
-            playerJournal.LoadEntries(data.addedEntries);            
-            SceneManager.LoadScene(data.level);
+            if (data != null)
+            {
+                Resume();
+                playerJournal.LoadEntries(data.addedEntries);
+                SceneManager.LoadScene(data.level);
+            }
         }
         public void Save()
         {

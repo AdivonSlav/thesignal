@@ -34,7 +34,12 @@ namespace TheSignal.Menu
         {
             loadingPanel.SetActive(true);
             PlayerData data = SaveSystem.LoadPlayer();
-            SceneManager.LoadScene(data.level);
+            if (data!=null)
+            {
+                SceneManager.LoadScene(data.level);
+            }
+            else
+                SceneManager.LoadScene("Cutscene Level");
         }
         public void SettingsButton()
         {
@@ -42,11 +47,6 @@ namespace TheSignal.Menu
             settingsPanel.SetActive(true);
         }
 
-        public void BackSettingsButton()
-        {
-            mainPanel.SetActive(true);
-            settingsPanel.SetActive(false);
-        }
         #endregion
         
         #region Newgame
@@ -62,6 +62,11 @@ namespace TheSignal.Menu
         #endregion
         
         #region Settings
+        public void BackSettingsButton()
+        {
+            mainPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        }
         #endregion
         
         #region Credits
