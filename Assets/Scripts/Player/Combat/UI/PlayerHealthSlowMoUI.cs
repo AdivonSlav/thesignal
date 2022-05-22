@@ -12,6 +12,7 @@ namespace TheSignal.Player.Combat.UI
 
         [SerializeField] GameObject PauseScreenUI;
         public GameObject deathScreen;
+        public GameObject DamageScreen;
         public Slider Healthslider;
         public Slider SlowMoSlider;
         public int CurrentLevel;
@@ -27,6 +28,8 @@ namespace TheSignal.Player.Combat.UI
         private bool slowMo;
         private bool dead;
         private float timeOfDeath;
+        private float timeOfDamage;
+        private bool isDamageAnimPlaying;
         
         private void Start()
         {
@@ -75,6 +78,14 @@ namespace TheSignal.Player.Combat.UI
                     currentSlowMo += 0.25f;
                     SlowMoSlider.value = currentSlowMo;
                     changedTime += 1;
+                }
+            }
+            if (DamageScreen.activeInHierarchy)
+            {
+                if (Time.realtimeSinceStartup - timeOfDamage>2)
+                {
+                    isDamageAnimPlaying = false;
+                    DamageScreen.SetActive(false);
                 }
             }
         }
@@ -143,6 +154,12 @@ namespace TheSignal.Player.Combat.UI
         }
         public void TakeDamage(float damage)
         {
+            if (!isDamageAnimPlaying)
+            {
+                isDamageAnimPlaying = true;
+                DamageScreen.SetActive(true);
+            }
+            timeOfDamage = Time.realtimeSinceStartup;
             currentHealth -= damage;
             Healthslider.value = currentHealth;
         }

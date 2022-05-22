@@ -64,7 +64,6 @@ namespace TheSignal.Enemy
             damage += damageBonus;
             currentHealth -= damage;
 
-            Debug.Log($"Dealt {damage} damage!");
 
             if (currentHealth <= 0)
             {
