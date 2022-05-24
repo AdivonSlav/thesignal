@@ -25,23 +25,10 @@ namespace TheSignal.Animation.Rigging
 
         private void Update()
         {
-            if (inputManager.isAiming && aimingRig.weight < 1.0f)
-                StartCoroutine(SetRig(aimingRig, 1.0f, Time.deltaTime));
-            else if (!inputManager.isAiming && aimingRig.weight > 0.0f)
-                StartCoroutine(SetRig(aimingRig, 0.0f, Time.deltaTime));
-
-            if (!playerAiming.allowedFire && disallowedAimingRig.weight < 1.0f)
-                StartCoroutine(SetRig(disallowedAimingRig, 1.0f, Time.deltaTime));
-            else if (playerAiming.allowedFire && disallowedAimingRig.weight > 0.0f)
-                StartCoroutine(SetRig(disallowedAimingRig, 0.0f, Time.deltaTime));
-
-            if (inputManager.isRunning && runningRig.weight < 1.0f && inputManager.moveAmount!=0)
-                StartCoroutine(SetRig(runningRig, 1.0f, Time.deltaTime));
-            else if (!inputManager.isRunning && runningRig.weight > 0.0f)
-                StartCoroutine(SetRig(runningRig, 0.0f, Time.deltaTime));
+            StartCoroutine(CheckAll());
         }
 
-        IEnumerator SetRig(Rig rig, float weight, float timeDelta)
+        private IEnumerator SetRig(Rig rig, float weight, float timeDelta)
         {
             float elapsedTime = 0.0f;
             float waitTime = 0.25f;
@@ -54,10 +41,55 @@ namespace TheSignal.Animation.Rigging
                 yield return null;
             }
 
-            if (rig == aimingRig && weight == 1.0f)
-                playerAiming.enteredAim = true;
-            else
-                playerAiming.enteredAim = false;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        private IEnumerator CheckAim()
+        {
+            switch (inputManager.isAiming)
+            {
+                case true when aimingRig.weight < 1.0f:
+                    yield return StartCoroutine(SetRig(aimingRig, 1.0f, Time.deltaTime));
+                    playerAiming.enteredAim = true;
+                    break;
+                case false when aimingRig.weight > 0.0f:
+                    yield return StartCoroutine(SetRig(aimingRig, 0.0f, Time.deltaTime));
+                    playerAiming.enteredAim = false;
+                    break;
+            }
+        }
+
+        private IEnumerator CheckDisallowedAim()
+        {
+            switch (playerAiming.allowedFire)
+            {
+                case false when disallowedAimingRig.weight < 1.0f:
+                    yield return StartCoroutine(SetRig(disallowedAimingRig, 1.0f, Time.deltaTime));
+                    break;
+                case true when disallowedAimingRig.weight > 0.0f:
+                    yield return StartCoroutine(SetRig(disallowedAimingRig, 0.0f, Time.deltaTime));
+                    break;
+            }
+        }
+
+        private IEnumerator CheckRunning()
+        {
+            switch (inputManager.isRunning)
+            {
+                case true when runningRig.weight < 1.0f && inputManager.moveAmount != 0:
+                    yield return StartCoroutine(SetRig(runningRig, 1.0f, Time.deltaTime));
+                    break;
+                case false when runningRig.weight > 0.0f:
+                    yield return StartCoroutine(SetRig(runningRig, 0.0f, Time.deltaTime));
+                    break;
+            }
+        }
+
+        private IEnumerator CheckAll()
+        {
+            yield return StartCoroutine(CheckDisallowedAim());
+            yield return StartCoroutine(CheckRunning());
+            yield return StartCoroutine(CheckAim());
         }
     }
 }

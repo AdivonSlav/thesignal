@@ -18,3 +18,11 @@ As for enemy types, we have 4 enemy types with varying characteristics such as s
 <p align="center">
   <img width="750" src="https://i.imgur.com/4moe7yG.png">
 </p>
+
+## Credits and mentions
+
+Special thanks to our colleague Mujo Babajic for providing us with some badass music tracks that we could add to our game. Check him out at [YouTube](https://www.youtube.com/channel/UClt54zqvWOjDCejlBfMoRog) | [GitHub](https://github.com/MujoBabajic)
+
+All the assets we used are linked in [here](MENTIONS.md).
+
+All other sounds were taken from [Mixkit](https://mixkit.co/). Player and enemy 3D models were taken from [Mixamo](https://www.mixamo.com/).
