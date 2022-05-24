@@ -21,7 +21,7 @@ As for enemy types, we have 4 enemy types with varying characteristics such as s
 
 ## Credits and mentions
 
-Special thanks to our colleague Mujo Babajic for providing us with some badass music tracks that we could add to our game.
+Special thanks to our colleague Mujo Babajic for providing us with some badass music tracks that we could add to our game. Check him out at [YouTube](https://www.youtube.com/channel/UClt54zqvWOjDCejlBfMoRog) | [GitHub](https://github.com/MujoBabajic)
 
 All the assets we used are linked in [here](MENTIONS.md).
 
