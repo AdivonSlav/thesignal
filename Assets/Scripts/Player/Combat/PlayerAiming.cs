@@ -15,6 +15,7 @@ namespace TheSignal.Player.Combat
         [SerializeField] private CinemachineVirtualCamera aimCamera;
 
         [HideInInspector] public bool allowedFire;
+        [HideInInspector] public bool enteredAim;
         
         private InputManager inputManager;
         private Rigidbody playerRB;

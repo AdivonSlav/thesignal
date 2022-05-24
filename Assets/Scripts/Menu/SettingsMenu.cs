@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TheSignal.Camera;
 using UnityEngine;
@@ -16,7 +15,9 @@ namespace TheSignal.Menu
         [Header("UI")]
         [SerializeField] private Dropdown resolutionDropdown;
         [SerializeField] private Toggle fullscreenToggle;
-        [SerializeField] private Slider volumeSlider;
+        [SerializeField] private Slider masterVolumeSlider;
+        [SerializeField] private Slider musicVolumeSlider;
+        [SerializeField] private Slider sfxVolumeSlider;
         [SerializeField] private Dropdown graphicsDropdown;
         [SerializeField] private Toggle bloomToggle;
         [SerializeField] private Toggle vignetteToggle;
@@ -62,11 +63,21 @@ namespace TheSignal.Menu
             graphicsDropdown.value = QualitySettings.GetQualityLevel();
         }
         
-        public void SetVolume(float volume)
+        public void SetMasterVolume(float volume)
         {
-            audioMixer.SetFloat("volume", volume);
+            audioMixer.SetFloat("masterVolume", volume);
         }
 
+        public void SetMusicVolume(float volume)
+        {
+            audioMixer.SetFloat("musicVolume", volume);
+        }
+
+        public void SetSFXVolume(float volume)
+        {
+            audioMixer.SetFloat("sfxVolume", volume);
+        }
+        
         public void SetQualityPreset(int qualityIndex)
         {
             QualitySettings.SetQualityLevel(qualityIndex);
@@ -106,8 +117,14 @@ namespace TheSignal.Menu
         private void SetControls()
         {
             fullscreenToggle.isOn = Screen.fullScreen;
-            audioMixer.GetFloat("volume", out var volumeValue);
-            volumeSlider.value = volumeValue;
+            
+            audioMixer.GetFloat("masterVolume", out var masterVolume);
+            audioMixer.GetFloat("masterVolume", out var musicVolume);
+            audioMixer.GetFloat("masterVolume", out var sfxVolume);
+            masterVolumeSlider.value = masterVolume;
+            musicVolumeSlider.value = musicVolume;
+            sfxVolumeSlider.value = sfxVolume;
+            
             bloomToggle.isOn = PostProcessingSettings.bloom;
             vignetteToggle.isOn = PostProcessingSettings.vignette;
             dofToggle.isOn = PostProcessingSettings.dof;

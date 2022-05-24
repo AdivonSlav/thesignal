@@ -43,14 +43,21 @@ namespace TheSignal.Animation.Rigging
 
         IEnumerator SetRig(Rig rig, float weight, float timeDelta)
         {
-            float waitTime = 0.5f;
+            float elapsedTime = 0.0f;
+            float waitTime = 0.25f;
             
-            for (float elapsed = 0.0f; elapsed < waitTime; elapsed += timeDelta)
+            while (elapsedTime < waitTime)
             {
-                rig.weight = Mathf.Lerp(rig.weight, weight, elapsed / waitTime);
+                rig.weight = Mathf.Lerp(rig.weight, weight, elapsedTime / waitTime);
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
             }
 
-            yield return null;
+            if (rig == aimingRig && weight == 1.0f)
+                playerAiming.enteredAim = true;
+            else
+                playerAiming.enteredAim = false;
         }
     }
 }

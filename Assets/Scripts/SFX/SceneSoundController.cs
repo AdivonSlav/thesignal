@@ -14,6 +14,7 @@ namespace TheSignal.SFX
         [Header("Tracks")]
         [SerializeField] private AudioClip ambienceTrack;
         [SerializeField] private AudioClip enemyFightTrack;
+        [SerializeField] private AudioClip bossFightTrack;
 
         private bool fadingOut;
         
@@ -52,6 +53,7 @@ namespace TheSignal.SFX
                 yield return new WaitForSeconds(0.1f);
             
             audioSource.clip = enemyPresent ? enemyFightTrack : ambienceTrack;
+            audioSource.clip = bossPresent ? bossFightTrack : audioSource.clip;
             audioSource.Play();
         }
 

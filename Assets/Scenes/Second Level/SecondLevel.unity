@@ -20332,7 +20332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6479812
+      value: 1.64779
       objectReference: {fileID: 0}
     - target: {fileID: 8343727655794512363, guid: cf69a0a4437914343901b323a9f6d478, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25170,7 +25170,7 @@ AudioSource:
   m_GameObject: {fileID: 964740188}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
+  OutputAudioMixerGroup: {fileID: 1873597388349047236, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.7
@@ -28163,11 +28163,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7627358254791771849, guid: f1bffe52578381340b16f3475ff94498, type: 3}
   m_PrefabInstance: {fileID: 2012782604}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1097919842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2743546221668716495, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
-  m_PrefabInstance: {fileID: 2085770064}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1101501290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29768,7 +29763,7 @@ AudioSource:
   m_GameObject: {fileID: 1155392157}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
+  OutputAudioMixerGroup: {fileID: 1873597388349047236, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.7
@@ -52835,7 +52830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6479812
+      value: 1.64779
       objectReference: {fileID: 0}
     - target: {fileID: 81003370937761990, guid: d4e58bcd45e95be44a760e11eeca9ae8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55220,7 +55215,7 @@ PrefabInstance:
     - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
       propertyPath: settingsUI
       value: 
-      objectReference: {fileID: 1097919842}
+      objectReference: {fileID: 2085770065}
     - target: {fileID: 255846150381595208, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
       propertyPath: Healthslider
       value: 
@@ -55274,6 +55269,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1672400961680430257, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+      propertyPath: postProcessing
+      value: 
+      objectReference: {fileID: 1409303093}
+    - target: {fileID: 2283060012794591501, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
       propertyPath: postProcessing
       value: 
       objectReference: {fileID: 1409303093}
@@ -55331,6 +55330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+--- !u!1 &2085770065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4135863873455801493, guid: 3bc40b568defec24e99ff48bc0343697, type: 3}
+  m_PrefabInstance: {fileID: 2085770064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2087036945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57403,14 +57407,6 @@ PrefabInstance:
     - target: {fileID: 1900359843696802789, guid: 3f039db8aae1dce4986cd8f8258dccc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7590453119131185264, guid: 3f039db8aae1dce4986cd8f8258dccc8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7590453119131185265, guid: 3f039db8aae1dce4986cd8f8258dccc8, type: 3}
-      propertyPath: trackedEntities.Array.size
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7590453119131185265, guid: 3f039db8aae1dce4986cd8f8258dccc8, type: 3}
       propertyPath: trackedEntities.Array.data[0]
