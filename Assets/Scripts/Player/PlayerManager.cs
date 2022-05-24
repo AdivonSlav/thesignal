@@ -50,6 +50,7 @@ namespace TheSignal.Player
 
         private void LateUpdate()
         {
+            
             if (!this.isRunning)
                 return;
             

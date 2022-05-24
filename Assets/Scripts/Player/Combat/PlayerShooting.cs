@@ -23,7 +23,7 @@ namespace TheSignal.Player.Combat
         {
             lastShot += Time.deltaTime;            
             
-            if (inputManager.isFiring && inputManager.isAiming && playerAiming.allowedFire)
+            if (inputManager.isFiring && inputManager.isAiming && playerAiming.allowedFire && playerAiming.enteredAim)
             {
                 projectileWeapon.StartFiring(ref lastShot);
             }

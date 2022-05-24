@@ -48,7 +48,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: f1b6fa6b27acd7d4286662ef501ecb7f, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 9957af0be73e67142b5fe826c3a68a78, type: 2}
 --- !u!114 &7590453118468467299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +106,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackedEntities:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7590453119545807696
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,10 +162,10 @@ AudioSource:
   m_GameObject: {fileID: 7590453119545807696}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 92601fedf65de674b99baf939fe58046, type: 3}
+  OutputAudioMixerGroup: {fileID: -8026700051526907578, guid: 122bc9d60ac2a7b468f1e686c485298b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 979eb3c1369b5fe409cd0f62c2cf506d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -247,8 +262,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 2.5
-  ambienceTrack: {fileID: 8300000, guid: 92601fedf65de674b99baf939fe58046, type: 3}
-  enemyFightTrack: {fileID: 8300000, guid: 4dba87ba2ecab5a47a20b0a01059a8dd, type: 3}
+  ambienceTrack: {fileID: 8300000, guid: 979eb3c1369b5fe409cd0f62c2cf506d, type: 3}
+  enemyFightTrack: {fileID: 8300000, guid: 48478eacbdcef004fafd39e5cff3baf8, type: 3}
+  bossFightTrack: {fileID: 8300000, guid: 567689e2f86296047a2f4fc164602ef7, type: 3}
 --- !u!1 &7590453119550538837
 GameObject:
   m_ObjectHideFlags: 0
