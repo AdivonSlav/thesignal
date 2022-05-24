@@ -121,8 +121,8 @@ namespace TheSignal.Menu
             fullscreenToggle.isOn = Screen.fullScreen;
             
             audioMixer.GetFloat("masterVolume", out var masterVolume);
-            audioMixer.GetFloat("masterVolume", out var musicVolume);
-            audioMixer.GetFloat("masterVolume", out var sfxVolume);
+            audioMixer.GetFloat("musicVolume", out var musicVolume);
+            audioMixer.GetFloat("sfxVolume", out var sfxVolume);
             masterVolumeSlider.value = masterVolume;
             musicVolumeSlider.value = musicVolume;
             sfxVolumeSlider.value = sfxVolume;
