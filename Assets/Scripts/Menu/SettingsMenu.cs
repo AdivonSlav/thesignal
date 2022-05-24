@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TheSignal.Camera;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace TheSignal.Menu
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = -1;
         }
 
