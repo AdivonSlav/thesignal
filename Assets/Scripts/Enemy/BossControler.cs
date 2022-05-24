@@ -12,6 +12,9 @@ namespace TheSignal.Enemy
         [SerializeField] private Transform target;
         [SerializeField] private float enemyDistance;
         [SerializeField] private GameObject pauseUI;
+        [SerializeField] private GameObject SettingsUI;
+        [SerializeField] private GameObject HelpUI;
+        [SerializeField] private GameObject MainMenuUI;
         [SerializeField] private float viewingDistance;
 
         private bool animationChange;
@@ -26,7 +29,7 @@ namespace TheSignal.Enemy
         {
             agent.velocity = Vector3.zero;
 
-            if (pauseUI.activeInHierarchy)
+            if (pauseUI.activeInHierarchy || SettingsUI.activeInHierarchy || HelpUI.activeInHierarchy || MainMenuUI.activeInHierarchy)
             {
                 anim.gameObject.SetActive(false);
                 anim.gameObject.SetActive(true);
